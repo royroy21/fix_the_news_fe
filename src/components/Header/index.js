@@ -66,6 +66,6 @@ const Header = (props) => {
       </AppBar>
     </div>
   );
-}
+};
 
 export default HeaderWrapper(Header);
