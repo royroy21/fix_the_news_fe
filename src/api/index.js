@@ -33,7 +33,7 @@ class DispatchAPI {
       beginAction,
       successAction,
       errorAction,
-      id=null,
+      null,
       data,
       params,
       extraActions,
@@ -56,7 +56,7 @@ class DispatchAPI {
       successAction,
       errorAction,
       id,
-      data=null,
+      null,
       params,
       extraActions,
     );
@@ -101,7 +101,7 @@ class DispatchAPI {
       successAction,
       errorAction,
       id,
-      data=null,
+      null,
       params,
       extraActions,
     );
@@ -125,7 +125,7 @@ class DispatchAPI {
         params,
         ...this.getAuthorizationHeaders(getState),
       };
-      const url = id ? `${url}${id}/` : baseUrl;
+      const url = id ? `${baseUrl}${id}/` : baseUrl;
       const preppedAction = data
         ? () => action(url, data, headersAndParams)
         : () => action(url, headersAndParams);
