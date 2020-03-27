@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import HeaderWrapper from "./wrapper";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,8 +20,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Header() {
+const Header = (props) => {
   const classes = useStyles();
+
+  console.log("?? props: ", props);
+
   return (
     <div className={classes.root}>
       <AppBar position={"static"}>
@@ -42,3 +46,5 @@ export default function Header() {
     </div>
   );
 }
+
+export default HeaderWrapper(Header);
