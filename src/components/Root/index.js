@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Header from "../header";
 
 class Root extends Component {
 
@@ -31,9 +32,24 @@ class Root extends Component {
 
   render() {
     const isMobile = this.getIsMobile();
+    const width = isMobile ? "100%" : "70%";
+
+    const outerContainerStyle = {
+      backgroundColor: "#FAFAFA",
+      height: `${this.state.screenHeight}px`,
+      width: "100%",
+    };
+
+    const innerContainerStyle = {
+      width,
+      margin: "0 auto 0 auto",
+    };
+
     return (
-      <div>
-        {!isMobile ? (<p>{"desktop"}</p>) : (<p>{"mobile"}</p>)}
+      <div style={outerContainerStyle}>
+        <div style={innerContainerStyle}>
+          <Header />
+        </div>
       </div>
     )
   }
