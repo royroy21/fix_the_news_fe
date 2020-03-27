@@ -32,6 +32,6 @@ export const postToken = (data) => new DispatchAPI().create(
   postTokenSuccess,
   postTokenError,
   data,
-  {},
+  null,
   [getUser]
 );

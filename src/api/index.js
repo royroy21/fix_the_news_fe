@@ -24,7 +24,7 @@ class DispatchAPI {
     successAction,
     errorAction,
     data=null,
-    params={},
+    params=null,
     extraActions=null,
     ) {
     return this.makeCall(
@@ -46,7 +46,7 @@ class DispatchAPI {
     successAction,
     errorAction,
     id=null,
-    params={},
+    params=null,
     extraActions=null,
     ) {
     return this.makeCall(
@@ -69,7 +69,7 @@ class DispatchAPI {
     errorAction,
     id=null,
     data=null,
-    params={},
+    params=null,
     extraActions=null,
     ) {
     return this.makeCall(
@@ -91,7 +91,7 @@ class DispatchAPI {
     successAction,
     errorAction,
     id=null,
-    params={},
+    params=null,
     extraActions=null,
     ) {
     return this.makeCall(
@@ -115,14 +115,15 @@ class DispatchAPI {
     errorAction,
     id=null,
     data=null,
-    params={},
+    params=null,
     extraActions=null,
     ) {
     return (dispatch, getState) => {
       dispatch(beginAction());
 
+      const paramsAsObject = params ? params : {};
       const headersAndParams = {
-        params,
+        paramsAsObject,
         ...this.getAuthorizationHeaders(getState),
       };
       const url = id ? `${baseUrl}${id}/` : baseUrl;
