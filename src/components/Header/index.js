@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -18,13 +18,17 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  loginButtons: {
+    width: 100,
+    marginRight: theme.spacing(1),
+  },
+  registerButtons: {
+    width: 100,
+  },
 }));
 
 const Header = (props) => {
   const classes = useStyles();
-
-  console.log("?? props: ", props);
-
   return (
     <div className={classes.root}>
       <AppBar position={"static"}>
@@ -40,7 +44,24 @@ const Header = (props) => {
           <Typography variant={"h6"} className={classes.title}>
             {"FixTheNews"}
           </Typography>
-          <Button color={"inherit"}>{"Login"}</Button>
+          {!!!props.store.user.object ? (
+            <Fragment>
+              <Button
+                className={classes.loginButtons}
+                variant={"contained"}
+                color={"secondary"}
+              >
+                {"Login"}
+              </Button>
+              <Button
+                className={classes.registerButtons}
+                variant={"contained"}
+                color={"secondary"}
+              >
+                {"Register"}
+              </Button>
+            </Fragment>
+          ) : null}
         </Toolbar>
       </AppBar>
     </div>
