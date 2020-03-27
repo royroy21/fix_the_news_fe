@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 class Root extends Component {
 
+  MOBILE_WIDTH = 900;
+
   state = {
     screenWidth: 0,
     screenHeight: 0,
@@ -24,7 +26,7 @@ class Root extends Component {
   };
 
   getIsMobile() {
-    return this.state.screenWidth < 900
+    return this.state.screenWidth < this.MOBILE_WIDTH;
   }
 
   render() {

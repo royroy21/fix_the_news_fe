@@ -4,7 +4,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import {Provider} from "react-redux";
 import configureStore from "./store/configureStore";
 import {BrowserRouter as Router} from 'react-router-dom'
-import Root from "./store/components/Root";
+import Root from "./components/Root";
 
 const theme = createMuiTheme({
   palette: {
