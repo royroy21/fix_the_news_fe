@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Header from "../Header";
+import RootWrapper from "./wrapper";
 
 class Root extends Component {
 
@@ -23,12 +24,16 @@ class Root extends Component {
     this.setState({
       screenWidth: window.innerWidth,
       screenHeight: window.innerHeight,
-    });
+    }, () => this.props.actions.updateDimensions({
+      height: this.state.screenHeight,
+      width: this.state.screenWidth,
+      isMobile: this.getIsMobile(),
+    }));
   };
 
-  getIsMobile() {
+  getIsMobile = () => {
     return this.state.screenWidth < this.MOBILE_WIDTH;
-  }
+  };
 
   render() {
     const isMobile = this.getIsMobile();
@@ -56,4 +61,4 @@ class Root extends Component {
 
 }
 
-export default Root;
+export default RootWrapper(Root);
