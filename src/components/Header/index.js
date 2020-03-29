@@ -1,10 +1,11 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import HeaderWrapper from "./wrapper";
+import RegistrationModal from "../User/RegistrationModal";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,7 +27,16 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Header = (props) => {
+
+  const [
+    openRegistrationModel,
+    setRegistrationModel,
+  ] = useState(false);
+
   const classes = useStyles();
+
+  const { object:user } = props.store.user;
+
   return (
     <div className={classes.root}>
       <AppBar position={"static"}>
@@ -34,26 +44,33 @@ const Header = (props) => {
           <Typography variant={"h6"} className={classes.title}>
             {"FixTheNews"}
           </Typography>
-          {!!!props.store.user.object ? (
+          {!!!user ? (
             <Fragment>
               <Button
                 className={classes.loginButtons}
-                variant={"contained"}
                 color={"secondary"}
+                variant={"contained"}
               >
                 {"Login"}
               </Button>
               <Button
                 className={classes.registerButtons}
-                variant={"contained"}
                 color={"secondary"}
+                onClick={() => setRegistrationModel(true)}
+                variant={"contained"}
               >
                 {"Register"}
               </Button>
             </Fragment>
-          ) : null}
+          ) : (
+            <p>{`${user.first_name}, ${user.first_name}`}</p>
+          )}
         </Toolbar>
       </AppBar>
+      <RegistrationModal
+        open={openRegistrationModel}
+        closeModal={() => setRegistrationModel(false)}
+      />
     </div>
   );
 };
