@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from "../Header";
 import RootWrapper from "./wrapper";
+import {localStorageAuthTokenKey} from "../../settings";
 
 class Root extends Component {
 
@@ -12,6 +13,16 @@ class Root extends Component {
   };
 
   componentDidMount() {
+    const authTokenFromRedux = this.props.store.token.object;
+    const authTokenFromLocalStorage =
+      localStorage.getItem(localStorageAuthTokenKey);
+    if (!authTokenFromRedux && authTokenFromLocalStorage) {
+      this.props.actions.updateToken({
+        "auth_token": authTokenFromLocalStorage,
+      });
+      this.props.actions.getUser();
+    }
+
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
   }

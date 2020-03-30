@@ -4,6 +4,7 @@ import {
   POST_TOKEN_ERROR,
   CLEAR_TOKEN,
 } from './../actions/token';
+import {localStorageAuthTokenKey} from "../../settings";
 
 const initialState = {
   object: null,
@@ -20,10 +21,12 @@ const tokenReducer = (state = initialState, action) => {
         error: null,
       };
     case POST_TOKEN_SUCCESS:
+        const {data} = action.payload;
+        localStorage.setItem(localStorageAuthTokenKey, data.auth_token);
         return {
         ...state,
         loading: false,
-        object: action.payload.data,
+        object: data,
       };
     case POST_TOKEN_ERROR:
       return {
