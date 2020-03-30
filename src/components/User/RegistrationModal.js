@@ -17,6 +17,7 @@ const RegistrationModal = ({closeModal, open, ...rest}) => {
           storeObject={rest.store.register}
           successMessage={"User registration successful"}
           postSuccess={closeModal}
+          isMobile={rest.store.appDimensions.isMobile}
         />
       }
       open={open}

@@ -5,18 +5,16 @@ import {TextField, withStyles} from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import Button from "@material-ui/core/Button";
+import PropTypes from "prop-types";
 
 const styles = theme => ({
-  removeAvatarButton: {
-    margin: `${theme.spacing(3)}px 0 0 ${theme.spacing(2)}px`,
-    width: 175,
-  },
-  uploadAvatarButton: {
+  avatarButton: {
     marginTop: theme.spacing(3),
     width: 175,
   },
   uploadAvatarContainer: {
     display: "flex",
+    flexWrap: "wrap",
   },
   uploadAvatarText: {
     margin: `${theme.spacing(4)}px 0 0 ${theme.spacing(2)}px`,
@@ -79,7 +77,7 @@ class RegistrationForm extends Form {
         <div className={classes.uploadAvatarContainer}>
           <Button
             onClick={() => this.imageInput.click()}
-            className={classes.uploadAvatarButton}
+            className={classes.avatarButton}
             variant={"outlined"}
           >
             {avatar ? "Change Avatar" : "Add Avatar"}
@@ -87,7 +85,8 @@ class RegistrationForm extends Form {
           {avatar ? (
             <Button
               onClick={this.removeAvatar}
-              className={classes.removeAvatarButton}
+              style={!this.props.isMobile ? {marginLeft: 10} : undefined}
+              className={classes.avatarButton}
               variant={"outlined"}
             >
               {"Remove Avatar"}
@@ -169,3 +168,7 @@ class RegistrationForm extends Form {
 }
 
 export default withStyles(styles)(RegistrationForm);
+
+RegistrationForm.PropTypes = {
+  isMobile: PropTypes.bool.isRequired,
+};

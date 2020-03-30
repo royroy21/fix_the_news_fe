@@ -12,21 +12,23 @@ class CustomModal extends Component {
   }
 
   render() {
-    const {height, isMobile} = this.props.store.appDimensions;
-    const contentHeight = height - 200;
-    const contentWidth = isMobile ? "100%" : "700px";
+    const {height, isMobile, width} = this.props.store.appDimensions;
     const contentMarginTop = this.contentRef.current
       ? (height - this.contentRef.current.clientHeight) / 2
       : 0;
 
     const contentStyle = {
-      height: "auto",
-      maxHeight: contentHeight,
-      width: contentWidth,
       margin: `${contentMarginTop}px auto auto auto`,
       padding: "25px",
       backgroundColor: "white",
     };
+    if (isMobile) {
+      contentStyle.height = height;
+      contentStyle.width = width - 50;
+    } else {
+      contentStyle.maxHeight = height - 200;
+      contentStyle.width = 700;
+    }
 
     return (
       <Modal

@@ -7,6 +7,7 @@ import { CLEAR_REGISTER, postRegister } from "../../store/actions/register";
 const mapStateToProps = (state) => {
   return {
     store: {
+      appDimensions: state.appDimensions,
       token: state.token,
       user: state.user,
       register: state.register,
