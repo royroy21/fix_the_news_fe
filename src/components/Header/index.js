@@ -8,6 +8,7 @@ import HeaderWrapper from "./wrapper";
 import RegistrationModal from "../User/RegistrationModal";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {localStorageAuthTokenKey} from "../../settings";
+import LoginModal from "../User/LoginModal";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,6 +38,10 @@ const Header = (props) => {
     openRegistrationModel,
     setRegistrationModel,
   ] = useState(false);
+  const [
+    openLoginModel,
+    setLoginModel,
+  ] = useState(false);
 
   const classes = useStyles();
 
@@ -58,6 +63,7 @@ const Header = (props) => {
             <Fragment>
               <Button
                 className={classes.loginButtons}
+                onClick={() => setLoginModel(true)}
                 color={"secondary"}
                 variant={"contained"}
               >
@@ -91,6 +97,10 @@ const Header = (props) => {
       <RegistrationModal
         open={openRegistrationModel}
         closeModal={() => setRegistrationModel(false)}
+      />
+      <LoginModal
+        open={openLoginModel}
+        closeModal={() => setLoginModel(false)}
       />
     </div>
   );
