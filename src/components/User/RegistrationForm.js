@@ -1,4 +1,4 @@
-import Form from "../Form/Form";
+import Form from "../Form";
 import React, {Fragment} from "react";
 import Field from "../Form/Field";
 import {TextField} from "@material-ui/core";
