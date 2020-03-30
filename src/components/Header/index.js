@@ -9,6 +9,7 @@ import RegistrationModal from "../User/RegistrationModal";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {localStorageAuthTokenKey} from "../../settings";
 import LoginModal from "../User/LoginModal";
+import UserDisplay from "../User/UserDisplay";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -80,7 +81,7 @@ const Header = (props) => {
             </Fragment>
           ) : (
             <Fragment>
-              <p>{`${user.first_name}, ${user.first_name}`}</p>
+              <UserDisplay userObject={user} />
               <Button
                 className={classes.logoutButton}
                 color={"secondary"}
