@@ -24,7 +24,7 @@ class Form extends React.Component {
       [event.target.name]: event.target.value,
     };
     this.setState({formData});
-    this.formData.append(event.target.name, event.target.value);
+    this.formData.set(event.target.name, event.target.value);
   };
 
   handleChangeFile = (event, fieldName) => {
@@ -33,7 +33,7 @@ class Form extends React.Component {
       [fieldName]: event.target.files[0],
     };
     this.setState({formData});
-    this.formData.append(fieldName, event.target.files[0]);
+    this.formData.set(fieldName, event.target.files[0]);
   };
 
   getFields() {
