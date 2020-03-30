@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import HeaderWrapper from "./wrapper";
 import RegistrationModal from "../User/RegistrationModal";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import {localStorageAuthTokenKey} from "../../settings";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,6 +26,9 @@ const useStyles = makeStyles(theme => ({
   registerButtons: {
     width: 100,
   },
+  logoutButton: {
+    marginLeft: theme.spacing(2),
+  },
 }));
 
 const Header = (props) => {
@@ -36,6 +41,11 @@ const Header = (props) => {
   const classes = useStyles();
 
   const { object:user } = props.store.user;
+
+  const logout = () => {
+    props.actions.clearUser();
+    localStorage.removeItem(localStorageAuthTokenKey);
+  };
 
   return (
     <div className={classes.root}>
@@ -63,7 +73,18 @@ const Header = (props) => {
               </Button>
             </Fragment>
           ) : (
-            <p>{`${user.first_name}, ${user.first_name}`}</p>
+            <Fragment>
+              <p>{`${user.first_name}, ${user.first_name}`}</p>
+              <Button
+                className={classes.logoutButton}
+                color={"secondary"}
+                onClick={logout}
+                variant={"contained"}
+                startIcon={<ExitToAppIcon />}
+              >
+                {"logout"}
+              </Button>
+            </Fragment>
           )}
         </Toolbar>
       </AppBar>
