@@ -10,8 +10,8 @@ const RegistrationModal = ({closeModal, open, ...rest}) => {
       content={
         <RegistrationForm
           actions={{
-            clear: rest.actions.clearRegister,
-            create: rest.actions.postRegister,
+            clearRegister: rest.actions.clearRegister,
+            postRegister: rest.actions.postRegister,
           }}
           buttonLabel={"Submit"}
           storeObject={rest.store.register}

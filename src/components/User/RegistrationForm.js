@@ -18,13 +18,13 @@ class RegistrationForm extends Form {
   };
 
   componentDidMount() {
-    this.props.actions.clear();
+    this.props.actions.clearRegister();
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     this.formData.append("re_password", this.state.formData.password);
-    this.props.actions.create(this.formData);
+    this.props.actions.postRegister(this.formData);
   };
 
   toggleShowPassword = () => {
@@ -41,33 +41,33 @@ class RegistrationForm extends Form {
           error={this.props.storeObject.error}
           autoFocus
           required
-          id="first_name"
-          label="First name"
-          name="first_name"
+          id={"first_name"}
+          label={"First name"}
+          name={"first_name"}
           value={this.state.formData.username}
           onChange={this.handleChange}
-          margin="normal"
+          margin={"normal"}
         />
         <Field
           Field={TextField}
           error={this.props.storeObject.error}
-          id="last_name"
-          label="Last name"
-          name="last_name"
+          id={"last_name"}
+          label={"Last name"}
+          name={"last_name"}
           value={this.state.formData.username}
           onChange={this.handleChange}
-          margin="normal"
+          margin={"normal"}
         />
         <Field
           Field={TextField}
           error={this.props.storeObject.error}
           required
-          id="email"
-          label="Email"
-          name="email"
+          id={"email"}
+          label={"Email"}
+          name={"email"}
           value={this.state.formData.email}
           onChange={this.handleChange}
-          margin="normal"
+          margin={"normal"}
         />
 
         <Field
@@ -79,12 +79,12 @@ class RegistrationForm extends Form {
           }
           error={this.props.storeObject.error}
           required
-          id="password"
-          label="Password"
-          name="password"
+          id={"password"}
+          label={"Password"}
+          name={"password"}
           value={this.state.formData.password}
           onChange={this.handleChange}
-          margin="normal"
+          margin={"normal"}
         />
         <FormControlLabel
           control={
