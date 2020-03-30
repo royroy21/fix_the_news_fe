@@ -88,7 +88,7 @@ const Header = (props) => {
                 variant={"contained"}
                 startIcon={<ExitToAppIcon />}
               >
-                {"logout"}
+                {" "}
               </Button>
             </Fragment>
           )}
