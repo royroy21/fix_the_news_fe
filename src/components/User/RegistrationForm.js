@@ -9,6 +9,7 @@ class RegistrationForm extends Form {
 
   state = {
     formData: {
+      avatar: "",
       first_name: "",
       last_name: "",
       email: "",
@@ -36,6 +37,11 @@ class RegistrationForm extends Form {
   getFields() {
     return (
       <Fragment>
+        <input
+          id={"avatar"}
+          type={"file"}
+          onChange={(event) => this.handleChangeFile(event, "avatar")}
+        />
         <Field
           Field={TextField}
           error={this.props.storeObject.error}
