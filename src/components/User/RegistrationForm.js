@@ -1,11 +1,31 @@
 import Form from "../Form";
 import React, {Fragment} from "react";
 import Field from "../Form/Field";
-import {TextField} from "@material-ui/core";
+import {TextField, withStyles} from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
+import Button from "@material-ui/core/Button";
+
+const styles = theme => ({
+  removeAvatarButton: {
+    margin: `${theme.spacing(3)}px 0 0 ${theme.spacing(2)}px`,
+    width: 175,
+  },
+  uploadAvatarButton: {
+    marginTop: theme.spacing(3),
+    width: 175,
+  },
+  uploadAvatarContainer: {
+    display: "flex",
+  },
+  uploadAvatarText: {
+    margin: `${theme.spacing(4)}px 0 0 ${theme.spacing(2)}px`,
+  },
+});
 
 class RegistrationForm extends Form {
+
+  imageInput = React.createRef();
 
   state = {
     formData: {
@@ -34,14 +54,51 @@ class RegistrationForm extends Form {
     })
   };
 
+  removeAvatar = () => {
+    const formData = {
+      ...this.state.formData,
+      avatar: null,
+    };
+    this.setState({formData});
+    this.formData.delete("avatar");
+    this.imageInput.value = null;
+  };
+
   getFields() {
+    const { classes } = this.props;
+    const { avatar } = this.state.formData;
     return (
       <Fragment>
         <input
           id={"avatar"}
+          ref={imageInput => this.imageInput = imageInput}
+          style={{display: "none"}}
           type={"file"}
           onChange={(event) => this.handleChangeFile(event, "avatar")}
         />
+        <div className={classes.uploadAvatarContainer}>
+          <Button
+            onClick={() => this.imageInput.click()}
+            className={classes.uploadAvatarButton}
+            variant={"outlined"}
+          >
+            {avatar ? "Change Avatar" : "Add Avatar"}
+          </Button>
+          {avatar ? (
+            <Button
+              onClick={this.removeAvatar}
+              className={classes.removeAvatarButton}
+              variant={"outlined"}
+            >
+              {"Remove Avatar"}
+            </Button>
+          ) : null}
+          {avatar ? (
+            <p className={classes.uploadAvatarText}>
+              {avatar.name}
+            </p>
+          ) : null}
+        </div>
         <Field
           Field={TextField}
           error={this.props.storeObject.error}
@@ -105,11 +162,10 @@ class RegistrationForm extends Form {
               : "Password hidden"
           }
         />
-
       </Fragment>
     )
   }
 
 }
 
-export default RegistrationForm
+export default withStyles(styles)(RegistrationForm);
