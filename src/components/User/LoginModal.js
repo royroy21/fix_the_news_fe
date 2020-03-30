@@ -15,7 +15,7 @@ const LoginModal = ({closeModal, open, ...rest}) => {
             clearUser: rest.actions.clearUser,
           }}
           buttonLabel={"Login"}
-          storeObject={rest.store.user}
+          storeObject={rest.store.token}
           successMessage={"Login successful"}
           postSuccess={closeModal}
         />
