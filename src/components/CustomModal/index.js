@@ -3,13 +3,26 @@ import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
 import CustomModalWrapper from "./wrapper";
 import PropTypes from "prop-types";
+import {withRouter} from "react-router-dom";
 
 class CustomModal extends Component {
 
-  constructor(props) {
-    super(props);
-    this.contentRef = React.createRef();
+  contentRef = React.createRef();
+
+  state = {
+    open: false,
+  };
+
+  componentDidMount() {
+    if (this.props.history.location.state.open && !this.state.open) {
+      this.setState({open: true});
+    }
   }
+
+  closeModal = () => {
+    this.setState({open: false});
+    this.props.history.push("/");
+  };
 
   render() {
     const {height, isMobile, width} = this.props.store.appDimensions;
@@ -32,29 +45,34 @@ class CustomModal extends Component {
 
     return (
       <Modal
-        open={this.props.open}
-        onClose={this.props.closeModal}
-        onBackdropClick={this.props.closeModal}
+        open={this.state.open}
+        onClose={this.closeModal}
+        onBackdropClick={this.closeModal}
       >
         <div style={contentStyle} ref={this.contentRef}>
           <Button
             color={"secondary"}
-            onClick={this.props.closeModal}
+            onClick={this.closeModal}
             variant={"contained"}
           >
             {"X"}
           </Button>
-          {this.props.content}
+            <this.props.contentComponent
+              {...this.props.contentProps}
+              postSuccess={this.closeModal}
+            />
         </div>
       </Modal>
     )
   }
 }
 
-export default CustomModalWrapper(CustomModal);
+export default withRouter(CustomModalWrapper(CustomModal));
 
 CustomModal.propTypes = {
-  closeModal: PropTypes.func.isRequired,
-  content: PropTypes.node.isRequired,
-  open: PropTypes.bool.isRequired,
+  contentComponent: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.func,
+  ]),
+  contentProps: PropTypes.object.isRequired,
 };

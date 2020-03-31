@@ -1,15 +1,20 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import HeaderWrapper from "./wrapper";
-import RegistrationModal from "../User/RegistrationModal";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import {localStorageAuthTokenKey} from "../../settings";
+import {
+  localStorageAuthTokenKey,
+  loginRoute,
+  registrationRoute
+} from "../../settings";
 import LoginModal from "../User/LoginModal";
 import UserDisplay from "../User/UserDisplay";
+import {Link, Route} from "react-router-dom";
+import RegistrationModal from "../User/RegistrationModal";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,19 +36,13 @@ const useStyles = makeStyles(theme => ({
   logoutButton: {
     marginLeft: theme.spacing(2),
   },
+  linkWithNoDecoration: {
+    textDecoration: "none",
+    color: "white",
+  },
 }));
 
 const Header = (props) => {
-
-  const [
-    openRegistrationModel,
-    setRegistrationModel,
-  ] = useState(false);
-  const [
-    openLoginModel,
-    setLoginModel,
-  ] = useState(false);
-
   const classes = useStyles();
 
   const { object:user } = props.store.user;
@@ -53,8 +52,26 @@ const Header = (props) => {
     localStorage.removeItem(localStorageAuthTokenKey);
   };
 
+  const getRoutes =() => {
+    return (
+      <Fragment>
+        <Route
+          exact
+          path={loginRoute}
+          component={LoginModal}
+        />
+        <Route
+          exact
+          path={registrationRoute}
+          component={RegistrationModal}
+        />
+      </Fragment>
+    )
+  };
+
   return (
     <div className={classes.root}>
+      {getRoutes()}
       <AppBar position={"static"}>
         <Toolbar>
           <Typography variant={"h6"} className={classes.title}>
@@ -64,19 +81,37 @@ const Header = (props) => {
             <Fragment>
               <Button
                 className={classes.loginButtons}
-                onClick={() => setLoginModel(true)}
                 color={"secondary"}
                 variant={"contained"}
               >
-                {"Login"}
+                <Link
+                  className={classes.linkWithNoDecoration}
+                  to={{
+                    pathname: loginRoute,
+                    state: {
+                      open: true,
+                    }
+                  }}
+                >
+                  {"login"}
+                </Link>
               </Button>
               <Button
-                className={classes.registerButtons}
+                className={classes.loginButtons}
                 color={"secondary"}
-                onClick={() => setRegistrationModel(true)}
                 variant={"contained"}
               >
-                {"Register"}
+                <Link
+                  className={classes.linkWithNoDecoration}
+                  to={{
+                    pathname: registrationRoute,
+                    state: {
+                      open: true,
+                    }
+                  }}
+                >
+                  {"Sign up"}
+                </Link>
               </Button>
             </Fragment>
           ) : (
@@ -87,22 +122,13 @@ const Header = (props) => {
                 color={"secondary"}
                 onClick={logout}
                 variant={"contained"}
-                startIcon={<ExitToAppIcon />}
               >
-                {" "}
+                <ExitToAppIcon />
               </Button>
             </Fragment>
           )}
         </Toolbar>
       </AppBar>
-      <RegistrationModal
-        open={openRegistrationModel}
-        closeModal={() => setRegistrationModel(false)}
-      />
-      <LoginModal
-        open={openLoginModel}
-        closeModal={() => setLoginModel(false)}
-      />
     </div>
   );
 };

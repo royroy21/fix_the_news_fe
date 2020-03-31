@@ -3,24 +3,20 @@ import CustomModal from "../CustomModal";
 import UserWrapper from "./wrapper";
 import LoginForm from "./LoginForm";
 
-const LoginModal = ({closeModal, open, ...rest}) => {
+const LoginModal = (props) => {
   return (
     <CustomModal
-      closeModal={closeModal}
-      content={
-        <LoginForm
-          actions={{
-            postToken: rest.actions.postToken,
-            clearToken: rest.actions.clearToken,
-            clearUser: rest.actions.clearUser,
-          }}
-          buttonLabel={"Login"}
-          storeObject={rest.store.token}
-          successMessage={"Login successful"}
-          postSuccess={closeModal}
-        />
-      }
-      open={open}
+      contentComponent={LoginForm}
+      contentProps={{
+        actions: {
+          postToken: props.actions.postToken,
+          clearToken: props.actions.clearToken,
+          clearUser: props.actions.clearUser,
+        },
+        buttonLabel: "Login",
+        storeObject: props.store.token,
+        successMessage: "Login successful",
+      }}
     />
   )
 };

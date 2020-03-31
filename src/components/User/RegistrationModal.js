@@ -3,24 +3,20 @@ import CustomModal from "../CustomModal";
 import RegistrationForm from "./RegistrationForm";
 import UserWrapper from "./wrapper";
 
-const RegistrationModal = ({closeModal, open, ...rest}) => {
+const RegistrationModal = (props) => {
   return (
     <CustomModal
-      closeModal={closeModal}
-      content={
-        <RegistrationForm
-          actions={{
-            clearRegister: rest.actions.clearRegister,
-            postRegister: rest.actions.postRegister,
-          }}
-          buttonLabel={"Submit"}
-          storeObject={rest.store.register}
-          successMessage={"User registration successful"}
-          postSuccess={closeModal}
-          isMobile={rest.store.appDimensions.isMobile}
-        />
-      }
-      open={open}
+      contentComponent={RegistrationForm}
+      contentProps={{
+        actions:{
+          clearRegister: props.actions.clearRegister,
+          postRegister: props.actions.postRegister,
+        },
+        buttonLabel: "Submit",
+        storeObject: props.store.register,
+        successMessage: "User registration successful",
+        isMobile: props.store.appDimensions.isMobile,
+      }}
     />
   )
 };
