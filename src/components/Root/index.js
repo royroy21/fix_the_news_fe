@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from "../Header";
 import RootWrapper from "./wrapper";
 import {localStorageAuthTokenKey} from "../../settings";
+import Routes from "../Routes";
 
 class Root extends Component {
 
@@ -64,6 +65,7 @@ class Root extends Component {
     return (
       <div style={outerContainerStyle}>
         <div style={innerContainerStyle}>
+          <Routes />
           <Header />
         </div>
       </div>

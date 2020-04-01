@@ -14,7 +14,7 @@ class CustomModal extends Component {
   };
 
   componentDidMount() {
-    if (this.props.history.location.state.open && !this.state.open) {
+    if (!this.state.open) {
       this.setState({open: true});
     }
   }
