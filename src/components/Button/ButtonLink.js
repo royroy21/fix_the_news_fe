@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import {makeStyles} from "@material-ui/core/styles";
@@ -17,20 +17,18 @@ const useStyles = makeStyles(theme => ({
 const ButtonLink = ({label, path}) => {
   const classes = useStyles();
   return (
-    <Fragment>
-      <Link
-        className={classes.link}
-        to={{pathname: path}}
+    <Link
+      className={classes.link}
+      to={{pathname: path}}
+    >
+      <Button
+        className={classes.button}
+        color={"secondary"}
+        variant={"contained"}
       >
-        <Button
-          className={classes.button}
-          color={"secondary"}
-          variant={"contained"}
-        >
-          {label}
-        </Button>
-      </Link>
-    </Fragment>
+        {label}
+      </Button>
+    </Link>
   )
 
 };
