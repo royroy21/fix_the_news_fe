@@ -131,7 +131,6 @@ class RegistrationForm extends Form {
           onChange={this.handleChange}
           margin={"normal"}
         />
-
         <Field
           Field={TextField}
           type={
