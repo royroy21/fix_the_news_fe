@@ -20,7 +20,7 @@ const topicsReducer = (state = initialState, action) => {
         error: null,
       };
     case GET_TOPICS_SUCCESS:
-        return {
+      return {
         objects: action.payload.data,
         loading: false,
         error: null,
