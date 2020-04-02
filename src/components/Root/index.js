@@ -3,6 +3,7 @@ import Header from "../Header";
 import RootWrapper from "./wrapper";
 import {localStorageAuthTokenKey} from "../../settings";
 import Routes from "../Routes";
+import TopicsContainer from "../Topics/TopicsContainer";
 
 class Root extends Component {
 
@@ -67,6 +68,7 @@ class Root extends Component {
         <div style={innerContainerStyle}>
           <Routes />
           <Header />
+          <TopicsContainer />
         </div>
       </div>
     )
