@@ -1,6 +1,6 @@
-import {tokenLoginURL} from "../../api/urls";
 import {getUser} from "./user";
 import DispatchAPI from "../../api";
+import {tokenLoginURL} from "../../settings";
 
 export const POST_TOKEN_BEGIN   = 'POST_TOKEN_BEGIN';
 export const POST_TOKEN_SUCCESS = 'POST_TOKEN_SUCCESS';

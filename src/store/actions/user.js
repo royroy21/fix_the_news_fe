@@ -1,5 +1,5 @@
-import {userDetailsURL} from "../../api/urls";
 import DispatchAPI from "../../api";
+import {userDetailsURL} from "../../settings";
 
 export const GET_USER_BEGIN   = 'GET_USER_BEGIN';
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
