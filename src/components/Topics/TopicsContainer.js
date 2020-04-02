@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import TopicsWrapper from "./wrapper";
+import TopicContainer from "../Topic/TopicContainer";
 
 class TopicsContainer extends Component {
 
@@ -15,7 +16,13 @@ class TopicsContainer extends Component {
     }
 
     return (
-      this.props.store.topics.objects.results.map(topic => <p key={`topic-${topic.id}`}>{topic.title}</p>)
+      this.props.store.topics.objects.results.map(topic => (
+        <TopicContainer
+          key={`topic-${topic.id}`}
+          topic={topic}
+        />
+        )
+      )
     )
   }
 }
