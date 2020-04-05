@@ -3,6 +3,7 @@ import Paper from "@material-ui/core/Paper";
 import PropTypes from "prop-types";
 import {withStyles} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import NewsItemsContainer from "../NewsItems/NewsItemsContainer";
 
 const styles = (theme) => ({
   paper: {
@@ -10,13 +11,12 @@ const styles = (theme) => ({
     marginBottom: theme.spacing(1),
     padding: theme.spacing(1),
   },
+  title: {
+    fontWeight: "bold",
+  }
 });
 
 class TopicContainer extends Component {
-
-  componentDidMount() {
-    // get news items here..
-  }
 
   render() {
     const { classes } = this.props;
@@ -25,9 +25,13 @@ class TopicContainer extends Component {
         className={classes.paper}
         elevation={3}
       >
-        <Typography variant={"h6"}>
+        <Typography
+          className={classes.title}
+          variant={"h6"}
+        >
           {this.props.topic.title}
         </Typography>
+        <NewsItemsContainer topic={this.props.topic} />
       </Paper>
     )
   }
