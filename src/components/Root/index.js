@@ -54,11 +54,14 @@ class Root extends Component {
 
     const outerContainerStyle = {
       backgroundColor: "#FAFAFA",
+      display: "flex",
       height: `${this.state.screenHeight}px`,
       width: "100%",
     };
 
     const innerContainerStyle = {
+      display: "flex",
+      flexDirection: "column",
       width,
       margin: "0 auto 0 auto",
     };

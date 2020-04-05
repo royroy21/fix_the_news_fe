@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import TopicsWrapper from "./wrapper";
 import TopicContainer from "../Topic/TopicContainer";
+import Loading from "../Loading/Loading";
 
 class TopicsContainer extends Component {
 
@@ -11,18 +12,21 @@ class TopicsContainer extends Component {
   }
 
   render() {
-    if (!!!this.props.store.topics.objects) {
-      return null;
-    }
-
+    const {loading, objects} = this.props.store.topics;
+    const results = !!objects ? objects.results : [];
     return (
-      this.props.store.topics.objects.results.map(topic => (
-        <TopicContainer
-          key={`topic-${topic.id}`}
-          topic={topic}
-        />
-        )
-      )
+      <div style={{height: "100%"}}>
+        {loading ? (
+          <Loading />
+          ) : (
+          results.map(topic => (
+            <TopicContainer
+              key={`topic-${topic.id}`}
+              topic={topic}
+            />
+            ))
+        )}
+      </div>
     )
   }
 }
