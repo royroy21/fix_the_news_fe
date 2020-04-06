@@ -1,5 +1,5 @@
 import React from 'react';
-import LoadingModal from "../LoadingModal";
+import LoadingModal from "../Loading/LoadingModal";
 import FormGroup from "@material-ui/core/FormGroup";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";

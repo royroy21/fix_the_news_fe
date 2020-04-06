@@ -3,6 +3,7 @@ import Header from "../Header";
 import RootWrapper from "./wrapper";
 import {localStorageAuthTokenKey} from "../../settings";
 import Routes from "../Routes";
+import TopicsContainer from "../Topics/TopicsContainer";
 
 class Root extends Component {
 
@@ -53,11 +54,14 @@ class Root extends Component {
 
     const outerContainerStyle = {
       backgroundColor: "#FAFAFA",
+      display: "flex",
       height: `${this.state.screenHeight}px`,
       width: "100%",
     };
 
     const innerContainerStyle = {
+      display: "flex",
+      flexDirection: "column",
       width,
       margin: "0 auto 0 auto",
     };
@@ -67,6 +71,7 @@ class Root extends Component {
         <div style={innerContainerStyle}>
           <Routes />
           <Header />
+          <TopicsContainer />
         </div>
       </div>
     )

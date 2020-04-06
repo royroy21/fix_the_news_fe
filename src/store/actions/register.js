@@ -1,6 +1,6 @@
-import {userURL} from "../../api/urls";
 import DispatchAPI from "../../api";
 import {postToken} from "./token";
+import {userURL} from "../../settings";
 
 export const POST_REGISTER_BEGIN   = 'POST_REGISTER_BEGIN';
 export const POST_REGISTER_SUCCESS = 'POST_REGISTER_SUCCESS';
