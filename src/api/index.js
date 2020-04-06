@@ -123,7 +123,7 @@ class DispatchAPI {
 
       const paramsAsObject = params ? params : {};
       const headersAndParams = {
-        paramsAsObject,
+        params: paramsAsObject,
         ...this.getAuthorizationHeaders(getState),
       };
       const url = id ? `${baseUrl}${id}/` : baseUrl;
