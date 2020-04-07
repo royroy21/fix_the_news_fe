@@ -29,9 +29,9 @@ class TopicContainer extends Component {
           className={classes.title}
           variant={"h6"}
         >
-          {this.props.topic.title}
+          {this.props.item.title}
         </Typography>
-        <NewsItemsContainer topic={this.props.topic} />
+        <NewsItemsContainer topic={this.props.item} />
       </Paper>
     )
   }
@@ -40,5 +40,5 @@ class TopicContainer extends Component {
 export default withStyles(styles)(TopicContainer);
 
 TopicContainer.propTypes = {
-  topic: PropTypes.object.isRequired,
+  item: PropTypes.object.isRequired,
 };
