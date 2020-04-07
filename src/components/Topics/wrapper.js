@@ -13,8 +13,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
-      getTopics: (data) => {
-        dispatch(getTopics(data))
+      getTopics: (params) => {
+        dispatch(getTopics(params))
       },
       clearTopics: () => {
         dispatch({type: CLEAR_TOPICS});
