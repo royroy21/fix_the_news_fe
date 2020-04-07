@@ -7,7 +7,7 @@ class NeverEndingScrolling extends Component {
 
   /*
   * For simplicity this component doesn't use redux.
-  * To use sub class and over ride URL_COMPONENT and URL.
+  * To use subclass and override ITEM_COMPONENT and URL.
   * */
 
   ITEM_COMPONENT = null;
