@@ -28,7 +28,7 @@ const NewsItemsContainer = ({topic}) => {
   const classes = useStyles();
   return (
     <div className={classes.newsItemsContainer}>
-      {topic.categories.map(category => (
+      {topic.serialized_categories.map(category => (
         <div
           key={`news-item-${category.id}`}
           className={classes.newsItemContainer}
