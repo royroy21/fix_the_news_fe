@@ -35,7 +35,7 @@ class NeverEndingScrolling extends Component {
       responseError: null,
     });
 
-    return axios.get(url, {params: this.props.extraParams})
+    return axios.get(url)
       .then(response => this.handleErrors(response))
       .then(response => {
         this.setState(state => (
