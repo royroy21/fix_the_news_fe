@@ -16,7 +16,7 @@ const styles = (theme) => ({
   }
 });
 
-class TopicContainer extends Component {
+class Topic extends Component {
 
   render() {
     const { classes } = this.props;
@@ -37,8 +37,8 @@ class TopicContainer extends Component {
   }
 }
 
-export default withStyles(styles)(TopicContainer);
+export default withStyles(styles)(Topic);
 
-TopicContainer.propTypes = {
+Topic.propTypes = {
   item: PropTypes.object.isRequired,
 };
