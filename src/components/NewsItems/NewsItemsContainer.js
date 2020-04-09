@@ -4,20 +4,12 @@ import Typography from "@material-ui/core/Typography";
 import TopNewsItems from "./TopNewsItems";
 import NewsItems from "./NewsItems";
 import {newsItemsURL} from "../../settings";
+import ShowMoreNewsItems from "./ShowMoreNewsItems";
 
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
     marginTop: theme.spacing(1),
-  },
-  moreNewsItems: {
-    position: "absolute",
-    bottom: 0,
-    fontWeight: "bold",
-    cursor: "pointer",
-    "&:hover": {
-      color: "blue"
-    },
   },
   newsItemContainer: {
     flex: 1,
@@ -61,7 +53,7 @@ const NewsItemsContainer = ({topic}) => {
           <hr className={classes[category.type]} />
           <div className={classes.newsItemsContainer}>
             {showTopNewsItems[category.type] ? (
-              <div >
+              <div>
                 <NewsItems
                   style={{
                     maxHeight: 400,
@@ -78,27 +70,12 @@ const NewsItemsContainer = ({topic}) => {
               />
             )}
           </div>
-          {(topic.news_items_count[category.type] > 3 && !showTopNewsItems[category.type]) ? (
-            <p
-              className={classes.moreNewsItems}
-              onClick={() => setShowTopNewsItems({
-                ...showTopNewsItems,
-                [category.type]: true,
-              })}
-            >
-              {`show ${topic.news_items_count[category.type]} more`}
-            </p>
-          ) : (topic.news_items_count[category.type] > 3 && showTopNewsItems[category.type]) ? (
-            <p
-              className={classes.moreNewsItems}
-              onClick={() => setShowTopNewsItems({
-                ...showTopNewsItems,
-                [category.type]: false,
-              })}
-            >
-              {`show less`}
-            </p>
-          ) : null}
+          <ShowMoreNewsItems
+            topic={topic}
+            category={category}
+            showTopNewsItems={showTopNewsItems}
+            setShowTopNewsItems={setShowTopNewsItems}
+          />
         </div>
         ))
       }
