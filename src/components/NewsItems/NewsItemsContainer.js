@@ -53,16 +53,14 @@ const NewsItemsContainer = ({topic}) => {
           <hr className={classes[category.type]} />
           <div className={classes.newsItemsContainer}>
             {showTopNewsItems[category.type] ? (
-              <div>
-                <NewsItems
-                  style={{
-                    maxHeight: 400,
-                  }}
-                  initialURL={
-                    `${newsItemsURL}?topic=${topic.id}&${[category.type]}=true`
-                  }
-                />
-              </div>
+              <NewsItems
+                style={{
+                  maxHeight: 400,
+                }}
+                initialURL={
+                  `${newsItemsURL}?topic=${topic.id}&${[category.type]}=true`
+                }
+              />
             ) : (
               <TopNewsItems
                 topic={topic}
