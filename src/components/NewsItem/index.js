@@ -38,31 +38,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NewsItem = ({newsItem}) => {
+const NewsItem = ({item}) => {
   const classes = useStyles();
   return (
     <div className={classes.mainContainer}>
       <Link
         className={classes.link}
-        href={newsItem.url}
+        href={item.url}
         target={"_blank"}
         underline={"none"}
       >
         <Typography variant={"subtitle2"}>
-          {newsItem.title}
+          {item.title}
         </Typography>
       </Link>
       <div className={classes.chipContainer}>
         <Link
           className={classes.link}
-          href={newsItem.url}
+          href={item.url}
           target={"_blank"}
           underline={"none"}
         >
           <Chip
             className={classes.chip}
             size={"small"}
-            label={newsItem.serialized_type.title}
+            label={item.serialized_type.title}
           />
         </Link>
         <ThumbUpAltOutlinedIcon
