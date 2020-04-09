@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import NewsItem from "../NewsItem";
-import {capitalizeFirstLetter} from "../../helpers/stringFunctions";
+import TopNewsItems from "./TopNewsItems";
+import NewsItems from "./NewsItems";
+import {newsItemsURL} from "../../settings";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -13,6 +14,10 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     bottom: 0,
     fontWeight: "bold",
+    cursor: "pointer",
+    "&:hover": {
+      color: "blue"
+    },
   },
   newsItemContainer: {
     flex: 1,
@@ -34,6 +39,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NewsItemsContainer = ({topic}) => {
+  const [showTopNewsItems, setShowTopNewsItems] = useState({
+    for: false,
+    neutral: false,
+    against: false,
+  });
   const classes = useStyles();
   return (
     <div className={classes.container}>
@@ -46,21 +56,47 @@ const NewsItemsContainer = ({topic}) => {
             className={classes[category.type]}
             variant={"subtitle1"}
           >
-            {capitalizeFirstLetter(category.title || category.type)}
+            {category.title || category.type}
           </Typography>
           <hr className={classes[category.type]} />
           <div className={classes.newsItemsContainer}>
-            {topic.top_news_items[category.type].map(newsItem => (
-              <NewsItem
-                key={`news-item-${newsItem.id}`}
-                newsItem={newsItem}
+            {showTopNewsItems[category.type] ? (
+              <div >
+                <NewsItems
+                  style={{
+                    maxHeight: 400,
+                  }}
+                  initialURL={
+                    `${newsItemsURL}?topic=${topic.id}&${[category.type]}=true`
+                  }
+                />
+              </div>
+            ) : (
+              <TopNewsItems
+                topic={topic}
+                category={category}
               />
-              ))
-            }
+            )}
           </div>
-          {topic.news_items_count[category.type] > 3 ? (
-            <p className={classes.moreNewsItems}>
+          {(topic.news_items_count[category.type] > 3 && !showTopNewsItems[category.type]) ? (
+            <p
+              className={classes.moreNewsItems}
+              onClick={() => setShowTopNewsItems({
+                ...showTopNewsItems,
+                [category.type]: true,
+              })}
+            >
               {`show ${topic.news_items_count[category.type]} more`}
+            </p>
+          ) : (topic.news_items_count[category.type] > 3 && showTopNewsItems[category.type]) ? (
+            <p
+              className={classes.moreNewsItems}
+              onClick={() => setShowTopNewsItems({
+                ...showTopNewsItems,
+                [category.type]: false,
+              })}
+            >
+              {`show less`}
             </p>
           ) : null}
         </div>
