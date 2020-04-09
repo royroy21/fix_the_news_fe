@@ -2,16 +2,16 @@ import React, {Component} from 'react';
 import Loading from "../Loading/Loading";
 import axios from "axios";
 import Error from "../Error";
+import PropTypes from "prop-types";
 
 class NeverEndingScrolling extends Component {
 
   /*
   * For simplicity this component doesn't use redux.
-  * To use subclass and override ITEM_COMPONENT and URL.
+  * To use subclass and override ITEM_COMPONENT.
   * */
 
   ITEM_COMPONENT = null;
-  URL = null;
 
   SUCCESSFUL_STATUS_CODES = [
     200,
@@ -25,17 +25,17 @@ class NeverEndingScrolling extends Component {
   };
 
   componentDidMount() {
-    this.makeCall(this.URL)
+    this.makeCall(this.props.initialURL)
   }
 
-  makeCall(url, params={}) {
+  makeCall(url) {
     this.setState({
       responseData: null,
       responseLoading: true,
       responseError: null,
     });
 
-    return axios.get(url, {params})
+    return axios.get(url)
       .then(response => this.handleErrors(response))
       .then(response => {
         this.setState(state => (
@@ -80,7 +80,7 @@ class NeverEndingScrolling extends Component {
       <div
         onScroll={this.handleScroll}
         style={{
-          height: "100%",
+          ...this.props.style,
           overflowY: "scroll",
         }}
       >
@@ -97,3 +97,12 @@ class NeverEndingScrolling extends Component {
 }
 
 export default NeverEndingScrolling;
+
+NeverEndingScrolling.defaultProps = {
+  style: {},
+};
+
+NeverEndingScrolling.propTypes = {
+  initialURL: PropTypes.string.isRequired,
+  style: PropTypes.object.isRequired,
+};

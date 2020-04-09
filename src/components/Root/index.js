@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import Header from "../Header";
 import RootWrapper from "./wrapper";
-import {localStorageAuthTokenKey} from "../../settings";
+import {localStorageAuthTokenKey, topicsURL} from "../../settings";
 import Routes from "../Routes";
-import TopicsContainer from "../Topics/TopicsContainer";
+import Topics from "../Topics/Topics";
 
 class Root extends Component {
 
@@ -71,7 +71,7 @@ class Root extends Component {
         <div style={innerContainerStyle}>
           <Routes />
           <Header />
-          <TopicsContainer />
+          <Topics initialURL={topicsURL} />
         </div>
       </div>
     )

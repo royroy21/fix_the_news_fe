@@ -1,17 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import NewsItem from "../NewsItem";
-import {capitalizeFirstLetter} from "../../helpers/stringFunctions";
+import TopNewsItems from "./TopNewsItems";
+import NewsItems from "./NewsItems";
+import {newsItemsURL} from "../../settings";
+import ShowMoreNewsItems from "./ShowMoreNewsItems";
 
 const useStyles = makeStyles((theme) => ({
-  newsItemsContainer: {
+  container: {
     display: "flex",
     marginTop: theme.spacing(1),
   },
   newsItemContainer: {
     flex: 1,
     padding: theme.spacing(1),
+    position: "relative",
+  },
+  newsItemsContainer: {
+    paddingBottom: theme.spacing(3),
   },
   for: {
     color: "green",
@@ -25,9 +31,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NewsItemsContainer = ({topic}) => {
+  const [showTopNewsItems, setShowTopNewsItems] = useState({
+    for: false,
+    neutral: false,
+    against: false,
+  });
   const classes = useStyles();
   return (
-    <div className={classes.newsItemsContainer}>
+    <div className={classes.container}>
       {topic.serialized_categories.map(category => (
         <div
           key={`news-item-${category.id}`}
@@ -37,18 +48,32 @@ const NewsItemsContainer = ({topic}) => {
             className={classes[category.type]}
             variant={"subtitle1"}
           >
-            {capitalizeFirstLetter(category.title || category.type)}
+            {category.title || category.type}
           </Typography>
           <hr className={classes[category.type]} />
-          <div>
-            {topic.top_news_items[category.type].map(newsItem => (
-              <NewsItem
-                key={`news-item-${newsItem.id}`}
-                newsItem={newsItem}
+          <div className={classes.newsItemsContainer}>
+            {showTopNewsItems[category.type] ? (
+              <NewsItems
+                style={{
+                  maxHeight: 400,
+                }}
+                initialURL={
+                  `${newsItemsURL}?topic=${topic.id}&${[category.type]}=true`
+                }
               />
-              ))
-            }
+            ) : (
+              <TopNewsItems
+                topic={topic}
+                category={category}
+              />
+            )}
           </div>
+          <ShowMoreNewsItems
+            topic={topic}
+            category={category}
+            showTopNewsItems={showTopNewsItems}
+            setShowTopNewsItems={setShowTopNewsItems}
+          />
         </div>
         ))
       }
