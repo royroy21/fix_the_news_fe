@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ShowMoreNewsItems = ({topic, category, showTopNewsItems, setShowTopNewsItems}) => {
   const classes = useStyles();
-  if (topic.news_items_count[category.type] < 3) {
+  if (topic.news_items_count[category.type] <= 3) {
     return null;
   }
   return (
