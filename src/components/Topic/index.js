@@ -4,8 +4,9 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import NewsItemsContainer from "../NewsItems/NewsItemsContainer";
 import ButtonLink from "../Button/ButtonLink";
-import {loginRoute} from "../../settings";
+import {loginRoute, userNotLoggedInRoute} from "../../settings";
 import AddIcon from '@material-ui/icons/Add';
+import TopicWrapper from "./wrapper";
 
 const useStyles = makeStyles((theme) => ({
   buttonLinkContainer: {
@@ -29,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Topic = ({item}) => {
+const Topic = ({item, store}) => {
   const classes = useStyles();
   return (
     <Paper
@@ -44,11 +45,19 @@ const Topic = ({item}) => {
           {item.title}
         </Typography>
         <div className={classes.buttonLinkContainer}>
-          <ButtonLink
-            label={<AddIcon />}
-            path={loginRoute}
-            withDefaultWidth={false}
-          />
+          {!store.user.object ? (
+            <ButtonLink
+              label={<AddIcon />}
+              path={userNotLoggedInRoute}
+              withDefaultWidth={false}
+            />
+          ) : (
+            <ButtonLink
+              label={<AddIcon />}
+              path={loginRoute} // this to change
+              withDefaultWidth={false}
+            />
+          )}
         </div>
       </div>
       <NewsItemsContainer topic={item} />
@@ -56,4 +65,4 @@ const Topic = ({item}) => {
   )
 };
 
-export default Topic;
+export default TopicWrapper(Topic);
