@@ -5,14 +5,6 @@ import Error from "../Error";
 import PropTypes from "prop-types";
 
 class NeverEndingScrolling extends Component {
-
-  /*
-  * For simplicity this component doesn't use redux.
-  * To use subclass and override ITEM_COMPONENT.
-  * */
-
-  ITEM_COMPONENT = null;
-
   SUCCESSFUL_STATUS_CODES = [
     200,
   ];
@@ -85,7 +77,7 @@ class NeverEndingScrolling extends Component {
         }}
       >
       {this.state.items.map(item => (
-        <this.ITEM_COMPONENT
+        <this.props.ItemComponent
           key={`item-component-${item.id}`}
           item={item}
         />
@@ -103,6 +95,10 @@ NeverEndingScrolling.defaultProps = {
 };
 
 NeverEndingScrolling.propTypes = {
+  ItemComponent: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.func,
+  ]),
   initialURL: PropTypes.string.isRequired,
   style: PropTypes.object.isRequired,
 };
