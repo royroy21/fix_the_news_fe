@@ -5,7 +5,6 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   button: {
-    width: 100,
     marginRight: theme.spacing(1),
   },
   link: {
@@ -14,8 +13,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const ButtonLink = ({label, path}) => {
+const ButtonLink = ({label, path, withDefaultWidth=true}) => {
   const classes = useStyles();
+  const extraButtonStyle = withDefaultWidth ? {width: 100} : {};
   return (
     <Link
       className={classes.link}
@@ -24,6 +24,7 @@ const ButtonLink = ({label, path}) => {
       <Button
         className={classes.button}
         color={"secondary"}
+        style={extraButtonStyle}
         variant={"contained"}
       >
         {label}
