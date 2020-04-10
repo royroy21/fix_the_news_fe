@@ -54,6 +54,9 @@ const NewsItemsContainer = ({topic}) => {
           <div className={classes.newsItemsContainer}>
             {showTopNewsItems[category.type] ? (
               <NewsItems
+                id={
+                  `news-items-for-topic-${topic.id}-category-${[category.type]}`
+                }
                 style={{
                   maxHeight: 400,
                 }}

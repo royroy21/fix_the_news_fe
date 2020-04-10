@@ -2,9 +2,10 @@ import NeverEndingScrolling from "../NeverEndingScrolling";
 import NewsItem from "../NewsItem";
 import React from "react";
 
-const NewsItems = ({initialURL, style={}}) => {
+const NewsItems = ({id, initialURL, style={}}) => {
   return (
     <NeverEndingScrolling
+      id={id}
       ItemComponent={NewsItem}
       initialURL={initialURL}
       style={style}

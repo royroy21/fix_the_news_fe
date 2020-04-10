@@ -71,7 +71,10 @@ class Root extends Component {
         <div style={innerContainerStyle}>
           <Routes />
           <Header />
-          <Topics initialURL={topicsURL} />
+          <Topics
+            id={"topics"}
+            initialURL={topicsURL}
+          />
         </div>
       </div>
     )
