@@ -4,6 +4,21 @@ import Button from "@material-ui/core/Button";
 import CustomModalWrapper from "./wrapper";
 import PropTypes from "prop-types";
 import {withRouter} from "react-router-dom";
+import {withStyles} from "@material-ui/core";
+
+const styles = (theme) => ({
+  headerContainer: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    width: "100%",
+  },
+  headerTitle: {
+    color: "grey",
+    marginTop: theme.spacing(2),
+    marginLeft: theme.spacing(2),
+  },
+});
 
 class CustomModal extends Component {
 
@@ -43,6 +58,7 @@ class CustomModal extends Component {
       contentStyle.width = 700;
     }
 
+    const { classes } = this.props;
     return (
       <Modal
         open={this.state.open}
@@ -50,13 +66,18 @@ class CustomModal extends Component {
         onBackdropClick={this.closeModal}
       >
         <div style={contentStyle} ref={this.contentRef}>
-          <Button
-            color={"secondary"}
-            onClick={this.closeModal}
-            variant={"contained"}
-          >
-            {"X"}
-          </Button>
+          <div className={classes.headerContainer}>
+            <Button
+              color={"secondary"}
+              onClick={this.closeModal}
+              variant={"contained"}
+            >
+              {"X"}
+            </Button>
+            <span className={classes.headerTitle}>
+              {this.props.header}
+            </span>
+          </div>
             <this.props.contentComponent
               {...this.props.contentProps}
               postSuccess={this.closeModal}
@@ -67,7 +88,11 @@ class CustomModal extends Component {
   }
 }
 
-export default withRouter(CustomModalWrapper(CustomModal));
+export default withRouter(withStyles(styles)(CustomModalWrapper(CustomModal)));
+
+CustomModal.defaultProps = {
+  header: "",
+};
 
 CustomModal.propTypes = {
   contentComponent: PropTypes.oneOfType([
@@ -75,4 +100,5 @@ CustomModal.propTypes = {
     PropTypes.func,
   ]),
   contentProps: PropTypes.object.isRequired,
+  header: PropTypes.string.isRequired,
 };

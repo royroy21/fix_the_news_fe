@@ -17,6 +17,7 @@ const LoginModal = (props) => {
         storeObject: props.store.token,
         successMessage: "Login successful",
       }}
+      header={"Login to your account"}
     />
   )
 };

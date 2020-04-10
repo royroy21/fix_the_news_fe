@@ -17,6 +17,7 @@ const RegistrationModal = (props) => {
         successMessage: "User registration successful",
         isMobile: props.store.appDimensions.isMobile,
       }}
+      header={"Register new account"}
     />
   )
 };
