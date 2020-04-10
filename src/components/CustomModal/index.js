@@ -18,6 +18,10 @@ const styles = (theme) => ({
     marginTop: theme.spacing(2),
     marginLeft: theme.spacing(2),
   },
+  footer: {
+    marginTop: theme.spacing(3),
+    textAlign: "center",
+  },
 });
 
 class CustomModal extends Component {
@@ -78,10 +82,15 @@ class CustomModal extends Component {
               {this.props.header}
             </span>
           </div>
-            <this.props.contentComponent
-              {...this.props.contentProps}
-              postSuccess={this.closeModal}
-            />
+          <this.props.contentComponent
+            {...this.props.contentProps}
+            postSuccess={this.closeModal}
+          />
+          {this.props.footerComponent ? (
+            <div className={classes.footer}>
+              {this.props.footerComponent}
+            </div>
+          ) : null}
         </div>
       </Modal>
     )
@@ -92,6 +101,7 @@ export default withRouter(withStyles(styles)(CustomModalWrapper(CustomModal)));
 
 CustomModal.defaultProps = {
   header: "",
+  footerComponent: null,
 };
 
 CustomModal.propTypes = {
@@ -100,5 +110,9 @@ CustomModal.propTypes = {
     PropTypes.func,
   ]),
   contentProps: PropTypes.object.isRequired,
+  footerComponent: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.func,
+  ]),
   header: PropTypes.string.isRequired,
 };
