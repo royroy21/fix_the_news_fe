@@ -46,6 +46,7 @@ class NeverEndingScrolling extends Component {
 
   handleErrors(response) {
     if (!this.SUCCESSFUL_STATUS_CODES.includes(response.status)) {
+      // TODO - this doesn't look right. Simulate error on BE to test
       throw Error(response.data);
     }
     return response;
