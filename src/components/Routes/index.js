@@ -1,8 +1,13 @@
 import React, {Fragment} from "react";
 import {Route} from "react-router-dom";
 import LoginModal from "../User/LoginModal";
-import {loginRoute, registrationRoute} from "../../settings";
+import {
+  loginRoute,
+  registrationRoute,
+  userNotLoggedInRoute
+} from "../../settings";
 import RegistrationModal from "../User/RegistrationModal";
+import UserNotLoggedInModal from "../User/UserNotLoggedInModal";
 
 
 const Routes = () => {
@@ -18,6 +23,11 @@ const Routes = () => {
         component={RegistrationModal}
         exact
         path={registrationRoute}
+      />
+      <Route
+        component={UserNotLoggedInModal}
+        exact
+        path={userNotLoggedInRoute}
       />
     </Fragment>
   )

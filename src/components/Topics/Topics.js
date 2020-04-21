@@ -1,4 +1,4 @@
-import Topic from "../Topic/Topic";
+import Topic from "../Topic";
 import NeverEndingScrolling from "../NeverEndingScrolling";
 import React from "react";
 

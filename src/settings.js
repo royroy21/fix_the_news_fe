@@ -3,6 +3,7 @@ export const localStorageAuthTokenKey = "fixTheNewsAuthToken";
 // Internal routes
 export const loginRoute = "/login/";
 export const registrationRoute = "/sign-up/";
+export const userNotLoggedInRoute = "/restricted-action/";
 
 // TODO move to settings file
 const baseURL = "http://localhost:8000";
