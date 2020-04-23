@@ -12,9 +12,22 @@ import {
   registrationRoute
 } from "../../settings";
 import UserDisplay from "../User/UserDisplay";
+import LoginButton from "./LoginButton";
 import ButtonLink from "../Button/ButtonLink";
 
 const useStyles = makeStyles(theme => ({
+  buttonDivider: {
+    color: theme.palette.primary.main,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  contactUsAboutHelp: {
+    fontSize: 14,
+    marginLeft: 27,
+    marginTop: 5,
+    color: "#545C77",
+    fontWeight: "bold",
+  },
   logoutButton: {
     marginLeft: theme.spacing(2),
   },
@@ -22,7 +35,10 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   title: {
-    flexGrow: 1,
+  },
+  appBar: {
+    backgroundColor: theme.palette.primary.light,
+    borderBottom: `1px solid ${theme.palette.primary.main}`,
   },
 }));
 
@@ -35,22 +51,48 @@ const Header = (props) => {
     localStorage.removeItem(localStorageAuthTokenKey);
   };
 
+  const toolbarStyle = {
+    margin: "auto",
+    width: props.isMobile ? "100%" : "70%",
+  };
+
   return (
     <div className={classes.root}>
-      <AppBar position={"static"}>
-        <Toolbar>
+      <AppBar
+        elevation={0}
+        position={"static"}
+        className={classes.appBar}
+      >
+        <Toolbar style={toolbarStyle}>
           <Typography variant={"h6"} className={classes.title}>
             {"FixTheNews"}
           </Typography>
+          <Typography
+            className={classes.contactUsAboutHelp}
+            variant={"h6"}
+          >
+            {"Contact Us"}
+          </Typography>
+          <Typography
+            className={classes.contactUsAboutHelp}
+            variant={"h6"}
+          >
+            {"About"}
+          </Typography>
+          <Typography
+            className={classes.contactUsAboutHelp}
+            variant={"h6"} style={{ flexGrow: 1}}
+          >
+            {"Help"}
+          </Typography>
           {!!!user ? (
             <Fragment>
+              <LoginButton to={loginRoute}/>
+              <span className={classes.buttonDivider}>{"/"}</span>
               <ButtonLink
-                label={"login"}
-                path={loginRoute}
-              />
-              <ButtonLink
-                label={"Sign up"}
-                path={registrationRoute}
+                to={registrationRoute}
+                label={"Sign Up"}
+                inverted={true}
               />
             </Fragment>
           ) : (

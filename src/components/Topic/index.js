@@ -1,15 +1,18 @@
 import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import NewsItemsContainer from "../NewsItems/NewsItemsContainer";
 import ButtonLink from "../Button/ButtonLink";
 import {loginRoute, userNotLoggedInRoute} from "../../settings";
-import AddIcon from '@material-ui/icons/Add';
+import share from '../../images/share.svg';
+import addArticle from '../../images/addArticle.svg';
 import TopicWrapper from "./wrapper";
 
 const useStyles = makeStyles((theme) => ({
   buttonLinkContainer: {
+    display: "flex",
+    flexDirection: "row",
+    marginRight: theme.spacing(2),
     position: "absolute",
     right: 0,
   },
@@ -20,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     position: "relative"
   },
-  paper: {
+  root: {
     padding: theme.spacing(1),
   },
   title: {
@@ -33,10 +36,7 @@ const useStyles = makeStyles((theme) => ({
 const Topic = ({item, store}) => {
   const classes = useStyles();
   return (
-    <Paper
-      className={classes.paper}
-      elevation={3}
-    >
+    <div className={classes.root}>
       <div className={classes.headerContainer}>
         <Typography
           className={classes.title}
@@ -45,23 +45,30 @@ const Topic = ({item, store}) => {
           {item.title}
         </Typography>
         <div className={classes.buttonLinkContainer}>
+          <div style={{marginRight: 5}}>
+            <ButtonLink
+              icon={<img src={share} alt="??" />}
+              inverted={true}
+              to={""} // TODO - to share topic ??
+            />
+          </div>
           {!store.user.object ? (
             <ButtonLink
-              label={<AddIcon />}
-              path={userNotLoggedInRoute}
-              withDefaultWidth={false}
+              icon={<img src={addArticle} alt="??" />}
+              label={"Add Article"}
+              to={userNotLoggedInRoute}
             />
           ) : (
             <ButtonLink
-              label={<AddIcon />}
-              path={loginRoute} // this to change
-              withDefaultWidth={false}
+              icon={<img src={addArticle} alt="??" />}
+              label={"Add Article"}
+              to={loginRoute} // TODO - this to change
             />
           )}
         </div>
       </div>
       <NewsItemsContainer topic={item} />
-    </Paper>
+    </div>
   )
 };
 

@@ -13,9 +13,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   chipContainer: {
+    bottom: 5,
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
+    position: "absolute",
     width: "100%",
   },
   link: {
@@ -25,7 +27,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   mainContainer: {
+    border: `1px solid ${theme.palette.primary.main}`,
+    borderRadius: 4,
+    height: 100,
     marginBottom: theme.spacing(2),
+    padding: theme.spacing(1),
+    position: "relative",
   },
   thumbsUpCount: {
     fontSize: "0.8em",
@@ -39,6 +46,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NewsItem = ({item}) => {
+  const getTitle = (newsItem) => {
+    const {title} = newsItem;
+    if (title.length > 100) {
+      return `${title.substring(0,100)}...`
+    }
+    return title;
+  };
+
   const classes = useStyles();
   return (
     <div className={classes.mainContainer}>
@@ -49,7 +64,7 @@ const NewsItem = ({item}) => {
         underline={"none"}
       >
         <Typography variant={"subtitle2"}>
-          {item.title}
+          {getTitle(item)}
         </Typography>
       </Link>
       <div className={classes.chipContainer}>
@@ -62,7 +77,7 @@ const NewsItem = ({item}) => {
           <Chip
             className={classes.chip}
             size={"small"}
-            label={item.serialized_type.title}
+            label={item.news_source}
           />
         </Link>
         <ThumbUpAltOutlinedIcon
