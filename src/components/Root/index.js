@@ -52,10 +52,14 @@ class Root extends Component {
     const isMobile = this.getIsMobile();
     const width = isMobile ? "100%" : "70%";
 
-    const outerContainerStyle = {
-      backgroundColor: "#FAFAFA",
-      display: "flex",
+    const rootStyle = {
+      backgroundColor: "#F8F9F9",
       height: `${this.state.screenHeight}px`,
+    };
+
+    const outerContainerStyle = {
+      display: "flex",
+      height: this.state.screenHeight - 75,
       width: "100%",
     };
 
@@ -63,18 +67,20 @@ class Root extends Component {
       display: "flex",
       flexDirection: "column",
       width,
-      margin: "0 auto 0 auto",
+      margin: "25px auto 0 auto",
     };
 
     return (
-      <div style={outerContainerStyle}>
-        <div style={innerContainerStyle}>
-          <Routes />
-          <Header />
-          <Topics
-            id={"topics"}
-            initialURL={topicsURL}
-          />
+      <div style={rootStyle}>
+        <Routes />
+        <Header isMobile={isMobile}/>
+        <div style={outerContainerStyle}>
+          <div style={innerContainerStyle}>
+            <Topics
+              id={"topics"}
+              initialURL={topicsURL}
+            />
+          </div>
         </div>
       </div>
     )
