@@ -67,7 +67,7 @@ const NewsItemsContainer = ({topic}) => {
                 <NewsItems
                   id={`news-items-for-topic-${topic.id}-category-${[category.type]}`}
                   initialURL={`${newsItemsURL}?topic=${topic.id}&category=${[category.type]}`}
-                  style={{maxHeight: 400}}
+                  style={{maxHeight: 400, overflowX: "hidden"}}
                 />
               ) : (
                 <TopNewsItems
