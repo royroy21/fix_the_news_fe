@@ -52,15 +52,14 @@ class NeverEndingScrolling extends Component {
   }
 
   handleScroll = (e) => {
-    // This is used to stop parent NeverEndingScrolling
-    // scroll events from firing
+    // This is used to stop parent scroll events from firing
     if (e.target.id !== this.props.id) {
       return
     }
     const bottom = e.target.scrollHeight
       - e.target.scrollTop
       === e.target.clientHeight;
-    if (bottom) {
+    if (bottom && !this.state.responseLoading) {
       const {next: nextURL} = (this.state.responseData || {});
       if (nextURL) {
         this.makeCall(nextURL)
