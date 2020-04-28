@@ -16,5 +16,4 @@ export const userURL = `${baseURL}/auth/users/`;
 // Backend API
 const baseAPIURL = `${baseURL}/api/`;
 export const newsItemsURL = `${baseAPIURL}news-items/`;
-export const newsTypesURL = `${baseAPIURL}news-types/`;
 export const topicsURL = `${baseAPIURL}topics/`;
