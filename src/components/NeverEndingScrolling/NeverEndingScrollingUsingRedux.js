@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import Loading from "../Loading/Loading";
 import PropTypes from "prop-types";
 import Error from "../Error";
+import {parseURL} from "../../helpers/urlFunctions";
 
 class NeverEndingScrollingUsingRedux extends Component {
   componentDidMount() {
-    this.props.getNext();
+    this.props.getInitialRequest();
   }
 
   handleScroll = (e) => {
@@ -19,7 +20,8 @@ class NeverEndingScrollingUsingRedux extends Component {
     if (bottom && !this.props.store.loading) {
       const {next: nextURL} = (this.props.store.objects || {});
       if (nextURL) {
-        this.props.getNext(nextURL);
+        const {url, params} = parseURL(nextURL);
+        this.props.getNext(url, params);
       }
     }
   };
@@ -58,6 +60,7 @@ NeverEndingScrollingUsingRedux.defaultProps = {
 
 NeverEndingScrollingUsingRedux.propTypes = {
   id: PropTypes.string.isRequired,
+  getInitialRequest: PropTypes.func.isRequired,
   getNext: PropTypes.func.isRequired,
   store: PropTypes.object.isRequired,
   ItemComponent: PropTypes.oneOfType([
