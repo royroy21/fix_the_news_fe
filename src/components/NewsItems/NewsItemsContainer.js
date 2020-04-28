@@ -3,7 +3,6 @@ import {makeStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import TopNewsItems from "./TopNewsItems";
 import NewsItems from "../NewsItems";
-import {newsItemsURL} from "../../settings";
 import ShowMoreNewsItems from "./ShowMoreNewsItems";
 import CategoryIndicator from "./CategoryIndicator";
 import {categoryColourMap} from "../../theme";
