@@ -119,7 +119,7 @@ class DispatchAPI {
     extraActions=null,
     ) {
     return (dispatch, getState) => {
-      dispatch(beginAction());
+      dispatch(beginAction(data, params));
 
       const paramsAsObject = params ? params : {};
       const headersAndParams = {
@@ -134,11 +134,11 @@ class DispatchAPI {
       return preppedAction()
         .then(response => this.handleErrors(response, this.successfulStatusCodes))
         .then(response => {
-          dispatch(successAction(response.data));
+          dispatch(successAction(response.data, params));
           this.dispatchExtraActions(dispatch, extraActions);
           return response.data;
         })
-        .catch(error => dispatch(errorAction(error.response.data)));
+        .catch(error => dispatch(errorAction(error.response.data, params)));
     }
   }
 

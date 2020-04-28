@@ -25,9 +25,11 @@ export const clearTopics = () => ({
   type: CLEAR_TOPICS,
 });
 
-export const getNextTopics = (url=topicsURL) => new DispatchAPI().get(
+export const getNextTopics = (url=topicsURL, params={}) => new DispatchAPI().get(
   url,
   getNextTopicsBegin,
   getNextTopicsSuccess,
   getNextTopicsError,
+  null,
+  params,
 );

@@ -12,8 +12,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
-      getNextTopics: (url) => {
-        dispatch(getNextTopics(url))
+      getNextTopics: (url, params) => {
+        dispatch(getNextTopics(url, params))
       },
     }
   }
