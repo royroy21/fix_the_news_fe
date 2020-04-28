@@ -1,7 +1,7 @@
 import {
-  GET_NEXT_TOPICS_BEGIN,
-  GET_NEXT_TOPICS_SUCCESS,
-  GET_NEXT_TOPICS_ERROR,
+  GET_TOPICS_BEGIN,
+  GET_TOPICS_SUCCESS,
+  GET_TOPICS_ERROR,
   CLEAR_TOPICS,
 } from './../actions/topics';
 
@@ -14,13 +14,13 @@ const initialState = {
 
 const topicsReducer = (state = initialState, action) => {
   switch(action.type) {
-    case GET_NEXT_TOPICS_BEGIN:
+    case GET_TOPICS_BEGIN:
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case GET_NEXT_TOPICS_SUCCESS:
+    case GET_TOPICS_SUCCESS:
       return {
         objects: action.payload.data,
         loading: false,
@@ -30,7 +30,7 @@ const topicsReducer = (state = initialState, action) => {
           ...action.payload.data.results,
         ],
       };
-    case GET_NEXT_TOPICS_ERROR:
+    case GET_TOPICS_ERROR:
       return {
         ...state,
         loading: false,

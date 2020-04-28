@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import {getNextTopics} from '../../store/actions/topics'
+import {getTopics} from '../../store/actions/topics'
 
 const mapStateToProps = (state) => {
   return {
@@ -12,8 +12,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
-      getNextTopics: (url, params) => {
-        dispatch(getNextTopics(url, params))
+      getTopics: (url, params) => {
+        dispatch(getTopics(url, params))
       },
     }
   }

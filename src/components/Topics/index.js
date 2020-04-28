@@ -6,8 +6,8 @@ import NeverEndingScrolling from "../NeverEndingScrolling";
 const Topics = ({id, actions, store, style={}}) => {
   return (
     <NeverEndingScrolling
-      getInitialRequest={actions.getNextTopics}
-      getNext={actions.getNextTopics}
+      getInitialRequest={actions.getTopics}
+      getNext={actions.getTopics}
       id={id}
       store={store.topics}
       style={style}
