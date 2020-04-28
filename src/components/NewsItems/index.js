@@ -2,8 +2,7 @@ import NewsItem from "../NewsItem";
 import React from "react";
 import CategoryNewsItemsWrapper from "./wrapper";
 import {initialCategoryNewsItemState} from "../../store/reducers/categoryNewsItems";
-import NeverEndingScrollingUsingRedux
-  from "../NeverEndingScrolling/NeverEndingScrollingUsingRedux";
+import NeverEndingScrolling from "../NeverEndingScrolling";
 
 const NewsItems = ({id, actions, categoryId, store, topicId, style={}}) => {
   const NewsItems =
@@ -18,7 +17,7 @@ const NewsItems = ({id, actions, categoryId, store, topicId, style={}}) => {
   };
 
   return (
-    <NeverEndingScrollingUsingRedux
+    <NeverEndingScrolling
       getInitialRequest={getInitialRequest}
       getNext={actions.getCategoryNewsItems}
       id={id}
