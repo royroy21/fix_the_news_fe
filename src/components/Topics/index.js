@@ -7,6 +7,7 @@ import NeverEndingScrollingUsingRedux
 const Topics = ({id, actions, store, style={}}) => {
   return (
     <NeverEndingScrollingUsingRedux
+      getInitialRequest={actions.getNextTopics}
       getNext={actions.getNextTopics}
       id={id}
       store={store.topics}
