@@ -4,6 +4,7 @@ import {
   GET_TOPICS_ERROR,
   CLEAR_TOPICS,
 } from './../actions/topics';
+import {combineLists} from "../../helpers/arrayFunctions";
 
 const initialState = {
   objects: null,
@@ -25,10 +26,10 @@ const topicsReducer = (state = initialState, action) => {
         objects: action.payload.data,
         loading: false,
         error: null,
-        items: [
-          ...state.items,
-          ...action.payload.data.results,
-        ],
+        items: combineLists(
+          state.items,
+          action.payload.data.results,
+        ),
       };
     case GET_TOPICS_ERROR:
       return {
