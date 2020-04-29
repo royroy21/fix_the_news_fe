@@ -1,5 +1,10 @@
 import DispatchAPI from "../../api";
 import {newsItemsURL} from "../../settings";
+import {
+  clearCategoryNewsItems,
+  getCategoryNewsItems
+} from "./categoryNewsItems";
+import {getTopics} from "./topics";
 
 export const POST_NEWS_ITEM_BEGIN   = 'POST_NEWS_ITEM_BEGIN';
 export const POST_NEWS_ITEM_SUCCESS = 'POST_NEWS_ITEM_SUCCESS';
@@ -32,4 +37,14 @@ export const postNewsItem = (data) => new DispatchAPI().create(
   postNewsItemError,
   data,
   null,
+  [
+    () => getTopics(),
+    () => clearCategoryNewsItems({
+      category: data.get("category"),
+    }),
+    () => getCategoryNewsItems(null, {
+      topic: data.get("topic"),
+      category: data.get("category"),
+    }),
+  ]
 );
