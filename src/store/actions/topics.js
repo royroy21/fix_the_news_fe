@@ -16,9 +16,9 @@ export const getTopicsSuccess = data => ({
   payload: { data },
 });
 
-export const getTopicsError = data => ({
+export const getTopicsError = error => ({
   type: GET_TOPICS_ERROR,
-  payload: { data },
+  payload: { error },
 });
 
 export const getTopics = (url=topicsURL, params={}) => new DispatchAPI().get(

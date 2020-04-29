@@ -18,10 +18,10 @@ export const getCategoryNewsItemsSuccess = (data, params) => ({
   payload: { data },
 });
 
-export const getCategoryNewsItemsError = (data, params) => ({
+export const getCategoryNewsItemsError = (error, params) => ({
   type: GET_CATEGORY_NEWS_ITEMS_ERROR,
   params,
-  payload: { data },
+  payload: { error },
 });
 
 export const clearCategoryNewsItems = (params) => ({
