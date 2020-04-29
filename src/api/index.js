@@ -138,7 +138,7 @@ class DispatchAPI {
           this.dispatchExtraActions(dispatch, extraActions);
           return response.data;
         })
-        .catch(error => dispatch(errorAction(error, params)));
+        .catch(error => dispatch(errorAction(error.response.data, params)));
     }
   }
 
