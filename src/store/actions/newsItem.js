@@ -42,7 +42,7 @@ export const postNewsItem = (data) => new DispatchAPI().create(
     () => clearCategoryNewsItems({
       category: data.get("category"),
     }),
-    () => getCategoryNewsItems(null, {
+    () => getCategoryNewsItems({
       topic: data.get("topic"),
       category: data.get("category"),
     }),
