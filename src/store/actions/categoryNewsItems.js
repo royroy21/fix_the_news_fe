@@ -29,8 +29,8 @@ export const clearCategoryNewsItems = (params) => ({
   params,
 });
 
-export const getCategoryNewsItems = (url=null, params={}) => new DispatchAPI().get(
-  url || newsItemsURL,
+export const getCategoryNewsItems = (params={}) => new DispatchAPI().get(
+  newsItemsURL,
   getCategoryNewsItemsBegin,
   getCategoryNewsItemsSuccess,
   getCategoryNewsItemsError,

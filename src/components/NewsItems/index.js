@@ -10,7 +10,7 @@ const NewsItems = ({id, actions, categoryId, store, topicId, style={}}) => {
     || initialCategoryNewsItemState;
 
   const getInitialRequest = () => {
-    actions.getCategoryNewsItems(null, {
+    actions.getCategoryNewsItems({
       topic: topicId,
       category: categoryId,
     });

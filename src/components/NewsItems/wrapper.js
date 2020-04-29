@@ -12,8 +12,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
-      getCategoryNewsItems: (url, params) => {
-        dispatch(getCategoryNewsItems(url, params))
+      getCategoryNewsItems: params => {
+        dispatch(getCategoryNewsItems(params))
       },
     }
   }

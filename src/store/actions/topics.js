@@ -21,8 +21,8 @@ export const getTopicsError = error => ({
   payload: { error },
 });
 
-export const getTopics = (url=topicsURL, params={}) => new DispatchAPI().get(
-  url,
+export const getTopics = (params={}) => new DispatchAPI().get(
+  topicsURL,
   getTopicsBegin,
   getTopicsSuccess,
   getTopicsError,

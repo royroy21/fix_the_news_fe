@@ -20,8 +20,8 @@ class NeverEndingScrolling extends Component {
     if (bottom && !this.props.store.loading) {
       const {next: nextURL} = (this.props.store.objects || {});
       if (nextURL) {
-        const {url, params} = parseURL(nextURL);
-        this.props.getNext(url, params);
+        const {params} = parseURL(nextURL);
+        this.props.getNext(params);
       }
     }
   };
