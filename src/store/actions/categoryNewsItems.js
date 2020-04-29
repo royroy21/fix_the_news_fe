@@ -4,6 +4,7 @@ import {newsItemsURL} from "../../settings";
 export const GET_CATEGORY_NEWS_ITEMS_BEGIN   = 'GET_CATEGORY_NEWS_ITEMS_BEGIN';
 export const GET_CATEGORY_NEWS_ITEMS_SUCCESS = 'GET_CATEGORY_NEWS_ITEMS_SUCCESS';
 export const GET_CATEGORY_NEWS_ITEMS_ERROR = 'GET_CATEGORY_NEWS_ITEMS_ERROR';
+export const CLEAR_CATEGORY_NEWS_ITEMS = 'CLEAR_CATEGORY_NEWS_ITEMS';
 
 export const getCategoryNewsItemsBegin = (data, params) => ({
   type: GET_CATEGORY_NEWS_ITEMS_BEGIN,
@@ -21,6 +22,11 @@ export const getCategoryNewsItemsError = (data, params) => ({
   type: GET_CATEGORY_NEWS_ITEMS_ERROR,
   params,
   payload: { data },
+});
+
+export const clearCategoryNewsItems = (params) => ({
+  type: CLEAR_CATEGORY_NEWS_ITEMS,
+  params,
 });
 
 export const getCategoryNewsItems = (url=null, params={}) => new DispatchAPI().get(
