@@ -3,7 +3,10 @@ import {makeStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import NewsItemsContainer from "../NewsItems/NewsItemsContainer";
 import ButtonLink from "../Button/ButtonLink";
-import {loginRoute, userNotLoggedInRoute} from "../../settings";
+import {
+  addNewsItemRoute,
+  userNotLoggedInRoute
+} from "../../settings";
 import share from '../../images/share.svg';
 import addArticle from '../../images/addArticle.svg';
 import TopicWrapper from "./wrapper";
@@ -62,7 +65,11 @@ const Topic = ({item, store}) => {
             <ButtonLink
               icon={<img src={addArticle} alt="??" />}
               label={"Add Article"}
-              to={loginRoute} // TODO - this to change
+              to={addNewsItemRoute}
+              state={{
+                categories: item.serialized_categories,
+                topicId: item.id,
+              }}
             />
           )}
         </div>
