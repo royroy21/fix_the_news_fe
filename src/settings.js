@@ -1,6 +1,7 @@
 export const localStorageAuthTokenKey = "fixTheNewsAuthToken";
 
 // Internal routes
+export const addNewsItemRoute = "/add-news-item/";
 export const loginRoute = "/login/";
 export const registrationRoute = "/sign-up/";
 export const userNotLoggedInRoute = "/restricted-action/";
@@ -16,5 +17,4 @@ export const userURL = `${baseURL}/auth/users/`;
 // Backend API
 const baseAPIURL = `${baseURL}/api/`;
 export const newsItemsURL = `${baseAPIURL}news-items/`;
-export const newsTypesURL = `${baseAPIURL}news-types/`;
 export const topicsURL = `${baseAPIURL}topics/`;

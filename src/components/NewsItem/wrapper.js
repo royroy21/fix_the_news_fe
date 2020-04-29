@@ -1,0 +1,30 @@
+import { connect } from 'react-redux'
+import {CLEAR_NEWS_ITEM, postNewsItem} from "../../store/actions/newsItem";
+
+const mapStateToProps = (state) => {
+  return {
+    store: {
+      newsItem: state.newsItem,
+    },
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: {
+      postNewsItem: data => {
+        dispatch(postNewsItem(data))
+      },
+      clearNewsItem: () => {
+        dispatch({type: CLEAR_NEWS_ITEM});
+      },
+    }
+  }
+};
+
+const NewsItemWrapper = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+
+export default NewsItemWrapper;

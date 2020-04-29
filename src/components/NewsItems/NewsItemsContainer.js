@@ -3,7 +3,6 @@ import {makeStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import TopNewsItems from "./TopNewsItems";
 import NewsItems from "../NewsItems";
-import {newsItemsURL} from "../../settings";
 import ShowMoreNewsItems from "./ShowMoreNewsItems";
 import CategoryIndicator from "./CategoryIndicator";
 import {categoryColourMap} from "../../theme";
@@ -66,8 +65,9 @@ const NewsItemsContainer = ({topic}) => {
               {showTopNewsItems[category.type] ? (
                 <NewsItems
                   id={`news-items-for-topic-${topic.id}-category-${[category.type]}`}
-                  initialURL={`${newsItemsURL}?topic=${topic.id}&${[category.type]}=true`}
-                  style={{maxHeight: 400}}
+                  categoryId={category.id}
+                  style={{maxHeight: 400, overflowX: "hidden"}}
+                  topicId={topic.id}
                 />
               ) : (
                 <TopNewsItems

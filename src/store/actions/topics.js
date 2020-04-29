@@ -13,19 +13,15 @@ export const getTopicsBegin = data => ({
 
 export const getTopicsSuccess = data => ({
   type: GET_TOPICS_SUCCESS,
-  payload: { data }
+  payload: { data },
 });
 
 export const getTopicsError = error => ({
   type: GET_TOPICS_ERROR,
-  payload: { error }
+  payload: { error },
 });
 
-export const clearTopics = () => ({
-  type: CLEAR_TOPICS,
-});
-
-export const getTopics = (params) => new DispatchAPI().get(
+export const getTopics = (params={}) => new DispatchAPI().get(
   topicsURL,
   getTopicsBegin,
   getTopicsSuccess,

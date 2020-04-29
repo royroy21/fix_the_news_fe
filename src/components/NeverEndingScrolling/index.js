@@ -1,75 +1,33 @@
 import React, {Component} from 'react';
 import Loading from "../Loading/Loading";
-import axios from "axios";
-import Error from "../Error";
 import PropTypes from "prop-types";
+import Error from "../Error";
+import {parseURL} from "../../helpers/urlFunctions";
 
 class NeverEndingScrolling extends Component {
-  SUCCESSFUL_STATUS_CODES = [
-    200,
-  ];
-
-  state = {
-    items: [],
-    responseData: null,
-    responseLoading: null,
-    responseError: null,
-  };
-
   componentDidMount() {
-    this.makeCall(this.props.initialURL)
-  }
-
-  makeCall(url) {
-    this.setState({
-      responseData: null,
-      responseLoading: true,
-      responseError: null,
-    });
-
-    return axios.get(url)
-      .then(response => this.handleErrors(response))
-      .then(response => {
-        this.setState(state => (
-          {
-            items: [...state.items, ...response.data.results],
-            responseData: response.data,
-            responseLoading: false,
-            responseError: null,
-          }
-        ))
-      })
-      .catch(error => {
-        this.setState({responseError: error.response.data})
-      });
-  }
-
-  handleErrors(response) {
-    if (!this.SUCCESSFUL_STATUS_CODES.includes(response.status)) {
-      throw Error(response.data);
-    }
-    return response;
+    this.props.getInitialRequest();
   }
 
   handleScroll = (e) => {
-    // This is used to stop parent NeverEndingScrolling
-    // scroll events from firing
+    // This is used to stop parent scroll events from firing
     if (e.target.id !== this.props.id) {
       return
     }
     const bottom = e.target.scrollHeight
       - e.target.scrollTop
       === e.target.clientHeight;
-    if (bottom) {
-      const {next: nextURL} = (this.state.responseData || {});
+    if (bottom && !this.props.store.loading) {
+      const {next: nextURL} = (this.props.store.objects || {});
       if (nextURL) {
-        this.makeCall(nextURL)
+        const {params} = parseURL(nextURL);
+        this.props.getNext(params);
       }
     }
   };
 
   render() {
-    if (this.state.responseError) {
+    if (this.props.store.error) {
       return <Error />
     }
 
@@ -82,13 +40,13 @@ class NeverEndingScrolling extends Component {
           overflowY: "scroll",
         }}
       >
-      {this.state.items.map(item => (
+      {this.props.store.items.map(item => (
         <this.props.ItemComponent
           key={`item-component-${item.id}`}
           item={item}
         />
         ))}
-        {this.state.responseLoading && <Loading />}
+        {this.props.store.loading && <Loading />}
       </div>
     );
   }
@@ -102,10 +60,12 @@ NeverEndingScrolling.defaultProps = {
 
 NeverEndingScrolling.propTypes = {
   id: PropTypes.string.isRequired,
+  getInitialRequest: PropTypes.func.isRequired,
+  getNext: PropTypes.func.isRequired,
+  store: PropTypes.object.isRequired,
   ItemComponent: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.func,
   ]),
-  initialURL: PropTypes.string.isRequired,
   style: PropTypes.object.isRequired,
 };

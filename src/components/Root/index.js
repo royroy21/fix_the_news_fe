@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import Header from "../Header";
 import RootWrapper from "./wrapper";
-import {localStorageAuthTokenKey, topicsURL} from "../../settings";
+import {localStorageAuthTokenKey} from "../../settings";
 import Routes from "../Routes";
-import Topics from "../Topics/Topics";
+import Topics from "../Topics";
 
 class Root extends Component {
 
@@ -76,10 +76,7 @@ class Root extends Component {
         <Header isMobile={isMobile}/>
         <div style={outerContainerStyle}>
           <div style={innerContainerStyle}>
-            <Topics
-              id={"topics"}
-              initialURL={topicsURL}
-            />
+            <Topics id={"topics"}/>
           </div>
         </div>
       </div>

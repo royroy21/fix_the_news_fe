@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
-
-import { CLEAR_TOPICS, getTopics } from '../../store/actions/topics'
+import {getTopics} from '../../store/actions/topics'
 
 const mapStateToProps = (state) => {
   return {
@@ -13,11 +12,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
-      getTopics: (params) => {
+      getTopics: params => {
         dispatch(getTopics(params))
-      },
-      clearTopics: () => {
-        dispatch({type: CLEAR_TOPICS});
       },
     }
   }

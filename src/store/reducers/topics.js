@@ -4,11 +4,13 @@ import {
   GET_TOPICS_ERROR,
   CLEAR_TOPICS,
 } from './../actions/topics';
+import {combineLists} from "../../helpers/arrayFunctions";
 
 const initialState = {
   objects: null,
   loading: false,
   error: null,
+  items: [],
 };
 
 const topicsReducer = (state = initialState, action) => {
@@ -24,10 +26,14 @@ const topicsReducer = (state = initialState, action) => {
         objects: action.payload.data,
         loading: false,
         error: null,
+        items: combineLists(
+          state.items,
+          action.payload.data.results,
+        ),
       };
     case GET_TOPICS_ERROR:
       return {
-        objects: null,
+        ...state,
         loading: false,
         error: action.payload.error,
       };
@@ -36,6 +42,7 @@ const topicsReducer = (state = initialState, action) => {
         objects: null,
         loading: false,
         error: null,
+        items: [],
       };
     default:
       return state

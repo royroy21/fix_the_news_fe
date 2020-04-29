@@ -58,10 +58,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const ButtonLink = ({to, label=null, icon=null, inverted=false}) => {
+const ButtonLink = ({to, state={}, label=null, icon=null, inverted=false}) => {
   const classes = useStyles();
   return (
-    <Link className={classes.link} to={to}>
+    <Link
+      className={classes.link}
+      to={{
+        pathname: to,
+        state: state,
+      }}
+    >
       <div className={inverted ? classes.invertedButton : classes.button}>
         {icon ? (
           <div className={label ? classes.icon : classes.iconWithoutLabel}>
