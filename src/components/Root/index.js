@@ -51,13 +51,13 @@ class Root extends Component {
   };
 
   getIsSmallScreen = () => {
-    return this.state.screenWidth < this.SMALL_SCREEN;
+    return (this.state.screenWidth < this.SMALL_SCREEN) && (this.state.screenWidth > this.MOBILE_WIDTH);
   };
 
   render() {
     const isMobile = this.getIsMobile();
     const isSmallScreen = this.getIsSmallScreen();
-    const width = isSmallScreen ? "100%" : "70%";
+    const width = isSmallScreen || isMobile ? "100%" : "70%";
 
     const rootStyle = {
       backgroundColor: "#F8F9F9",
@@ -80,7 +80,7 @@ class Root extends Component {
     return (
       <div style={rootStyle}>
         <Routes />
-        <Header isSmallScreen={isSmallScreen}/>
+        <Header isSmallScreen={isSmallScreen || isMobile}/>
         <div style={outerContainerStyle}>
           <div style={innerContainerStyle}>
             <Topics id={"topics"}/>
