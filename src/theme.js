@@ -10,7 +10,7 @@ export const categoryColourMap = {
   against: categoryIndicatorAgainst,
 };
 
-const theme = createMuiTheme({
+export const themeObject = {
   palette: {
     primary: {
       light: "#ffffff",
@@ -27,6 +27,7 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: '"Raleway", "Helvetica", "Arial", sans-serif',
   },
-});
+};
+const theme = createMuiTheme(themeObject);
 
 export default theme;

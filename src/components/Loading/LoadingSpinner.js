@@ -1,6 +1,7 @@
 import React from 'react';
 import CircularProgress from "@material-ui/core/CircularProgress";
 import {withStyles} from "@material-ui/core";
+import {themeObject} from "../../theme";
 
 const styles = () => ({
   progressContainer: {
@@ -18,13 +19,19 @@ const styles = () => ({
   },
 });
 
+const CustomCircularProgress = withStyles({
+  root: {
+    color: themeObject.palette.secondary.light,
+  },
+})(CircularProgress);
+
 class LoadingSpinner extends React.Component {
 
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.progressContainer}>
-        <CircularProgress className={classes.progress} color="secondary" />
+        <CustomCircularProgress className={classes.progress} />
       </div>
     )
   }
