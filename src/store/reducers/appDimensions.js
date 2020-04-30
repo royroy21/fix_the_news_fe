@@ -6,6 +6,7 @@ const initialState = {
   height: null,
   width: null,
   isMobile: null,
+  isSmallScreen: null,
 };
 
 const appDimensionsReducer = (state = initialState, action) => {
@@ -14,6 +15,7 @@ const appDimensionsReducer = (state = initialState, action) => {
       height: action.payload.data.height,
       width: action.payload.data.width,
       isMobile: action.payload.data.isMobile,
+      isSmallScreen: action.payload.data.isSmallScreen,
     };
   } else {
     return state;

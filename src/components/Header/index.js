@@ -53,7 +53,7 @@ const Header = (props) => {
 
   const toolbarStyle = {
     margin: "auto",
-    width: props.isMobile ? "100%" : "70%",
+    width: props.isSmallScreen ? "100%" : "70%",
   };
 
   return (
