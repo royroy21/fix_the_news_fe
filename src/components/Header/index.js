@@ -16,6 +16,12 @@ import ButtonLink from "../Button/ButtonLink";
 import Button from "../Button";
 
 const useStyles = makeStyles(theme => ({
+  appBar: {
+    backgroundColor: theme.palette.primary.light,
+    borderBottom: `1px solid ${theme.palette.primary.main}`,
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+  },
   buttonDivider: {
     color: theme.palette.primary.main,
     marginLeft: 10,
@@ -34,12 +40,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
-  title: {
-  },
-  appBar: {
-    backgroundColor: theme.palette.primary.light,
-    borderBottom: `1px solid ${theme.palette.primary.main}`,
-  },
 }));
 
 const Header = (props) => {
@@ -53,6 +53,7 @@ const Header = (props) => {
 
   const toolbarStyle = {
     margin: "auto",
+    padding: 0,
     width: props.isSmallScreen ? "100%" : "70%",
   };
 
@@ -64,7 +65,7 @@ const Header = (props) => {
         className={classes.appBar}
       >
         <Toolbar style={toolbarStyle}>
-          <Typography variant={"h6"} className={classes.title}>
+          <Typography variant={"h6"}>
             {"FixTheNews"}
           </Typography>
           <Typography
