@@ -41,9 +41,10 @@ const styles = (theme) => ({
     overflow: "hidden",
   },
   thumbsUpCount: {
+    float: "right",
     fontSize: "0.8em",
-    marginTop: 5,
     marginLeft: theme.spacing(0.5),
+    marginTop: 5,
   },
   thumbsUpIcon: {
     color: "grey",
@@ -110,10 +111,12 @@ class NewsItem extends Component {
               label={item.news_source}
             />
           </Link>
-          <ThumbUpAltOutlinedIcon
-            className={classes.thumbsUpIcon}
-          />
-          <span className={classes.thumbsUpCount}>{"99"}</span>
+          <div>
+            <ThumbUpAltOutlinedIcon
+              className={classes.thumbsUpIcon}
+            />
+            <div className={classes.thumbsUpCount}>{"99"}</div>
+          </div>
         </div>
       </div>
     )
