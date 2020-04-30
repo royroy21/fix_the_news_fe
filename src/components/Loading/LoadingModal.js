@@ -6,7 +6,7 @@ import SuccessNotification from "./SuccessNotification";
 
 class LoadingModal extends Component {
 
-  LONG_TIMEOUT = 1495;
+  LONG_TIMEOUT = 2495;
   SHORT_TIMEOUT = 300;
 
   state = {
