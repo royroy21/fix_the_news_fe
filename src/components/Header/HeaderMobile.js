@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import HeaderWrapper from "./wrapper";
 import MobileMainMenuButton from "../Button/MobileMainMenuButton";
+import {mobileMainMenuRoute} from "../../settings";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -26,9 +26,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const HeaderMobile = (props) => {
+const HeaderMobile = () => {
   const classes = useStyles();
-  const openMenu = () => {};
   return (
     <div className={classes.root}>
       <AppBar
@@ -40,11 +39,11 @@ const HeaderMobile = (props) => {
           <Typography className={classes.title} variant={"h6"}>
             {"FixTheNews"}
           </Typography>
-          <MobileMainMenuButton onClick={openMenu} />
+          <MobileMainMenuButton to={mobileMainMenuRoute} />
         </Toolbar>
       </AppBar>
     </div>
   );
 };
 
-export default HeaderWrapper(HeaderMobile);
+export default HeaderMobile;
