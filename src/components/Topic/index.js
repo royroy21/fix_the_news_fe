@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
   buttonLinkContainer: {
     display: "flex",
     flexDirection: "row",
-    marginRight: theme.spacing(2),
     position: "absolute",
     right: 0,
   },
@@ -33,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     paddingTop: theme.spacing(1),
     paddingLeft: theme.spacing(1),
+    width: "65%",
   }
 }));
 
@@ -58,13 +58,13 @@ const Topic = ({item, store}) => {
           {!store.user.object ? (
             <ButtonLink
               icon={<img src={addArticle} alt="??" />}
-              label={"Add Article"}
+              label={!store.appDimensions.isMobile ? "Add Article" : null}
               to={userNotLoggedInRoute}
             />
           ) : (
             <ButtonLink
               icon={<img src={addArticle} alt="??" />}
-              label={"Add Article"}
+              label={!store.appDimensions.isMobile ? "Add Article" : null}
               to={addNewsItemRoute}
               state={{
                 categories: item.serialized_categories,
