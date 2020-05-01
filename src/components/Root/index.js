@@ -4,6 +4,7 @@ import RootWrapper from "./wrapper";
 import {localStorageAuthTokenKey} from "../../settings";
 import Routes from "../Routes";
 import Topics from "../Topics";
+import HeaderMobile from "../Header/HeaderMobile";
 
 class Root extends Component {
 
@@ -80,7 +81,7 @@ class Root extends Component {
     return (
       <div style={rootStyle}>
         <Routes />
-        <Header isSmallScreen={isSmallScreen || isMobile}/>
+        {isMobile ? <HeaderMobile /> : <Header isSmallScreen={isSmallScreen}/>}
         <div style={outerContainerStyle}>
           <div style={innerContainerStyle}>
             <Topics id={"topics"}/>
@@ -89,7 +90,6 @@ class Root extends Component {
       </div>
     )
   }
-
 }
 
 export default RootWrapper(Root);
