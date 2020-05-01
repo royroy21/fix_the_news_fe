@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const styles = theme => ({
   error: {
     fontSize: "0.9em",
-    color: theme.palette.secondary.main,
+    color: theme.palette.secondary.light,
   }
 });
 

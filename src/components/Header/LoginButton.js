@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
     textDecoration: "none",
     '&:hover': {
-      color: theme.palette.primary.dark,
+      color: theme.palette.secondary.light,
     },
   },
 }));

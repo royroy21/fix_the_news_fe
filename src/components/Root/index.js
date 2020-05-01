@@ -8,6 +8,7 @@ import Topics from "../Topics";
 class Root extends Component {
 
   MOBILE_WIDTH = 900;
+  SMALL_SCREEN = 1200;
 
   state = {
     screenWidth: 0,
@@ -41,6 +42,7 @@ class Root extends Component {
       height: this.state.screenHeight,
       width: this.state.screenWidth,
       isMobile: this.getIsMobile(),
+      isSmallScreen: this.getIsSmallScreen(),
     }));
   };
 
@@ -48,9 +50,14 @@ class Root extends Component {
     return this.state.screenWidth < this.MOBILE_WIDTH;
   };
 
+  getIsSmallScreen = () => {
+    return (this.state.screenWidth < this.SMALL_SCREEN) && (this.state.screenWidth > this.MOBILE_WIDTH);
+  };
+
   render() {
     const isMobile = this.getIsMobile();
-    const width = isMobile ? "100%" : "70%";
+    const isSmallScreen = this.getIsSmallScreen();
+    const width = isSmallScreen || isMobile ? "100%" : "70%";
 
     const rootStyle = {
       backgroundColor: "#F8F9F9",
@@ -73,7 +80,7 @@ class Root extends Component {
     return (
       <div style={rootStyle}>
         <Routes />
-        <Header isMobile={isMobile}/>
+        <Header isSmallScreen={isSmallScreen || isMobile}/>
         <div style={outerContainerStyle}>
           <div style={innerContainerStyle}>
             <Topics id={"topics"}/>

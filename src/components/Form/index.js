@@ -2,8 +2,8 @@ import React from 'react';
 import LoadingModal from "../Loading/LoadingModal";
 import FormGroup from "@material-ui/core/FormGroup";
 import PropTypes from "prop-types";
-import Button from "@material-ui/core/Button";
 import Error from "./Error";
+import Button from "../Button";
 
 class Form extends React.Component {
 
@@ -54,13 +54,10 @@ class Form extends React.Component {
             error={error}
           />
           <Button
-            color={"secondary"}
-            style={{width: 100, margin: "auto"}}
-            type={"submit"}
-            variant={"contained"}
-          >
-            {this.props.buttonLabel}
-          </Button>
+            label={this.props.buttonLabel}
+            onClick={this.handleSubmit}
+            style={{margin: "auto", display: "inline-block"}}
+          />
           <LoadingModal
             loading={loading}
             error={!!error}

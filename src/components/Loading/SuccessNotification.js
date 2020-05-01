@@ -18,7 +18,7 @@ const styles = theme => ({
     margin: "auto",
     height: "50px",
     textAlign: "center",
-    color: theme.palette.secondary.main,
+    color: theme.palette.secondary.light,
   },
   table: {
     margin: "auto",

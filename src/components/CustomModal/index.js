@@ -1,10 +1,11 @@
 import React, {Component} from "react";
 import Modal from "@material-ui/core/Modal";
-import Button from "@material-ui/core/Button";
 import CustomModalWrapper from "./wrapper";
 import PropTypes from "prop-types";
 import {withRouter} from "react-router-dom";
 import {withStyles} from "@material-ui/core";
+import Button from "../Button";
+import CloseIcon from '@material-ui/icons/Close';
 
 const styles = (theme) => ({
   headerContainer: {
@@ -72,12 +73,9 @@ class CustomModal extends Component {
         <div style={contentStyle} ref={this.contentRef}>
           <div className={classes.headerContainer}>
             <Button
-              color={"secondary"}
+              icon={<CloseIcon />}
               onClick={this.closeModal}
-              variant={"contained"}
-            >
-              {"X"}
-            </Button>
+            />
             <span className={classes.headerTitle}>
               {this.props.header}
             </span>

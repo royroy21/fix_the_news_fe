@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import HeaderWrapper from "./wrapper";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {
@@ -14,8 +13,15 @@ import {
 import UserDisplay from "../User/UserDisplay";
 import LoginButton from "./LoginButton";
 import ButtonLink from "../Button/ButtonLink";
+import Button from "../Button";
 
 const useStyles = makeStyles(theme => ({
+  appBar: {
+    backgroundColor: theme.palette.primary.light,
+    borderBottom: `1px solid ${theme.palette.primary.main}`,
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+  },
   buttonDivider: {
     color: theme.palette.primary.main,
     marginLeft: 10,
@@ -34,12 +40,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
-  title: {
-  },
-  appBar: {
-    backgroundColor: theme.palette.primary.light,
-    borderBottom: `1px solid ${theme.palette.primary.main}`,
-  },
 }));
 
 const Header = (props) => {
@@ -53,7 +53,8 @@ const Header = (props) => {
 
   const toolbarStyle = {
     margin: "auto",
-    width: props.isMobile ? "100%" : "70%",
+    padding: 0,
+    width: props.isSmallScreen ? "100%" : "70%",
   };
 
   return (
@@ -64,7 +65,7 @@ const Header = (props) => {
         className={classes.appBar}
       >
         <Toolbar style={toolbarStyle}>
-          <Typography variant={"h6"} className={classes.title}>
+          <Typography variant={"h6"}>
             {"FixTheNews"}
           </Typography>
           <Typography
@@ -99,13 +100,10 @@ const Header = (props) => {
             <Fragment>
               <UserDisplay userObject={user} />
               <Button
-                className={classes.logoutButton}
-                color={"secondary"}
                 onClick={logout}
-                variant={"contained"}
-              >
-                <ExitToAppIcon />
-              </Button>
+                icon={<ExitToAppIcon />}
+                style={{marginLeft: 5}}
+              />
             </Fragment>
           )}
         </Toolbar>
