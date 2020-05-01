@@ -11,7 +11,7 @@ import {
   registrationRoute
 } from "../../settings";
 import UserDisplay from "../User/UserDisplay";
-import LoginButton from "./LoginButton";
+import LoginButton from "../Button/LoginButton";
 import ButtonLink from "../Button/ButtonLink";
 import Button from "../Button";
 
