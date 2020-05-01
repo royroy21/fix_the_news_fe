@@ -3,6 +3,7 @@ export const localStorageAuthTokenKey = "fixTheNewsAuthToken";
 // Internal routes
 export const addNewsItemRoute = "/add-news-item/";
 export const loginRoute = "/login/";
+export const mobileMainMenuRoute = "/mobile-main-menu/";
 export const registrationRoute = "/sign-up/";
 export const userNotLoggedInRoute = "/restricted-action/";
 
