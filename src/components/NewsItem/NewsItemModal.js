@@ -18,7 +18,7 @@ const NewsItemModal = (props) => {
         successMessage: "Article successfully added",
         topicId: props.location.state.topicId,
       }}
-      header={"Add an Article"}
+      header={"Add Article"}
     />
   )
 };
