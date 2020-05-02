@@ -75,7 +75,7 @@ class Root extends Component {
       display: "flex",
       flexDirection: "column",
       width,
-      margin: "25px auto 0 auto",
+      margin: "0 auto 0 auto",
     };
 
     return (
