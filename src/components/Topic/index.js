@@ -10,6 +10,8 @@ import {
 import share from '../../images/share.svg';
 import addArticle from '../../images/addArticle.svg';
 import TopicWrapper from "./wrapper";
+import MobileNewsItemsContainer from "../NewsItems/MobileNewsItemsContainer";
+import {themeObject} from "../../theme";
 
 const useStyles = makeStyles((theme) => ({
   buttonLinkContainer: {
@@ -22,15 +24,15 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
+    position: "relative",
     width: "100%",
-    position: "relative"
   },
   root: {
+    marginTop: theme.spacing(2),
     padding: theme.spacing(1),
   },
   title: {
     fontWeight: "bold",
-    paddingTop: theme.spacing(1),
     paddingLeft: theme.spacing(1),
     width: "65%",
   }
@@ -38,9 +40,22 @@ const useStyles = makeStyles((theme) => ({
 
 const Topic = ({item, store}) => {
   const classes = useStyles();
+  const isMobile = store.appDimensions.isMobile;
+  if (isMobile === null) {
+    return null;
+  }
+  const extraRootStyle = isMobile
+    ? {borderBottom: `1px solid ${themeObject.palette.primary.main}`}
+    : null;
   return (
-    <div className={classes.root}>
-      <div className={classes.headerContainer}>
+    <div
+      className={classes.root}
+      style={extraRootStyle}
+    >
+      <div
+        className={classes.headerContainer}
+        style={!isMobile ? {paddingBottom: 5} : undefined}
+      >
         <Typography
           className={classes.title}
           variant={"h6"}
@@ -58,13 +73,13 @@ const Topic = ({item, store}) => {
           {!store.user.object ? (
             <ButtonLink
               icon={<img src={addArticle} alt="??" />}
-              label={!store.appDimensions.isMobile ? "Add Article" : null}
+              label={!isMobile ? "Add Article" : null}
               to={userNotLoggedInRoute}
             />
           ) : (
             <ButtonLink
               icon={<img src={addArticle} alt="??" />}
-              label={!store.appDimensions.isMobile ? "Add Article" : null}
+              label={!isMobile ? "Add Article" : null}
               to={addNewsItemRoute}
               state={{
                 categories: item.serialized_categories,
@@ -74,7 +89,11 @@ const Topic = ({item, store}) => {
           )}
         </div>
       </div>
-      <NewsItemsContainer topic={item} />
+      {isMobile ? (
+        <MobileNewsItemsContainer topic={item} />
+        ) : (
+        <NewsItemsContainer topic={item} />
+      )}
     </div>
   )
 };
