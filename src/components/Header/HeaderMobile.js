@@ -33,7 +33,7 @@ const HeaderMobile = () => {
         className={classes.appBar}
       >
         <Toolbar className={classes.toolbar}>
-          <Logo />
+          <Logo style={{flexGrow: 1}}/>
           <MobileMainMenuButton to={mobileMainMenuRoute} />
         </Toolbar>
       </AppBar>
