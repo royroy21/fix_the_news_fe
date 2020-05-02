@@ -14,6 +14,7 @@ import UserDisplay from "../User/UserDisplay";
 import LoginButton from "../Button/LoginButton";
 import ButtonLink from "../Button/ButtonLink";
 import Button from "../Button";
+import Logo from "../Logo";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -65,9 +66,7 @@ const Header = (props) => {
         className={classes.appBar}
       >
         <Toolbar style={toolbarStyle}>
-          <Typography variant={"h6"}>
-            {"FixTheNews"}
-          </Typography>
+          <Logo />
           <Typography
             className={classes.contactUsAboutHelp}
             variant={"h6"}
