@@ -6,7 +6,6 @@ const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     flexDirection: "row",
-    flexGrow: 1,
   },
   image: {
     height: 40,
@@ -23,10 +22,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Logo = () => {
+const Logo = ({style={}}) => {
   const classes = useStyles();
   return (
-    <div className={classes.container}>
+    <div className={classes.container} style={style}>
       <img className={classes.image} src={fixTheNewsLogo07} alt="??" />
       <div className={classes.textContainer}>
         <span className={classes.text}>{"fix"}</span>
