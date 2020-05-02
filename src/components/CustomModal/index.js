@@ -8,6 +8,10 @@ import Button from "../Button";
 import CloseIcon from '@material-ui/icons/Close';
 
 const styles = (theme) => ({
+  footer: {
+    marginTop: theme.spacing(3),
+    textAlign: "center",
+  },
   headerContainer: {
     display: "flex",
     flexDirection: "row",
@@ -16,12 +20,10 @@ const styles = (theme) => ({
   },
   headerTitle: {
     color: "grey",
-    marginTop: theme.spacing(2),
-    marginLeft: theme.spacing(2),
+    flexGrow: 1,
   },
-  footer: {
-    marginTop: theme.spacing(3),
-    textAlign: "center",
+  modal: {
+    margin: theme.spacing(2),
   },
 });
 
@@ -45,7 +47,7 @@ class CustomModal extends Component {
   };
 
   render() {
-    const {height, isMobile, width} = this.props.store.appDimensions;
+    const {height, isMobile} = this.props.store.appDimensions;
     const contentMarginTop = this.contentRef.current
       ? (height - this.contentRef.current.clientHeight) / 2
       : 0;
@@ -55,10 +57,7 @@ class CustomModal extends Component {
       padding: "25px",
       backgroundColor: "white",
     };
-    if (isMobile) {
-      contentStyle.height = height;
-      contentStyle.width = width - 50;
-    } else {
+    if (!isMobile) {
       contentStyle.maxHeight = height - 200;
       contentStyle.width = 700;
     }
@@ -66,19 +65,23 @@ class CustomModal extends Component {
     const { classes } = this.props;
     return (
       <Modal
+        className={classes.modal}
         open={this.state.open}
         onClose={this.closeModal}
         onBackdropClick={this.closeModal}
       >
         <div style={contentStyle} ref={this.contentRef}>
           <div className={classes.headerContainer}>
+            <div
+              className={classes.headerTitle}
+              style={isMobile ? {width: "40%"} : undefined}
+            >
+              {this.props.header}
+            </div>
             <Button
               icon={<CloseIcon />}
               onClick={this.closeModal}
             />
-            <span className={classes.headerTitle}>
-              {this.props.header}
-            </span>
           </div>
           <this.props.contentComponent
             {...this.props.contentProps}

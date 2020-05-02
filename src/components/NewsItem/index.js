@@ -4,6 +4,7 @@ import Link from '@material-ui/core/Link';
 import Chip from "@material-ui/core/Chip";
 import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import {withStyles} from "@material-ui/core";
+import NewsItemWrapper from "./wrapper";
 
 const styles = (theme) => ({
   chip: {
@@ -27,12 +28,11 @@ const styles = (theme) => ({
     },
   },
   mainContainer: {
+    backgroundColor: theme.palette.primary.light,
     border: `1px solid ${theme.palette.primary.main}`,
     borderRadius: 4,
     height: 110,
     marginBottom: theme.spacing(2),
-    minWidth: 150,
-    maxWidth: 330,
     padding: theme.spacing(1),
     position: "relative",
   },
@@ -73,17 +73,37 @@ class NewsItem extends Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.isOverflowActive(this.contentRef) !== prevState.overflowActive) {
-      this.setState({ overflowActive: this.isOverflowActive(this.contentRef) });
+      this.setState({
+        overflowActive: this.isOverflowActive(this.contentRef),
+      });
     }
   }
 
   render() {
-    const { classes, item } = this.props;
+    const { classes, item, store} = this.props;
+    const {isMobile, width: screenWidth} = store.appDimensions;
+    if (isMobile === null) {
+      return null;
+    }
+    const extraContainerStyle = isMobile
+      ? {
+        marginRight: 10,
+        minWidth: screenWidth - 100,
+        maxWidth: screenWidth - 100,
+      }
+      : {
+        minWidth: 150,
+        maxWidth: 330,
+      };
     return (
-      <div className={classes.mainContainer}>
+      <div
+        className={classes.mainContainer}
+        style={extraContainerStyle}
+      >
         <Link
           className={classes.link}
           href={item.url}
+          rel={"noreferrer"}
           target={"_blank"}
           underline={"none"}
         >
@@ -123,4 +143,4 @@ class NewsItem extends Component {
   }
 }
 
-export default withStyles(styles)(NewsItem);
+export default withStyles(styles)(NewsItemWrapper(NewsItem));

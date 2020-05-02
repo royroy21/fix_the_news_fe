@@ -4,6 +4,7 @@ import {getTopics} from '../../store/actions/topics'
 const mapStateToProps = (state) => {
   return {
     store: {
+      appDimensions: state.appDimensions,
       topics: state.topics,
     },
   }

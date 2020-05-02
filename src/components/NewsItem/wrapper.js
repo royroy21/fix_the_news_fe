@@ -4,6 +4,7 @@ import {CLEAR_NEWS_ITEM, postNewsItem} from "../../store/actions/newsItem";
 const mapStateToProps = (state) => {
   return {
     store: {
+      appDimensions: state.appDimensions,
       newsItem: state.newsItem,
     },
   }
