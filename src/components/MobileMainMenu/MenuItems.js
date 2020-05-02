@@ -21,6 +21,7 @@ export const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     height: "100%",
+    paddingLeft: theme.spacing(1),
     position: "relative",
   },
   link: {
@@ -37,13 +38,13 @@ export const useStyles = makeStyles(theme => ({
   loginButtons: {
     display: "flex",
     flexDirection: "row",
-    marginLeft: "auto",
-    marginRight: "auto",
+    marginLeft: theme.spacing(1),
   },
   subLinks: {
     bottom: 0,
     display: "flex",
     flexDirection: "column",
+    padding: theme.spacing(1),
     position: "absolute",
     width: "100%",
   },

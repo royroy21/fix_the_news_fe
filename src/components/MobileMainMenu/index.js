@@ -10,11 +10,10 @@ import CloseIcon from "@material-ui/icons/Close";
 const styles = (theme) => ({
   content: {
     backgroundColor: theme.palette.primary.light,
-    borderLeft: `1px solid ${theme.palette.primary.dark}`,
     float: "right",
-    height: "40%",
+    height: "20%",
     padding: theme.spacing(1),
-    width: "75%",
+    width: "100%",
   }
 });
 
