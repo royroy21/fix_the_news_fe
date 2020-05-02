@@ -10,7 +10,7 @@ const styles = (theme) => ({
   content: {
     backgroundColor: theme.palette.primary.light,
     float: "right",
-    height: "20%",
+    height: 150,
     padding: theme.spacing(1),
     width: "100%",
   }
