@@ -21,8 +21,6 @@ const styles = (theme) => ({
   headerTitle: {
     color: "grey",
     flexGrow: 1,
-    marginTop: theme.spacing(2),
-    marginLeft: theme.spacing(2),
   },
   modal: {
     margin: theme.spacing(2),
