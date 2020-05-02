@@ -4,8 +4,7 @@ import {withRouter} from "react-router-dom";
 import {withStyles} from "@material-ui/core";
 import MenuItems from "./MenuItems";
 import MobileMainMenuWrapper from "./wrapper";
-import Button from "../Button";
-import CloseIcon from "@material-ui/icons/Close";
+import CloseButton from "../Button/CloseButton";
 
 const styles = (theme) => ({
   content: {
@@ -42,8 +41,7 @@ class MobileMainMenu extends Component {
         onBackdropClick={this.closeModal}
       >
         <div className={classes.content}>
-          <Button
-            icon={<CloseIcon />}
+          <CloseButton
             onClick={this.closeModal}
             style={{float: "right"}}
           />

@@ -4,8 +4,7 @@ import CustomModalWrapper from "./wrapper";
 import PropTypes from "prop-types";
 import {withRouter} from "react-router-dom";
 import {withStyles} from "@material-ui/core";
-import Button from "../Button";
-import CloseIcon from '@material-ui/icons/Close';
+import CloseButton from "../Button/CloseButton";
 
 const styles = (theme) => ({
   footer: {
@@ -78,10 +77,7 @@ class CustomModal extends Component {
             >
               {this.props.header}
             </div>
-            <Button
-              icon={<CloseIcon />}
-              onClick={this.closeModal}
-            />
+            <CloseButton onClick={this.closeModal} />
           </div>
           <this.props.contentComponent
             {...this.props.contentProps}
