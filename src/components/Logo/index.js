@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: 4,
   },
   text: {
-    color: "#FF4500",
+    color: theme.palette.secondary.light,
   },
 }));
 

@@ -19,7 +19,7 @@ export const themeObject = {
       contrastText: "#191919",
     },
     secondary: {
-      light: "#FE447B",
+      light: "#FF4500",
       main: "#447BFE",
       dark: "#929DA5",
     },
