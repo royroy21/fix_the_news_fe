@@ -8,14 +8,13 @@ export const registrationRoute = "/sign-up/";
 export const userNotLoggedInRoute = "/restricted-action/";
 
 // TODO move to settings file
-const baseURL = "http://localhost:8000";
+const baseURL = "http://localhost:8000/api";
 
 // Auth
-export const tokenLoginURL = `${baseURL}/auth/token/login/`;
-export const userDetailsURL = `${baseURL}/auth/users/me/`;
-export const userURL = `${baseURL}/auth/users/`;
+export const tokenLoginURL = `${baseURL}/authentication/token/login/`;
+export const userDetailsURL = `${baseURL}/authentication/users/me/`;
+export const userURL = `${baseURL}/authentication/users/`;
 
 // Backend API
-const baseAPIURL = `${baseURL}/api/`;
-export const newsItemsURL = `${baseAPIURL}news-items/`;
-export const topicsURL = `${baseAPIURL}topics/`;
+export const newsItemsURL = `${baseURL}/news-items/`;
+export const topicsURL = `${baseURL}/topics/`;
