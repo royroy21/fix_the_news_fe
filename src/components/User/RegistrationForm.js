@@ -92,7 +92,6 @@ class RegistrationForm extends Form {
         <Field
           Field={TextField}
           error={this.props.storeObject.error}
-          autoFocus
           required
           id={"first_name"}
           label={"First name"}

@@ -48,7 +48,6 @@ class NewsItemForm extends Form {
       <Fragment>
         <Field
           Field={TextField}
-          autoFocus
           error={this.props.storeObject.error}
           required
           id={"title"}
