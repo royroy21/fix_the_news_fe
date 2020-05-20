@@ -7,8 +7,8 @@ export const mobileMainMenuRoute = "/mobile-main-menu/";
 export const registrationRoute = "/sign-up/";
 export const userNotLoggedInRoute = "/restricted-action/";
 
-// TODO move to settings file
-const baseURL = "http://localhost:8000/api";
+const developmentBaseURL = "http://localhost:8000/api";
+const baseURL = process.env.REACT_APP_BACKEND_API_URL || developmentBaseURL;
 
 // Auth
 export const tokenLoginURL = `${baseURL}/authentication/token/login/`;
