@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import HeaderWrapper from "./wrapper";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {
-  localStorageAuthTokenKey,
   loginRoute,
   registrationRoute
 } from "../../settings";
@@ -49,7 +48,7 @@ const Header = (props) => {
 
   const logout = () => {
     props.actions.clearUser();
-    localStorage.removeItem(localStorageAuthTokenKey);
+    localStorage.clear();
   };
 
   const toolbarStyle = {
