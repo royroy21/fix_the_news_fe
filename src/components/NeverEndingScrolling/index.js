@@ -14,9 +14,10 @@ class NeverEndingScrolling extends Component {
     if (e.target.id !== this.props.id) {
       return
     }
-    const bottom = e.target.scrollHeight
-      - e.target.scrollTop
-      === e.target.clientHeight;
+
+    const bottom = ((e.target.scrollHeight - e.target.scrollTop) - 100)
+      < e.target.clientHeight;
+
     if (bottom && !this.props.store.loading) {
       const {next: nextURL} = (this.props.store.objects || {});
       if (nextURL) {
