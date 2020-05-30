@@ -19,13 +19,14 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     cursor: 'pointer',
     margin: '5px auto 5px auto',
-    width: 150,
+    width: 160,
     '&:hover': {
       color: theme.palette.secondary.light,
     },
   },
   messageIcon: {
     marginTop: 15,
+    marginRight: 5,
   },
   ExpandIcon: {
     marginTop: 10,
@@ -48,7 +49,7 @@ const CommentsButton = ({actions, commentsCount, store, topicId}) => {
           className={classes.messageIcon}
           fontSize={'small'}
         />
-        <p className={classes.text}>{`Comments ${commentsCount || ""}`}</p>
+        <p className={classes.text}>{`${commentsCount || ""} Comments`}</p>
         {isExpanded ? (
           <ExpandLessIcon className={classes.ExpandIcon} />
         ) : (
