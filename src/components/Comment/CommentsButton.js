@@ -4,14 +4,13 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {makeStyles} from "@material-ui/core/styles";
 import Comments from "../Comments";
-import TopicCommentsWrapper from "./wrapper";
+import CommentsWrapper from "./wrapper";
 
 const useStyles = makeStyles((theme) => ({
   container: {
     border: `1px solid ${theme.palette.primary.main}`,
     borderRadius: 4,
     marginTop: 5,
-    marginRight: theme.spacing(1),
   },
   content: {
     color: 'grey',
@@ -39,8 +38,14 @@ const useStyles = makeStyles((theme) => ({
 const CommentsButton = ({actions, commentsCount, store, topicId}) => {
   const [isExpanded, setExpanded] = useState(false);
   const classes = useStyles();
+  const containerStyle = store.appDimensions.isMobile
+    ? undefined
+    : {marginRight: 8};
   return (
-    <div className={classes.container}>
+    <div
+      className={classes.container}
+      style={containerStyle}
+    >
       <div
         className={classes.content}
         onClick={() => setExpanded(!isExpanded)}
@@ -68,4 +73,4 @@ const CommentsButton = ({actions, commentsCount, store, topicId}) => {
   )
 };
 
-export default TopicCommentsWrapper(CommentsButton);
+export default CommentsWrapper(CommentsButton);
