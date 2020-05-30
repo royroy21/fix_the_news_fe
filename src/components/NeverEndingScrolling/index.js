@@ -38,7 +38,7 @@ class NeverEndingScrolling extends Component {
         onScroll={this.handleScroll}
         style={{
           ...this.props.style,
-          overflowY: "scroll",
+          overflowY: "auto",
         }}
       >
       {this.props.store.items.map(item => (
