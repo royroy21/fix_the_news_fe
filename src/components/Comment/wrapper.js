@@ -8,6 +8,7 @@ import {
 const mapStateToProps = (state) => {
   return {
     store: {
+      appDimensions: state.appDimensions,
       topicComment: state.topicComment,
       topicComments: state.topicComments,
       user: state.user,
@@ -31,9 +32,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-const TopicCommentsWrapper = connect(
+const CommentWrapper = connect(
   mapStateToProps,
   mapDispatchToProps
 );
 
-export default TopicCommentsWrapper;
+export default CommentWrapper;
