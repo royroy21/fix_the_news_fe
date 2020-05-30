@@ -53,11 +53,13 @@ class Form extends React.Component {
             name={"non_field_errors"}
             error={error}
           />
-          <Button
-            label={this.props.buttonLabel}
-            onClick={this.handleSubmit}
-            style={{margin: "auto", display: "inline-block"}}
-          />
+          {this.props.withButton ? (
+            <Button
+              label={this.props.buttonLabel}
+              onClick={this.handleSubmit}
+              style={{margin: "auto", display: "inline-block"}}
+            />
+          ) : null}
           <LoadingModal
             loading={loading}
             error={!!error}
@@ -73,9 +75,14 @@ class Form extends React.Component {
 
 export default Form;
 
+Form.defaultProps = {
+  withButton: true,
+};
+
 Form.propTypes = {
   storeObject: PropTypes.object,
   successMessage: PropTypes.string.isRequired,
   buttonLabel: PropTypes.string,
   postSuccess: PropTypes.func,
+  withButton: PropTypes.bool.isRequired,
 };
