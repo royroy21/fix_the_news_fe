@@ -12,6 +12,7 @@ import addArticle from '../../images/addArticle.svg';
 import TopicWrapper from "./wrapper";
 import MobileNewsItemsContainer from "../NewsItems/MobileNewsItemsContainer";
 import {themeObject} from "../../theme";
+import CommentsButton from "../Comment/CommentsButton";
 
 const useStyles = makeStyles((theme) => ({
   buttonLinkContainer: {
@@ -94,6 +95,10 @@ const Topic = ({item, store}) => {
         ) : (
         <NewsItemsContainer topic={item} />
       )}
+      <CommentsButton
+        commentsCount={item.comments_count}
+        topicId={item.id}
+      />
     </div>
   )
 };
