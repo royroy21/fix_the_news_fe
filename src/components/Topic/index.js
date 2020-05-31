@@ -12,7 +12,7 @@ import addArticle from '../../images/addArticle.svg';
 import TopicWrapper from "./wrapper";
 import MobileNewsItemsContainer from "../NewsItems/MobileNewsItemsContainer";
 import {themeObject} from "../../theme";
-import CommentsButton from "../Comment/CommentsButton";
+import CommentsButton from "../Comments/CommentsButton";
 
 const useStyles = makeStyles((theme) => ({
   buttonLinkContainer: {

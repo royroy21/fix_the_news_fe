@@ -3,8 +3,8 @@ import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {makeStyles} from "@material-ui/core/styles";
-import Comments from "../Comments";
-import CommentsWrapper from "./wrapper";
+import Comments from "./index";
+import CommentsWrapper from "../Comment/wrapper";
 
 const useStyles = makeStyles((theme) => ({
   container: {
