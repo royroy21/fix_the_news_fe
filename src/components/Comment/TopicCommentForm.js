@@ -3,7 +3,7 @@ import React, {Fragment} from "react";
 import Field from "../Form/Field";
 import {TextField} from "@material-ui/core";
 
-class CommentForm extends Form {
+class TopicCommentForm extends Form {
 
   state = {
     formData: {
@@ -14,7 +14,7 @@ class CommentForm extends Form {
 
   componentDidMount() {
     this.setFormDefaults();
-    this.props.actions.clearTopicComment();
+    this.props.actions.clearComment();
   }
 
   setFormDefaults() {
@@ -58,4 +58,4 @@ class CommentForm extends Form {
 
 }
 
-export default CommentForm;
+export default TopicCommentForm;

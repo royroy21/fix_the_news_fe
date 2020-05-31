@@ -1,6 +1,6 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
-import CommentForm from "../Comment/CommentForm";
+import TopicCommentForm from "../Comment/TopicCommentForm";
 import Avatar from "@material-ui/core/Avatar";
 import NeverEndingScrolling from "../NeverEndingScrolling";
 import Comment from '../Comment';
@@ -34,10 +34,10 @@ const Comments = ({actions, store, topicId, user}) => {
           className={classes.avatar}
           src={userAvatar ? userAvatar : null}
         />
-        <CommentForm
+        <TopicCommentForm
           actions={actions}
           topicId={topicId}
-          storeObject={store.topicComment}
+          storeObject={store.comment}
           successMessage={"Comment successfully added"}
           withButton={false}
         />
