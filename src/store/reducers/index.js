@@ -4,7 +4,7 @@ import appDimensionsReducer from './appDimensions'
 import categoryNewsItemsReducer from './categoryNewsItems'
 import newsItemReducer from './newsItem'
 import registerReducer from './register'
-import topicComment from './topicComment'
+import comment from './comment'
 import topicComments from './topicComments'
 import tokenReducer from './token'
 import topicsReducer from './topics'
@@ -15,7 +15,7 @@ export default combineReducers({
   categoryNewsItems: categoryNewsItemsReducer,
   newsItem: newsItemReducer,
   register: registerReducer,
-  topicComment: topicComment,
+  comment: comment,
   topicComments: topicComments,
   token: tokenReducer,
   topics: topicsReducer,

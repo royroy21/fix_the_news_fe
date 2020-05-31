@@ -1,9 +1,9 @@
 import {
-  POST_TOPIC_COMMENT_BEGIN,
-  POST_TOPIC_COMMENT_SUCCESS,
-  POST_TOPIC_COMMENT_ERROR,
-  CLEAR_TOPIC_COMMENT,
-} from './../actions/topicComment';
+  POST_COMMENT_BEGIN,
+  POST_COMMENT_SUCCESS,
+  POST_COMMENT_ERROR,
+  CLEAR_COMMENT,
+} from './../actions/comment';
 
 const initialState = {
   object: null,
@@ -11,28 +11,28 @@ const initialState = {
   error: null,
 };
 
-const topicCommentReducer = (state = initialState, action) => {
+const commentReducer = (state = initialState, action) => {
   switch(action.type) {
-    case POST_TOPIC_COMMENT_BEGIN:
+    case POST_COMMENT_BEGIN:
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case POST_TOPIC_COMMENT_SUCCESS:
+    case POST_COMMENT_SUCCESS:
         return {
         ...state,
         loading: false,
         object: action.payload.data,
       };
-    case POST_TOPIC_COMMENT_ERROR:
+    case POST_COMMENT_ERROR:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
         object: null,
       };
-    case CLEAR_TOPIC_COMMENT:
+    case CLEAR_COMMENT:
       return {
         object: null,
         loading: false,
@@ -43,4 +43,4 @@ const topicCommentReducer = (state = initialState, action) => {
   }
 };
 
-export default topicCommentReducer;
+export default commentReducer;
