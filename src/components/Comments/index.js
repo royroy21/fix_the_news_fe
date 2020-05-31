@@ -40,6 +40,7 @@ const Comments = ({actions, store, topicId, user}) => {
           storeObject={store.comment}
           successMessage={"Comment successfully added"}
           withButton={false}
+          user={user}
         />
       </div>
       <NeverEndingScrolling
