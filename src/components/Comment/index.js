@@ -10,10 +10,9 @@ const useStyles = makeStyles((theme) => ({
   },
   textContainer: {
     backgroundColor: '#E8ECEF',
-    borderRadius: 4,
+    borderRadius: '4px 25px 25px 25px',
     padding: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-    marginTop: theme.spacing(1),
+    margin: `${theme.spacing(1)}px ${theme.spacing(1)}px ${theme.spacing(1)}px 0`,
   },
   name: {
     color: theme.palette.primary.dark,

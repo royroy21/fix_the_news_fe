@@ -24,14 +24,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   messageIcon: {
-    marginTop: 15,
+    marginTop: 5,
     marginRight: 5,
   },
   ExpandIcon: {
-    marginTop: 10,
   },
   text: {
     fontWeight: 'bold',
+    marginTop: 5,
   },
 }));
 
@@ -54,7 +54,9 @@ const CommentsButton = ({actions, commentsCount, store, topicId}) => {
           className={classes.messageIcon}
           fontSize={'small'}
         />
-        <p className={classes.text}>{`${commentsCount || ""} Comments`}</p>
+        <span className={classes.text}>
+          {`${commentsCount || ""} Comments`}
+        </span>
         {isExpanded ? (
           <ExpandLessIcon className={classes.ExpandIcon} />
         ) : (
