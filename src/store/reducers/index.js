@@ -5,6 +5,7 @@ import categoryNewsItemsReducer from './categoryNewsItems'
 import newsItemReducer from './newsItem'
 import registerReducer from './register'
 import commentReducer from './comment'
+import commentCommentsReducer from './commentComments'
 import topicCommentsReducer from './topicComments'
 import tokenReducer from './token'
 import topicsReducer from './topics'
@@ -16,6 +17,7 @@ export default combineReducers({
   newsItem: newsItemReducer,
   register: registerReducer,
   comment: commentReducer,
+  commentComments: commentCommentsReducer,
   topicComments: topicCommentsReducer,
   token: tokenReducer,
   topics: topicsReducer,
