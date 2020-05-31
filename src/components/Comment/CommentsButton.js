@@ -8,6 +8,7 @@ import CommentsWrapper from "./wrapper";
 
 const useStyles = makeStyles((theme) => ({
   container: {
+    backgroundColor: theme.palette.primary.light,
     border: `1px solid ${theme.palette.primary.main}`,
     borderRadius: 4,
     marginTop: 5,
