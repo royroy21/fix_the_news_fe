@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.dark,
     fontSize: '0.8em',
     fontWeight: 'bold',
+    width: 100,
     cursor: 'pointer',
     '&:hover': {
       color: theme.palette.secondary.light,
@@ -42,12 +43,6 @@ const useStyles = makeStyles((theme) => ({
   },
   repliesContainer: {
     color: theme.palette.secondary.main,
-    fontSize: '0.8em',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    '&:hover': {
-      color: theme.palette.secondary.light,
-    }
   },
   sectionText: {
     paddingLeft: theme.spacing(1),
@@ -83,7 +78,7 @@ const Comment = ({actions, item, store}) => {
       {showComments ? (
         <Fragment>
           <span
-            className={classes.repliesContainer}
+            className={classes.hide}
             onClick={() => setShowComments(false)}
             style={{
               marginLeft: `${smallColumnWidth}%`,
@@ -121,34 +116,24 @@ const Comment = ({actions, item, store}) => {
           </div>
         </Fragment>
       ) : (
-        <Fragment>
-          <div
-            className={classes.replyContainer}
-            style={{marginLeft: `${smallColumnWidth}%`}}
-          >
+        <div
+          className={classes.replyContainer}
+          onClick={() => setShowComments(true)}
+          style={{marginLeft: `${smallColumnWidth}%`}}
+        >
+          <div>
             <img src={reply} alt="??" />
-            <span
-              className={classes.sectionText}
-              onClick={() => setShowComments(true)}
-            >
-              {'reply'}
-            </span>
+            <span className={classes.sectionText}>{'reply'}</span>
           </div>
           {item.comments_count ? (
-          <div
-            className={classes.repliesContainer}
-            style={{marginLeft: `${smallColumnWidth}%`}}
-          >
+          <div className={classes.repliesContainer}>
             <img style={{transform: 'scale(-1,-1)'}} src={reply} alt="??" />
-            <span
-              className={classes.sectionText}
-              onClick={() => setShowComments(true)}
-            >
+            <span className={classes.sectionText}>
               {`${item.comments_count} ${item.comments_count === 1 ? 'reply': 'replies'}`}
             </span>
           </div>
         ) : null}
-        </Fragment>
+        </div>
       )}
     </div>
   )
