@@ -105,8 +105,9 @@ const Comment = ({actions, item, store}) => {
                 commentId={item.id}
                 storeObject={store.comment}
                 successMessage={"Comment successfully added"}
-                withButton={false}
                 user={store.user}
+                withButton={false}
+                withLoadingModal={false}
               />
             </div>
           </div>
