@@ -47,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Comment = ({actions, item, store}) => {
-  const [addComment, setAddComment] = useState(false);
   const [showComments, setShowComments] = useState(false);
   const classes = useStyles();
   const {avatar, first_name, last_name} = item.serialized_user;
@@ -93,7 +92,7 @@ const Comment = ({actions, item, store}) => {
         </div>
         ) : null
       )}
-      {addComment ? (
+      {showComments ? (
         <div style={{
           ...commentStyle,
           width: `${largeColumnWidth}%`,
@@ -122,7 +121,7 @@ const Comment = ({actions, item, store}) => {
           <img src={reply} alt="??" />
           <span
             className={classes.sectionText}
-            onClick={() => setAddComment(true)}
+            onClick={() => setShowComments(true)}
           >
             {'reply'}
           </span>
