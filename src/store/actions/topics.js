@@ -4,6 +4,9 @@ import {topicsURL} from "../../settings";
 export const GET_TOPICS_BEGIN   = 'GET_TOPICS_BEGIN';
 export const GET_TOPICS_SUCCESS = 'GET_TOPICS_SUCCESS';
 export const GET_TOPICS_ERROR = 'GET_TOPICS_ERROR';
+export const REFRESH_TOPIC_BEGIN   = 'REFRESH_TOPIC_BEGIN';
+export const REFRESH_TOPIC_SUCCESS = 'REFRESH_TOPIC_SUCCESS';
+export const REFRESH_TOPIC_ERROR = 'REFRESH_TOPIC_ERROR';
 export const CLEAR_TOPICS = 'CLEAR_TOPICS';
 
 export const getTopicsBegin = data => ({
@@ -28,4 +31,27 @@ export const getTopics = (params={}) => new DispatchAPI().get(
   getTopicsError,
   null,
   params,
+);
+
+export const refreshTopicBegin = data => ({
+  type: REFRESH_TOPIC_BEGIN,
+  payload: { data },
+});
+
+export const refreshTopicSuccess = data => ({
+  type: REFRESH_TOPIC_SUCCESS,
+  payload: { data },
+});
+
+export const refreshTopicError = error => ({
+  type: REFRESH_TOPIC_ERROR,
+  payload: { error },
+});
+
+export const refreshTopic = (id) => new DispatchAPI().get(
+  topicsURL,
+  refreshTopicBegin,
+  refreshTopicSuccess,
+  refreshTopicError,
+  id,
 );
