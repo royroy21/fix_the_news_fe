@@ -37,6 +37,7 @@ const topicCommentsReducer = (state = {}, action) => {
           items: combineLists(
             getTopicComments(action, state).items,
             action.payload.data.results,
+            action.newOnTop,
           ),
         },
       };

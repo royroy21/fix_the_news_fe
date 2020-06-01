@@ -37,6 +37,7 @@ const commentCommentsReducer = (state = {}, action) => {
           items: combineLists(
             getCommentComments(action, state).items,
             action.payload.data.results,
+            action.newOnTop,
           ),
         },
       };

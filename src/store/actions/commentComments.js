@@ -16,6 +16,7 @@ export const getCommentCommentsSuccess = (data, params) => ({
   type: GET_COMMENT_COMMENTS_SUCCESS,
   params,
   payload: { data },
+  newOnTop: true,
 });
 
 export const getCommentCommentsError = (error, params) => ({

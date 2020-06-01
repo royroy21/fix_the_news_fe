@@ -16,6 +16,7 @@ export const getTopicCommentsSuccess = (data, params) => ({
   type: GET_TOPIC_COMMENTS_SUCCESS,
   params,
   payload: { data },
+  newOnTop: true,
 });
 
 export const getTopicCommentsError = (error, params) => ({
