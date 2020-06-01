@@ -6,6 +6,7 @@ import CommentCommentForm from "./CommentCommentForm";
 import reply from '../../images/reply.svg';
 import NestedComments from "../Comments/NestedComments";
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import { getHowLongAgo } from "../../helpers/dateFunctions";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -75,7 +76,7 @@ const Comment = ({actions, item, store}) => {
       <div style={commentStyle}>
         <Avatar className={classes.avatar} src={avatar} />
         <div className={classes.textContainer}>
-          <span className={classes.name}>{`${first_name} ${last_name}`}</span>
+          <span className={classes.name}>{`${first_name} ${last_name} - ${getHowLongAgo(item.date_created)}`}</span>
           <p className={classes.text}>{item.text}</p>
         </div>
       </div>
