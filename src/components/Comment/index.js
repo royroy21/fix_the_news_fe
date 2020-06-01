@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, {Fragment, useState} from "react";
 import Avatar from "@material-ui/core/Avatar";
 import {makeStyles} from "@material-ui/core/styles";
 import CommentWrapper from "./wrapper";
 import CommentCommentForm from "./CommentCommentForm";
 import reply from '../../images/reply.svg';
 import NestedComments from "../Comments/NestedComments";
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
     margin: `${theme.spacing(2)}px auto auto auto`,
+  },
+  hide: {
+    color: theme.palette.primary.dark,
+    fontSize: '0.8em',
+    fontWeight: 'bold',
+    cursor: 'pointer',
+    '&:hover': {
+      color: theme.palette.secondary.light,
+    }
   },
   textContainer: {
     backgroundColor: '#E8ECEF',
@@ -70,62 +80,73 @@ const Comment = ({actions, item, store}) => {
         </div>
       </div>
       {showComments ? (
-        <div style={{marginLeft: `${smallColumnWidth}%`}}>
-          <NestedComments
-            actions={actions}
-            item={item}
-            store={store}
-          />
-        </div>
-      ) : (item.comments_count ? (
-        <div
-          className={classes.repliesContainer}
-          style={{marginLeft: `${smallColumnWidth}%`}}
-        >
-          <img style={{transform: 'scale(-1,-1)'}} src={reply} alt="??" />
+        <Fragment>
           <span
-            className={classes.sectionText}
-            onClick={() => setShowComments(true)}
+            className={classes.repliesContainer}
+            onClick={() => setShowComments(false)}
+            style={{
+              marginLeft: `${smallColumnWidth}%`,
+            }}
           >
-            {`${item.comments_count} ${item.comments_count === 1 ? 'reply': 'replies'}`}
+            <ExpandLessIcon />
           </span>
-        </div>
-        ) : null
-      )}
-      {showComments ? (
-        <div style={{
-          ...commentStyle,
-          width: `${largeColumnWidth}%`,
-          marginLeft: `${smallColumnWidth}%`,
-        }}>
-          <Avatar
-            className={classes.avatar}
-            src={userAvatar ? userAvatar : null}
-          />
-          <div style={{width: '98%'}}>
-            <CommentCommentForm
+          <div style={{
+            ...commentStyle,
+            width: `${largeColumnWidth}%`,
+            marginLeft: `${smallColumnWidth}%`,
+          }}>
+            <Avatar
+              className={classes.avatar}
+              src={userAvatar ? userAvatar : null}
+            />
+            <div style={{width: '98%'}}>
+              <CommentCommentForm
+                actions={actions}
+                commentId={item.id}
+                storeObject={store.comment}
+                successMessage={"Comment successfully added"}
+                withButton={false}
+                user={store.user}
+              />
+            </div>
+          </div>
+          <div style={{marginLeft: `${smallColumnWidth}%`}}>
+            <NestedComments
               actions={actions}
-              commentId={item.id}
-              storeObject={store.comment}
-              successMessage={"Comment successfully added"}
-              withButton={false}
-              user={store.user}
+              item={item}
+              store={store}
             />
           </div>
-        </div>
+        </Fragment>
       ) : (
-        <div
-          className={classes.replyContainer}
-          style={{marginLeft: `${smallColumnWidth}%`}}
-        >
-          <img src={reply} alt="??" />
-          <span
-            className={classes.sectionText}
-            onClick={() => setShowComments(true)}
+        <Fragment>
+          <div
+            className={classes.replyContainer}
+            style={{marginLeft: `${smallColumnWidth}%`}}
           >
-            {'reply'}
-          </span>
-        </div>
+            <img src={reply} alt="??" />
+            <span
+              className={classes.sectionText}
+              onClick={() => setShowComments(true)}
+            >
+              {'reply'}
+            </span>
+          </div>
+          {item.comments_count ? (
+          <div
+            className={classes.repliesContainer}
+            style={{marginLeft: `${smallColumnWidth}%`}}
+          >
+            <img style={{transform: 'scale(-1,-1)'}} src={reply} alt="??" />
+            <span
+              className={classes.sectionText}
+              onClick={() => setShowComments(true)}
+            >
+              {`${item.comments_count} ${item.comments_count === 1 ? 'reply': 'replies'}`}
+            </span>
+          </div>
+        ) : null}
+        </Fragment>
       )}
     </div>
   )
