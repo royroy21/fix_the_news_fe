@@ -12,6 +12,7 @@ const NestedComments = ({actions, item, store}) => {
       ItemComponent={Comment}
       store={store.commentComments[item.id] || initialCommentCommentsState}
       style={{maxHeight: 400}}
+      showLoadingAtFirstLoad={false}
     />
   )
 };

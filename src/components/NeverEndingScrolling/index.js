@@ -32,6 +32,16 @@ class NeverEndingScrolling extends Component {
       return <Error />
     }
 
+    if (this.props.showLoadingAtFirstLoad
+        && this.props.store.loading
+        && !!!this.props.store.items.length) {
+      return <Loading />
+    }
+
+    if (!!!this.props.store.items.length) {
+      return null
+    }
+
     return (
       <div
         id={this.props.id}
@@ -57,6 +67,7 @@ export default NeverEndingScrolling;
 
 NeverEndingScrolling.defaultProps = {
   style: {},
+  showLoadingAtFirstLoad: true,
 };
 
 NeverEndingScrolling.propTypes = {
@@ -69,4 +80,5 @@ NeverEndingScrolling.propTypes = {
     PropTypes.func,
   ]),
   style: PropTypes.object.isRequired,
+  showLoadingAtFirstLoad: PropTypes.bool.isRequired,
 };
