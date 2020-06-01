@@ -1,6 +1,7 @@
 import {
   GET_COMMENT_COMMENTS_BEGIN,
   GET_COMMENT_COMMENTS_SUCCESS,
+  GET_COMMENT_COMMENTS_SUCCESS_AFTER_ADDING_COMMENT,
   GET_COMMENT_COMMENTS_ERROR,
   CLEAR_COMMENT_COMMENTS,
 } from './../actions/commentComments';
@@ -37,7 +38,20 @@ const commentCommentsReducer = (state = {}, action) => {
           items: combineLists(
             getCommentComments(action, state).items,
             action.payload.data.results,
-            action.newOnTop,
+          ),
+        },
+      };
+    case GET_COMMENT_COMMENTS_SUCCESS_AFTER_ADDING_COMMENT:
+      return {
+        ...state,
+        [action.params.comment]: {
+          objects: action.payload.data,
+          loading: false,
+          error: null,
+          items: combineLists(
+            getCommentComments(action, state).items,
+            action.payload.data.results,
+            true
           ),
         },
       };

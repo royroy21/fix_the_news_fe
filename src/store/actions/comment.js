@@ -1,7 +1,7 @@
 import DispatchAPI from "../../api";
 import {commentsURL} from "../../settings";
-import { getTopicComments } from "./topicComments";
-import { getCommentComments } from "./commentComments";
+import { getTopicCommentsAfterAddingComment } from "./topicComments";
+import { getCommentCommentsAfterAddingComment } from "./commentComments";
 import {refreshTopic} from "./topics";
 
 export const POST_COMMENT_BEGIN   = 'POST_COMMENT_BEGIN';
@@ -37,7 +37,7 @@ export const postCommentComment = (data) => new DispatchAPI().create(
   data,
   null,
   [
-    () => getCommentComments({
+    () => getCommentCommentsAfterAddingComment({
       comment: data.get("comment"),
     }),
   ]
@@ -52,7 +52,7 @@ export const postTopicComment = (data) => new DispatchAPI().create(
   null,
   [
     () => refreshTopic(data.get("topic")),
-    () => getTopicComments({
+    () => getTopicCommentsAfterAddingComment({
       topic: data.get("topic"),
     }),
   ]
