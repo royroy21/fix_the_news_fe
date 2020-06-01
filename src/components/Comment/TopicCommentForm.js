@@ -72,5 +72,6 @@ class TopicCommentForm extends Form {
 export default withRouter(TopicCommentForm);
 
 TopicCommentForm.propTypes = {
+  topicId: PropTypes.number.isRequired,
   user: PropTypes.object.isRequired,
 };
