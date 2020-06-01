@@ -4,7 +4,7 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {makeStyles} from "@material-ui/core/styles";
 import Comments from "./index";
-import CommentsWrapper from "../Comment/wrapper";
+import CommentsWrapper from "./wrapper";
 
 const useStyles = makeStyles((theme) => ({
   container: {
