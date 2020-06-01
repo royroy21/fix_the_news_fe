@@ -66,7 +66,7 @@ const Comment = ({actions, item, store}) => {
       <div style={commentStyle}>
         <Avatar className={classes.avatar} src={avatar} />
         <div className={classes.textContainer}>
-          <span className={classes.name}>{`${first_name} ${last_name} ${item.id}`}</span>
+          <span className={classes.name}>{`${first_name} ${last_name}`}</span>
           <p className={classes.text}>{item.text}</p>
         </div>
       </div>
