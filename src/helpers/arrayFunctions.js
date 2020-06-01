@@ -20,3 +20,19 @@ export const combineLists = (originalList, newList) => {
     ...filteredNewList,
   ]
 };
+
+export const refreshItemInList = (list, newObject) => {
+  /*
+  * Takes an array containing objects with id field.
+  * Replaces a matching object with the newObject.
+  * */
+  const newList = [];
+  for (const item of list) {
+    if (item.id === newObject.id) {
+      newList.push(newObject)
+    } else {
+      newList.push(item)
+    }
+  }
+  return newList;
+};
