@@ -70,6 +70,29 @@ const Comment = ({actions, item, store}) => {
           <p className={classes.text}>{item.text}</p>
         </div>
       </div>
+      {showComments ? (
+        <div style={{marginLeft: `${smallColumnWidth}%`}}>
+          <NestedComments
+            actions={actions}
+            item={item}
+            store={store}
+          />
+        </div>
+      ) : (item.comments_count ? (
+        <div
+          className={classes.repliesContainer}
+          style={{marginLeft: `${smallColumnWidth}%`}}
+        >
+          <img style={{transform: 'scale(-1,-1)'}} src={reply} alt="??" />
+          <span
+            className={classes.sectionText}
+            onClick={() => setShowComments(true)}
+          >
+            {`${item.comments_count} ${item.comments_count === 1 ? 'reply': 'replies'}`}
+          </span>
+        </div>
+        ) : null
+      )}
       {addComment ? (
         <div style={{
           ...commentStyle,
@@ -104,29 +127,6 @@ const Comment = ({actions, item, store}) => {
             {'reply'}
           </span>
         </div>
-      )}
-      {showComments ? (
-        <div style={{marginLeft: `${smallColumnWidth}%`}}>
-          <NestedComments
-            actions={actions}
-            item={item}
-            store={store}
-          />
-        </div>
-      ) : (item.comments_count ? (
-        <div
-          className={classes.repliesContainer}
-          style={{marginLeft: `${smallColumnWidth}%`}}
-        >
-          <img style={{transform: 'scale(-1,-1)'}} src={reply} alt="??" />
-          <span
-            className={classes.sectionText}
-            onClick={() => setShowComments(true)}
-          >
-            {`${item.comments_count} ${item.comments_count === 1 ? 'reply': 'replies'}`}
-          </span>
-        </div>
-        ) : null
       )}
     </div>
   )
