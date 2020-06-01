@@ -58,7 +58,6 @@ class Root extends Component {
   render() {
     const isMobile = this.getIsMobile();
     const isSmallScreen = this.getIsSmallScreen();
-    const width = isSmallScreen || isMobile ? "100%" : "70%";
 
     const rootStyle = {
       backgroundColor: "#F8F9F9",
@@ -74,8 +73,12 @@ class Root extends Component {
     const innerContainerStyle = {
       display: "flex",
       flexDirection: "column",
-      width,
+      width: "100%",
       margin: "0 auto 0 auto",
+    };
+    const topicsStyle = isSmallScreen || isMobile ? {} : {
+      paddingLeft: '15%',
+      paddingRight: '15%',
     };
 
     return (
@@ -84,7 +87,7 @@ class Root extends Component {
         {isMobile ? <HeaderMobile /> : <Header isSmallScreen={isSmallScreen}/>}
         <div style={outerContainerStyle}>
           <div style={innerContainerStyle}>
-            <Topics id={"topics"}/>
+            <Topics id={"topics"} style={topicsStyle} />
           </div>
         </div>
       </div>

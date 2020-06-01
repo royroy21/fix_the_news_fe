@@ -39,14 +39,8 @@ const useStyles = makeStyles((theme) => ({
 const CommentsButton = ({actions, commentsCount, store, topicId}) => {
   const [isExpanded, setExpanded] = useState(false);
   const classes = useStyles();
-  const containerStyle = store.appDimensions.isMobile
-    ? undefined
-    : {marginRight: 8};
   return (
-    <div
-      className={classes.container}
-      style={containerStyle}
-    >
+    <div className={classes.container}>
       <div
         className={classes.content}
         onClick={() => setExpanded(!isExpanded)}

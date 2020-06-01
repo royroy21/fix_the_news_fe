@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 4,
     flex: 1,
     position: "relative",
-    marginRight: theme.spacing(1),
+    // marginRight: theme.spacing(1),
   },
   newsItemsContent: {
     paddingLeft: theme.spacing(2),
@@ -52,6 +52,7 @@ const NewsItemsContainer = ({topic}) => {
         <div
           className={classes.newsItemsContainer}
           key={`news-item-${category.id}`}
+          style={['for', 'neutral'].includes(category.type) ? {marginRight: 10} : undefined}
         >
           <div style={getCategoryIndicatorStyle(category)}
           >{""}</div>
