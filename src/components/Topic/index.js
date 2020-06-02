@@ -44,14 +44,8 @@ const Topic = ({item, store}) => {
   if (isMobile === null) {
     return null;
   }
-  const extraRootStyle = isMobile
-    ? {borderBottom: `1px solid ${themeObject.palette.primary.main}`}
-    : null;
   return (
-    <div
-      className={classes.root}
-      style={extraRootStyle}
-    >
+    <div className={classes.root}>
       <div
         className={classes.headerContainer}
         style={!isMobile ? {paddingBottom: 5} : undefined}
