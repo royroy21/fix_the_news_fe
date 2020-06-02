@@ -40,7 +40,10 @@ const CommentsButton = ({actions, commentsCount, store, topicId}) => {
   const [isExpanded, setExpanded] = useState(false);
   const classes = useStyles();
   return (
-    <div className={classes.container}>
+    <div
+      className={classes.container}
+      style={store.appDimensions.isMobile ? {marginRight: 10} : undefined}
+    >
       <div
         className={classes.content}
         onClick={() => setExpanded(!isExpanded)}

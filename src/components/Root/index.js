@@ -76,6 +76,10 @@ class Root extends Component {
       width: "100%",
       margin: "0 auto 0 auto",
     };
+    if (isMobile) {
+      innerContainerStyle.padding = 5;
+    }
+
     const topicsStyle = isSmallScreen || isMobile ? {} : {
       paddingLeft: '15%',
       paddingRight: '15%',
