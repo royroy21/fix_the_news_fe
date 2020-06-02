@@ -138,7 +138,7 @@ const Comment = ({actions, item, store}) => {
           <div className={classes.repliesContainer}>
             <img style={{transform: 'scale(-1,-1)'}} src={reply} alt="??" />
             <span className={classes.sectionText}>
-              {`${item.comments_count} ${item.comments_count === 1 ? 'reply': 'replies'}`}
+              {'replies'}
             </span>
           </div>
         ) : null}

@@ -53,7 +53,7 @@ const CommentsButton = ({actions, commentsCount, store, topicId}) => {
           fontSize={'small'}
         />
         <span className={classes.text}>
-          {`${commentsCount || ""} Comments`}
+          {'Comments'}
         </span>
         {isExpanded ? (
           <ExpandLessIcon className={classes.ExpandIcon} />
