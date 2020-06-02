@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 4,
     flex: 1,
     position: "relative",
-    // marginRight: theme.spacing(1),
   },
   newsItemsContent: {
     paddingLeft: theme.spacing(2),
