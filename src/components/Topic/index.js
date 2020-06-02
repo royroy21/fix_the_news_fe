@@ -11,7 +11,6 @@ import share from '../../images/share.svg';
 import addArticle from '../../images/addArticle.svg';
 import TopicWrapper from "./wrapper";
 import MobileNewsItemsContainer from "../NewsItems/MobileNewsItemsContainer";
-import {themeObject} from "../../theme";
 import CommentsButton from "../Comments/CommentsButton";
 
 const useStyles = makeStyles((theme) => ({
