@@ -54,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Comment = ({actions, item, store}) => {
   const [showComments, setShowComments] = useState(false);
+  const [showAddComment, setShowAddComment] = useState(false);
   const classes = useStyles();
   const {avatar, first_name, last_name} = item.serialized_user;
   const userAvatar = (store.user.object || {}).avatar;
@@ -72,7 +73,7 @@ const Comment = ({actions, item, store}) => {
     commentStyle.gridTemplateColumns = `${smallColumnWidth}% ${largeColumnWidth}%`;
   }
   return (
-    <div>
+    <Fragment>
       <div style={commentStyle}>
         {!isMobile ? (
           <Avatar className={classes.avatar} src={avatar} />
@@ -82,11 +83,11 @@ const Comment = ({actions, item, store}) => {
           <p className={classes.text}>{item.text}</p>
         </div>
       </div>
-      {showComments ? (
+      {showAddComment ? (
         <Fragment>
           <span
             className={classes.hide}
-            onClick={() => setShowComments(false)}
+            onClick={() => setShowAddComment(false)}
             style={{
               marginLeft: `${smallColumnWidth}%`,
             }}
@@ -116,6 +117,28 @@ const Comment = ({actions, item, store}) => {
               />
             </div>
           </div>
+        </Fragment>
+      ) : (
+        <div
+          className={classes.replyContainer}
+          onClick={() => setShowAddComment(true)}
+          style={{marginLeft: `${smallColumnWidth}%`}}
+        >
+          <img src={reply} alt="??" />
+          <span className={classes.sectionText}>{'reply'}</span>
+        </div>
+      )}
+      {showComments ? (
+        <Fragment>
+          <span
+            className={classes.hide}
+            onClick={() => setShowComments(false)}
+            style={{
+              marginLeft: `${smallColumnWidth}%`,
+            }}
+          >
+            <ExpandLessIcon />
+          </span>
           <div style={{marginLeft: `${smallColumnWidth}%`}}>
             <NestedComments
               actions={actions}
@@ -130,10 +153,6 @@ const Comment = ({actions, item, store}) => {
           onClick={() => setShowComments(true)}
           style={{marginLeft: `${smallColumnWidth}%`}}
         >
-          <div>
-            <img src={reply} alt="??" />
-            <span className={classes.sectionText}>{'reply'}</span>
-          </div>
           {item.comments_count ? (
           <div className={classes.repliesContainer}>
             <img style={{transform: 'scale(-1,-1)'}} src={reply} alt="??" />
@@ -144,7 +163,7 @@ const Comment = ({actions, item, store}) => {
         ) : null}
         </div>
       )}
-    </div>
+    </Fragment>
   )
 };
 
