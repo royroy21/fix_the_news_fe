@@ -109,6 +109,7 @@ const Comment = ({actions, item, store}) => {
               <CommentCommentForm
                 actions={actions}
                 commentId={item.id}
+                onSuccess={() => setShowComments(true)}
                 storeObject={store.comment}
                 successMessage={"Comment successfully added"}
                 user={store.user}

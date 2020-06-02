@@ -20,6 +20,20 @@ class CommentCommentForm extends Form {
     this.props.actions.clearComment();
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (!this.props.storeObject.loading
+        && this.props.storeObject.object
+        && prevProps.storeObject.loading) {
+      this.onSuccess();
+    }
+  }
+
+  onSuccess() {
+    if (this.props.onSuccess) {
+      this.props.onSuccess()
+    }
+  }
+
   setFormDefaults() {
     const commentId = this.props.commentId;
     this.setState(state => ({
@@ -73,5 +87,6 @@ export default withRouter(CommentCommentForm);
 
 CommentCommentForm.propTypes = {
   commentId: PropTypes.number.isRequired,
+  onSuccess: PropTypes.func,
   user: PropTypes.object.isRequired,
 };
