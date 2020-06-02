@@ -63,13 +63,20 @@ const Comment = ({actions, item, store}) => {
     marginLeft: 'auto',
     marginRight: 'auto',
   };
-  const largeColumnWidth = store.appDimensions.isMobile ? 80 : 90;
-  const smallColumnWidth = store.appDimensions.isMobile ? 20 : 10;
-  commentStyle.gridTemplateColumns = `${smallColumnWidth}% ${largeColumnWidth}%`;
+  const { isMobile } = store.appDimensions;
+  const largeColumnWidth = isMobile ? 95 : 90;
+  const smallColumnWidth = isMobile ? 5 : 10;
+  if (isMobile) {
+    commentStyle.gridTemplateColumns = `${largeColumnWidth}%`;
+  } else {
+    commentStyle.gridTemplateColumns = `${smallColumnWidth}% ${largeColumnWidth}%`;
+  }
   return (
     <div>
       <div style={commentStyle}>
-        <Avatar className={classes.avatar} src={avatar} />
+        {!isMobile ? (
+          <Avatar className={classes.avatar} src={avatar} />
+        ) : null}
         <div className={classes.textContainer}>
           <span className={classes.name}>{`${first_name} ${last_name} - ${getHowLongAgo(item.date_created)}`}</span>
           <p className={classes.text}>{item.text}</p>
@@ -91,10 +98,12 @@ const Comment = ({actions, item, store}) => {
             width: `${largeColumnWidth}%`,
             marginLeft: `${smallColumnWidth}%`,
           }}>
-            <Avatar
-              className={classes.avatar}
-              src={userAvatar ? userAvatar : null}
-            />
+            {!isMobile ? (
+              <Avatar
+                className={classes.avatar}
+                src={userAvatar ? userAvatar : null}
+              />
+            ) : null}
             <div style={{width: '98%'}}>
               <CommentCommentForm
                 actions={actions}

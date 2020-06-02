@@ -24,16 +24,19 @@ const Comments = ({actions, store, topicId, user}) => {
     marginLeft: 'auto',
     marginRight: 'auto',
   };
-  addBaseCommentStyle.gridTemplateColumns = store.appDimensions.isMobile
-    ? '20% 80%'
+  const { isMobile } = store.appDimensions;
+  addBaseCommentStyle.gridTemplateColumns = isMobile
+    ? '100%'
     : '10% 90%';
   return (
     <div className={classes.container}>
       <div style={addBaseCommentStyle}>
-        <Avatar
-          className={classes.avatar}
-          src={userAvatar ? userAvatar : null}
-        />
+        {!isMobile ? (
+          <Avatar
+            className={classes.avatar}
+            src={userAvatar ? userAvatar : null}
+          />
+        ) : null}
         <TopicCommentForm
           actions={actions}
           topicId={topicId}
