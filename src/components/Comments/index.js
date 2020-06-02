@@ -1,47 +1,60 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
-import CommentForm from "../Comment/CommentForm";
+import TopicCommentForm from "../Comment/TopicCommentForm";
 import Avatar from "@material-ui/core/Avatar";
+import NeverEndingScrolling from "../NeverEndingScrolling";
+import Comment from '../Comment';
+import {initialTopicCommentsState} from "../../store/reducers/topicComments";
 
 const useStyles = makeStyles((theme) => ({
-  addBaseComment: {
-    display: 'inline-grid',
-    gridTemplateColumns: '10% 90%',
-    width: '100%',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-  },
   avatar: {
     margin: 'auto',
   },
   container: {
     padding: theme.spacing(1),
-    maxHeight: 300,
   },
 }));
 
 const Comments = ({actions, store, topicId, user}) => {
-  useEffect(
-    () => {actions.getTopicComments({topic: topicId})},
-    [actions, topicId],
-  );
   const classes = useStyles();
   const userAvatar = (user.object || {}).avatar;
+  const addBaseCommentStyle = {
+    display: 'inline-grid',
+    width: '100%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  };
+  const { isMobile } = store.appDimensions;
+  addBaseCommentStyle.gridTemplateColumns = isMobile
+    ? '100%'
+    : '10% 90%';
   return (
     <div className={classes.container}>
-      <div className={classes.addBaseComment}>
-        <Avatar
-          className={classes.avatar}
-          src={userAvatar ? userAvatar : null}
-        />
-        <CommentForm
+      <div style={addBaseCommentStyle}>
+        {!isMobile ? (
+          <Avatar
+            className={classes.avatar}
+            src={userAvatar ? userAvatar : null}
+          />
+        ) : null}
+        <TopicCommentForm
           actions={actions}
           topicId={topicId}
-          storeObject={store.topicComment}
+          storeObject={store.comment}
           successMessage={"Comment successfully added"}
+          user={user}
           withButton={false}
+          withLoadingModal={false}
         />
       </div>
+      <NeverEndingScrolling
+        getInitialRequest={() => actions.getTopicComments({topic: topicId})}
+        getNext={actions.getTopicComments}
+        id={`comments-for-topic-${topicId}`}
+        ItemComponent={Comment}
+        store={store.topicComments[topicId] || initialTopicCommentsState}
+        style={{maxHeight: 400}}
+      />
     </div>
   )
 };

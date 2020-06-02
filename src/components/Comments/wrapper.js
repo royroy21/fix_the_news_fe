@@ -1,16 +1,17 @@
 import { connect } from 'react-redux'
+import {getTopicComments} from "../../store/actions/topicComments";
 import {
   clearComment,
   postCommentComment,
+  postTopicComment
 } from "../../store/actions/comment";
-import {getCommentComments} from "../../store/actions/commentComments";
 
 const mapStateToProps = (state) => {
   return {
     store: {
       appDimensions: state.appDimensions,
       comment: state.comment,
-      commentComments: state.commentComments,
+      topicComments: state.topicComments,
       user: state.user,
     },
   }
@@ -19,11 +20,14 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
-      getCommentComments: params => {
-        dispatch(getCommentComments(params))
+      getTopicComments: params => {
+        dispatch(getTopicComments(params))
       },
       postCommentComment: data => {
         dispatch(postCommentComment(data))
+      },
+      postTopicComment: data => {
+        dispatch(postTopicComment(data))
       },
       clearComment: () => {
         dispatch(clearComment());
@@ -33,9 +37,9 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
-const CommentWrapper = connect(
+const CommentsWrapper = connect(
   mapStateToProps,
   mapDispatchToProps,
 );
 
-export default CommentWrapper;
+export default CommentsWrapper;

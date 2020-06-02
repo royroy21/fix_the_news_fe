@@ -11,8 +11,7 @@ import share from '../../images/share.svg';
 import addArticle from '../../images/addArticle.svg';
 import TopicWrapper from "./wrapper";
 import MobileNewsItemsContainer from "../NewsItems/MobileNewsItemsContainer";
-import {themeObject} from "../../theme";
-import CommentsButton from "../Comment/CommentsButton";
+import CommentsButton from "../Comments/CommentsButton";
 
 const useStyles = makeStyles((theme) => ({
   buttonLinkContainer: {
@@ -30,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     marginTop: theme.spacing(2),
-    padding: theme.spacing(1),
   },
   title: {
     fontWeight: "bold",
@@ -45,14 +43,8 @@ const Topic = ({item, store}) => {
   if (isMobile === null) {
     return null;
   }
-  const extraRootStyle = isMobile
-    ? {borderBottom: `1px solid ${themeObject.palette.primary.main}`}
-    : null;
   return (
-    <div
-      className={classes.root}
-      style={extraRootStyle}
-    >
+    <div className={classes.root}>
       <div
         className={classes.headerContainer}
         style={!isMobile ? {paddingBottom: 5} : undefined}

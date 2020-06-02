@@ -2,9 +2,14 @@ import {
   GET_TOPICS_BEGIN,
   GET_TOPICS_SUCCESS,
   GET_TOPICS_ERROR,
+
+  REFRESH_TOPIC_BEGIN,
+  REFRESH_TOPIC_SUCCESS,
+  REFRESH_TOPIC_ERROR,
+
   CLEAR_TOPICS,
 } from './../actions/topics';
-import {combineLists} from "../../helpers/arrayFunctions";
+import {combineLists, refreshItemInList} from "../../helpers/arrayFunctions";
 
 const initialState = {
   objects: null,
@@ -32,6 +37,28 @@ const topicsReducer = (state = initialState, action) => {
         ),
       };
     case GET_TOPICS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+      };
+    case REFRESH_TOPIC_BEGIN:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case REFRESH_TOPIC_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        items: refreshItemInList(
+          state.items,
+          action.payload.data,
+        ),
+      };
+    case REFRESH_TOPIC_ERROR:
       return {
         ...state,
         loading: false,

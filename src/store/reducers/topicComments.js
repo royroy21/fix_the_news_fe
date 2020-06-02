@@ -1,6 +1,7 @@
 import {
   GET_TOPIC_COMMENTS_BEGIN,
   GET_TOPIC_COMMENTS_SUCCESS,
+  GET_TOPIC_COMMENTS_SUCCESS_AFTER_ADDING_COMMENT,
   GET_TOPIC_COMMENTS_ERROR,
   CLEAR_TOPIC_COMMENTS,
 } from './../actions/topicComments';
@@ -37,6 +38,20 @@ const topicCommentsReducer = (state = {}, action) => {
           items: combineLists(
             getTopicComments(action, state).items,
             action.payload.data.results,
+          ),
+        },
+      };
+    case GET_TOPIC_COMMENTS_SUCCESS_AFTER_ADDING_COMMENT:
+      return {
+        ...state,
+        [action.params.topic]: {
+          objects: action.payload.data,
+          loading: false,
+          error: null,
+          items: combineLists(
+            getTopicComments(action, state).items,
+            action.payload.data.results,
+            true,
           ),
         },
       };

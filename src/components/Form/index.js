@@ -60,13 +60,15 @@ class Form extends React.Component {
               style={{margin: "auto", display: "inline-block"}}
             />
           ) : null}
-          <LoadingModal
-            loading={loading}
-            error={!!error}
-            successMessage={this.props.successMessage}
-            withSuccess
-            postSuccess={this.props.postSuccess}
-          />
+          {this.props.withLoadingModal ? (
+            <LoadingModal
+              loading={loading}
+              error={!!error}
+              successMessage={this.props.successMessage}
+              withSuccess
+              postSuccess={this.props.postSuccess}
+            />
+          ) : null}
         </FormGroup>
       </form>
     )
@@ -77,6 +79,7 @@ export default Form;
 
 Form.defaultProps = {
   withButton: true,
+  withLoadingModal: true,
 };
 
 Form.propTypes = {
@@ -85,4 +88,5 @@ Form.propTypes = {
   buttonLabel: PropTypes.string,
   postSuccess: PropTypes.func,
   withButton: PropTypes.bool.isRequired,
+  withLoadingModal: PropTypes.bool.isRequired,
 };

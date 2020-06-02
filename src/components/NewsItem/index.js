@@ -32,7 +32,6 @@ const styles = (theme) => ({
     border: `1px solid ${theme.palette.primary.main}`,
     borderRadius: 4,
     height: 110,
-    marginBottom: theme.spacing(2),
     padding: theme.spacing(1),
     position: "relative",
   },
