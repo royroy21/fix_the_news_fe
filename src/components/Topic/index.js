@@ -55,7 +55,10 @@ const Topic = ({item, store}) => {
         >
           {item.title}
         </Typography>
-        <div className={classes.buttonLinkContainer}>
+        <div
+          className={classes.buttonLinkContainer}
+          style={store.appDimensions.isMobile ? {marginRight: 10} : undefined}
+        >
           <div style={{marginRight: 5}}>
             <ButtonLink
               icon={<img src={share} alt="??" />}

@@ -42,7 +42,7 @@ const CommentsButton = ({actions, commentsCount, store, topicId}) => {
   return (
     <div
       className={classes.container}
-      style={store.appDimensions.isMobile ? {marginRight: 10} : undefined}
+      style={store.appDimensions.isMobile ? {marginLeft: 5, marginRight: 5} : undefined}
     >
       <div
         className={classes.content}
@@ -53,7 +53,7 @@ const CommentsButton = ({actions, commentsCount, store, topicId}) => {
           fontSize={'small'}
         />
         <span className={classes.text}>
-          {`${commentsCount || ""} Comments`}
+          {'Comments'}
         </span>
         {isExpanded ? (
           <ExpandLessIcon className={classes.ExpandIcon} />
