@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     cursor: 'pointer',
     margin: '5px auto 5px auto',
-    width: 160,
+    width: 135,
     '&:hover': {
       color: theme.palette.secondary.light,
     },
