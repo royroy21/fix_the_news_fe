@@ -34,6 +34,7 @@ export const useStyles = makeStyles(theme => ({
   loggedInButtons: {
     display: "flex",
     flexDirection: "row",
+    marginLeft: theme.spacing(1),
   },
   loginButtons: {
     display: "flex",
