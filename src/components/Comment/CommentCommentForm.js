@@ -8,6 +8,8 @@ import {userNotLoggedInRoute} from "../../settings";
 
 class CommentCommentForm extends Form {
 
+  topOfField = React.createRef();
+
   state = {
     formData: {
       text: "",
@@ -46,6 +48,10 @@ class CommentCommentForm extends Form {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    if (!this.props.user.object) {
+      this.props.history.push(userNotLoggedInRoute);
+      return;
+    }
     if (!this.state.formData.text) return;
     this.props.actions.postCommentComment(this.formData);
     this.resetTextField();
@@ -55,25 +61,25 @@ class CommentCommentForm extends Form {
     this.setState(state => ({formData: {...state.formData, text: ''}}));
   };
 
-  handleOnClick = () => {
-    if (!this.props.user.object) {
-      this.props.history.push(userNotLoggedInRoute);
+  handleOnFocus = (event) => {
+    if(this.topOfField.current){
+      this.topOfField.current.scrollIntoView({behavior: "smooth"})
     }
   };
 
   getFields() {
     return (
       <Fragment>
+        <div ref={this.topOfField} />
         <Field
           Field={TextField}
-          disabled={!this.props.user.object}
           error={this.props.storeObject.error}
           id={"text"}
           label={"Add comment"}
           name={"text"}
           value={this.state.formData.text}
           onChange={this.handleChange}
-          onClick={this.handleOnClick}
+          onFocus={this.handleOnFocus}
           margin={"normal"}
           variant={"outlined"}
         />
