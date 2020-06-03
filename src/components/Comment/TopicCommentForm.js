@@ -1,5 +1,5 @@
 import Form from "../Form";
-import React, {Fragment} from "react";
+import React from "react";
 import Field from "../Form/Field";
 import {TextField} from "@material-ui/core";
 import {withRouter} from "react-router-dom";
@@ -32,6 +32,10 @@ class TopicCommentForm extends Form {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    if (!this.props.user.object) {
+      this.props.history.push(userNotLoggedInRoute);
+      return;
+    }
     if (!this.state.formData.text) return;
     this.props.actions.postTopicComment(this.formData);
     this.resetTextField();
@@ -41,29 +45,19 @@ class TopicCommentForm extends Form {
     this.setState(state => ({formData: {...state.formData, text: ''}}));
   };
 
-  handleOnClick = () => {
-    if (!this.props.user.object) {
-      this.props.history.push(userNotLoggedInRoute);
-    }
-  };
-
   getFields() {
     return (
-      <Fragment>
-        <Field
-          Field={TextField}
-          disabled={!this.props.user.object}
-          error={this.props.storeObject.error}
-          id={"text"}
-          label={"Add comment"}
-          name={"text"}
-          value={this.state.formData.text}
-          onChange={this.handleChange}
-          onClick={this.handleOnClick}
-          margin={"normal"}
-          variant={"outlined"}
-        />
-      </Fragment>
+      <Field
+        Field={TextField}
+        error={this.props.storeObject.error}
+        id={"text"}
+        label={"Add comment"}
+        name={"text"}
+        value={this.state.formData.text}
+        onChange={this.handleChange}
+        margin={"normal"}
+        variant={"outlined"}
+      />
     )
   }
 
