@@ -1,11 +1,11 @@
-import React, {Fragment} from "react";
+import React from "react";
 import Typography from "@material-ui/core/Typography";
 import NewsItems from "../NewsItems";
 import CategoryIndicator from "./CategoryIndicator";
 
 const MobileNewsItemsContainer = ({topic}) => {
   return (
-    <Fragment>
+    <div style={{marginLeft: 5}}>
       {topic.serialized_categories.map(category => (
         <div key={`news-item-${category.id}`}>
           <Typography variant={"subtitle1"}>
@@ -20,7 +20,7 @@ const MobileNewsItemsContainer = ({topic}) => {
           </div>
         ))
       }
-    </Fragment>
+    </div>
   )
 };
 
