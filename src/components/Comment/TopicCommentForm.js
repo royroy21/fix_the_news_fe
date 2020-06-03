@@ -1,5 +1,5 @@
 import Form from "../Form";
-import React from "react";
+import React, {Fragment} from "react";
 import Field from "../Form/Field";
 import {TextField} from "@material-ui/core";
 import {withRouter} from "react-router-dom";
@@ -7,6 +7,8 @@ import PropTypes from "prop-types";
 import {userNotLoggedInRoute} from "../../settings";
 
 class TopicCommentForm extends Form {
+
+  topOfField = React.createRef();
 
   state = {
     formData: {
@@ -45,19 +47,29 @@ class TopicCommentForm extends Form {
     this.setState(state => ({formData: {...state.formData, text: ''}}));
   };
 
+  handleOnFocus = (event) => {
+    if(this.topOfField.current){
+      this.topOfField.current.scrollIntoView({behavior: "smooth"})
+    }
+  };
+
   getFields() {
     return (
-      <Field
-        Field={TextField}
-        error={this.props.storeObject.error}
-        id={"text"}
-        label={"Add comment"}
-        name={"text"}
-        value={this.state.formData.text}
-        onChange={this.handleChange}
-        margin={"normal"}
-        variant={"outlined"}
-      />
+      <Fragment>
+        <div ref={this.topOfField} />
+        <Field
+          Field={TextField}
+          error={this.props.storeObject.error}
+          id={"text"}
+          label={"Add comment"}
+          name={"text"}
+          value={this.state.formData.text}
+          onChange={this.handleChange}
+          onFocus={this.handleOnFocus}
+          margin={"normal"}
+          variant={"outlined"}
+        />
+      </Fragment>
     )
   }
 
