@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(1),
   },
   text: {
-    padding: 2,
+    padding: 5,
   },
 }));
 
@@ -80,7 +80,7 @@ const Comment = ({actions, item, store}) => {
         ) : null}
         <div className={classes.textContainer}>
           <span className={classes.name}>{`${first_name} ${last_name} - ${getHowLongAgo(item.date_created)}`}</span>
-          <p className={classes.text}>{item.text}</p>
+          <div className={classes.text}>{item.text}</div>
         </div>
       </div>
       {showAddComment ? (
