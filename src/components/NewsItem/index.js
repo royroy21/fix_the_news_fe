@@ -93,6 +93,7 @@ class NewsItem extends Component {
       : {
         minWidth: 150,
         maxWidth: 330,
+        marginBottom: 5,
       };
     return (
       <div
