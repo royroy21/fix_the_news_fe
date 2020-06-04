@@ -23,6 +23,7 @@ const styles = (theme) => ({
   },
   modal: {
     margin: theme.spacing(2),
+    overflow: "auto",
   },
 });
 
