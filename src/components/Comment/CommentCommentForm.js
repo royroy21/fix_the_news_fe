@@ -1,5 +1,5 @@
 import Form from "../Form";
-import React, {Fragment} from "react";
+import React from "react";
 import Field from "../Form/Field";
 import {TextField} from "@material-ui/core";
 import {withRouter} from "react-router-dom";
@@ -8,8 +8,6 @@ import {userNotLoggedInRoute} from "../../settings";
 import LoadingSpinner from "../Loading/LoadingSpinner";
 
 class CommentCommentForm extends Form {
-
-  box = React.createRef();
 
   state = {
     formData: {
@@ -21,9 +19,6 @@ class CommentCommentForm extends Form {
   componentDidMount() {
     this.setFormDefaults();
     this.props.actions.clearComment();
-    this.box.current.scrollIntoView({
-      behavior: 'smooth',
-    });
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -70,20 +65,17 @@ class CommentCommentForm extends Form {
       this.props.storeObject.loading ? (
         <LoadingSpinner />
       ) : (
-        <Fragment>
-          <div ref={this.box} />
-          <Field
-            Field={TextField}
-            error={this.props.storeObject.error}
-            id={"text"}
-            label={"Add comment"}
-            name={"text"}
-            value={this.state.formData.text}
-            onChange={this.handleChange}
-            margin={"normal"}
-            variant={"outlined"}
-          />
-        </Fragment>
+        <Field
+          Field={TextField}
+          error={this.props.storeObject.error}
+          id={"text"}
+          label={"Add comment"}
+          name={"text"}
+          value={this.state.formData.text}
+          onChange={this.handleChange}
+          margin={"normal"}
+          variant={"outlined"}
+        />
       )
     )
   }
