@@ -80,7 +80,7 @@ class RegistrationForm extends Form {
             <Button
               label={"Remove Avatar"}
               onClick={this.removeAvatar}
-              style={!this.props.isMobile ? {marginTop: 20, marginLeft: 10} : {}}
+              style={!this.props.isMobile ? {marginTop: 20, marginLeft: 10} : {marginTop: 20}}
             />
           ) : null}
           {avatar ? (
