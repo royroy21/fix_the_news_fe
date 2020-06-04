@@ -3,6 +3,10 @@ import Avatar from "@material-ui/core/Avatar";
 import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
+  avatar: {
+    height: 36,
+    width: 36,
+  },
   username: {
     marginRight: theme.spacing(1),
   },
@@ -21,7 +25,7 @@ const UserDisplay = ({userObject}) => {
   return (
     <Fragment>
       <p className={classes.username}>{`${firstName} ${lastName}`}</p>
-      <Avatar src={avatar ? avatar : null} />
+      <Avatar className={classes.avatar} src={avatar ? avatar : null} />
     </Fragment>
   )
 

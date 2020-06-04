@@ -7,11 +7,11 @@ import {
   addNewsItemRoute,
   userNotLoggedInRoute
 } from "../../settings";
-import share from '../../images/share.svg';
-import addArticle from '../../images/addArticle.svg';
 import TopicWrapper from "./wrapper";
 import MobileNewsItemsContainer from "../NewsItems/MobileNewsItemsContainer";
 import CommentsButton from "../Comments/CommentsButton";
+import AddIcon from '@material-ui/icons/Add';
+import ShareIcon from '@material-ui/icons/Share';
 
 const useStyles = makeStyles((theme) => ({
   buttonLinkContainer: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: "bold",
     paddingLeft: theme.spacing(1),
-    width: "65%",
+    width: "55%",
   }
 }));
 
@@ -61,20 +61,20 @@ const Topic = ({item, store}) => {
         >
           <div style={{marginRight: 5}}>
             <ButtonLink
-              icon={<img src={share} alt="??" />}
+              icon={<ShareIcon />}
               inverted={true}
               to={""} // TODO - to share topic ??
             />
           </div>
           {!store.user.object ? (
             <ButtonLink
-              icon={<img src={addArticle} alt="??" />}
+              icon={<AddIcon />}
               label={!isMobile ? "Add Article" : null}
               to={userNotLoggedInRoute}
             />
           ) : (
             <ButtonLink
-              icon={<img src={addArticle} alt="??" />}
+              icon={<AddIcon />}
               label={!isMobile ? "Add Article" : null}
               to={addNewsItemRoute}
               state={{
