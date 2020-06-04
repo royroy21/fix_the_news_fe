@@ -5,10 +5,11 @@ import {TextField} from "@material-ui/core";
 import {withRouter} from "react-router-dom";
 import PropTypes from "prop-types";
 import {userNotLoggedInRoute} from "../../settings";
+import LoadingSpinner from "../Loading/LoadingSpinner";
 
 class CommentCommentForm extends Form {
 
-  topOfField = React.createRef();
+  box = React.createRef();
 
   state = {
     formData: {
@@ -20,6 +21,9 @@ class CommentCommentForm extends Form {
   componentDidMount() {
     this.setFormDefaults();
     this.props.actions.clearComment();
+    this.box.current.scrollIntoView({
+      behavior: 'smooth',
+    });
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -61,29 +65,26 @@ class CommentCommentForm extends Form {
     this.setState(state => ({formData: {...state.formData, text: ''}}));
   };
 
-  handleOnFocus = (event) => {
-    if(this.topOfField.current){
-      this.topOfField.current.scrollIntoView({behavior: "smooth"})
-    }
-  };
-
   getFields() {
     return (
-      <Fragment>
-        <div ref={this.topOfField} />
-        <Field
-          Field={TextField}
-          error={this.props.storeObject.error}
-          id={"text"}
-          label={"Add comment"}
-          name={"text"}
-          value={this.state.formData.text}
-          onChange={this.handleChange}
-          onFocus={this.handleOnFocus}
-          margin={"normal"}
-          variant={"outlined"}
-        />
-      </Fragment>
+      this.props.storeObject.loading ? (
+        <LoadingSpinner />
+      ) : (
+        <Fragment>
+          <div ref={this.box} />
+          <Field
+            Field={TextField}
+            error={this.props.storeObject.error}
+            id={"text"}
+            label={"Add comment"}
+            name={"text"}
+            value={this.state.formData.text}
+            onChange={this.handleChange}
+            margin={"normal"}
+            variant={"outlined"}
+          />
+        </Fragment>
+      )
     )
   }
 
