@@ -3,7 +3,7 @@ import LoadingModal from "../Loading/LoadingModal";
 import FormGroup from "@material-ui/core/FormGroup";
 import PropTypes from "prop-types";
 import Error from "./Error";
-import Button from "../Button";
+import Button from "../CustomButton";
 
 class Form extends React.Component {
 

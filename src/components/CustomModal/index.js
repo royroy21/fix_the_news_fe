@@ -4,7 +4,7 @@ import CustomModalWrapper from "./wrapper";
 import PropTypes from "prop-types";
 import {withRouter} from "react-router-dom";
 import {withStyles} from "@material-ui/core";
-import CloseButton from "../Button/CloseButton";
+import CloseButton from "../CustomButton/CloseButton";
 
 const styles = (theme) => ({
   footer: {

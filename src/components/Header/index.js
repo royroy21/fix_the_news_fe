@@ -10,9 +10,9 @@ import {
   registrationRoute
 } from "../../settings";
 import UserDisplay from "../User/UserDisplay";
-import LoginButton from "../Button/LoginButton";
-import ButtonLink from "../Button/ButtonLink";
-import Button from "../Button";
+import LoginButton from "../CustomButton/LoginButton";
+import ButtonLink from "../CustomButton/ButtonLink";
+import Button from "../CustomButton";
 import Logo from "../Logo";
 
 const useStyles = makeStyles(theme => ({

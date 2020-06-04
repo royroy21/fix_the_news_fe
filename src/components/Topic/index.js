@@ -2,7 +2,7 @@ import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import NewsItemsContainer from "../NewsItems/NewsItemsContainer";
-import ButtonLink from "../Button/ButtonLink";
+import ButtonLink from "../CustomButton/ButtonLink";
 import {
   addNewsItemRoute,
   userNotLoggedInRoute

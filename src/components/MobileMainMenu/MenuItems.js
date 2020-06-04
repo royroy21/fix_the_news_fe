@@ -4,13 +4,13 @@ import {
   loginRoute,
   registrationRoute
 } from "../../settings";
-import Button from "../Button";
+import Button from "../CustomButton";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import {makeStyles} from "@material-ui/core/styles";
 import UserDisplay from "../User/UserDisplay";
 import {Link} from "react-router-dom";
-import LoginButton from "../Button/LoginButton";
-import ButtonLink from "../Button/ButtonLink";
+import LoginButton from "../CustomButton/LoginButton";
+import ButtonLink from "../CustomButton/ButtonLink";
 
 export const useStyles = makeStyles(theme => ({
   buttonDivider: {

@@ -57,7 +57,7 @@ export const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Button = ({icon=null, inverted=false, label=null, onClick=undefined, style={}}) => {
+const CustomButton = ({icon=null, inverted=false, label=null, onClick=undefined, style={}}) => {
   const classes = useStyles();
   return (
     <button
@@ -79,4 +79,4 @@ const Button = ({icon=null, inverted=false, label=null, onClick=undefined, style
   )
 };
 
-export default Button;
+export default CustomButton;

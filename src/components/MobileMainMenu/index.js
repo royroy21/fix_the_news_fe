@@ -4,7 +4,7 @@ import {withRouter} from "react-router-dom";
 import {withStyles} from "@material-ui/core";
 import MenuItems from "./MenuItems";
 import MobileMainMenuWrapper from "./wrapper";
-import CloseButton from "../Button/CloseButton";
+import CloseButton from "../CustomButton/CloseButton";
 
 const styles = (theme) => ({
   content: {

@@ -5,7 +5,7 @@ import {TextField, withStyles} from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import PropTypes from "prop-types";
-import Button from "../Button";
+import Button from "../CustomButton";
 
 const styles = theme => ({
   uploadAvatarContainer: {
