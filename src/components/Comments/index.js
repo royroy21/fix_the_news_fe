@@ -2,9 +2,9 @@ import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import TopicCommentForm from "../Comment/TopicCommentForm";
 import Avatar from "@material-ui/core/Avatar";
-import NeverEndingScrolling from "../NeverEndingScrolling";
 import Comment from '../Comment';
 import {initialTopicCommentsState} from "../../store/reducers/topicComments";
+import ListPaginationWithMoreButton from "../ListPaginationWithMoreButton";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -47,13 +47,12 @@ const Comments = ({actions, store, topicId, user}) => {
           withLoadingModal={false}
         />
       </div>
-      <NeverEndingScrolling
-        getInitialRequest={() => actions.getTopicComments({topic: topicId})}
-        getNext={actions.getTopicComments}
-        id={`comments-for-topic-${topicId}`}
+      <ListPaginationWithMoreButton
         ItemComponent={Comment}
+        request={actions.getTopicComments}
+        requestParamName={'topic'}
+        requestParamValue={topicId}
         store={store.topicComments[topicId] || initialTopicCommentsState}
-        style={{maxHeight: 400}}
       />
     </div>
   )
