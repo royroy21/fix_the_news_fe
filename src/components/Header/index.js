@@ -99,7 +99,7 @@ const Header = (props) => {
               <UserDisplay userObject={user} />
               <Button
                 onClick={logout}
-                icon={<ExitToAppIcon />}
+                icon={<ExitToAppIcon fontSize={"large"}/>}
                 style={{marginLeft: 5}}
               />
             </Fragment>

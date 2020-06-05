@@ -77,7 +77,8 @@ const MenuItems = ({clearUser, user}) => {
         <UserDisplay userObject={user} />
         <Button
           onClick={logout}
-          icon={<ExitToAppIcon />}
+          icon={<ExitToAppIcon fontSize={"large"}/>}
+          size={"large"}
           style={{marginBottom: 12, marginLeft: 5}}
         />
       </div>
