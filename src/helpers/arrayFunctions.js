@@ -1,5 +1,5 @@
 
-export const combineLists = (originalList, newList, newOnTop=false) => {
+export const combineLists = (originalList, newList) => {
   /*
   * Combine two lists containing objects with ids where:
   * 1) If an object is present in both lists the object from newList
@@ -16,17 +16,10 @@ export const combineLists = (originalList, newList, newOnTop=false) => {
   const updatedOriginalListIds = updatedOriginalList.map(item => item.id);
   const filteredNewList = newList.filter(item => !updatedOriginalListIds.includes(item.id));
 
-  if (newOnTop) {
-    return [
-      ...filteredNewList,
-      ...updatedOriginalList,
-    ]
-  } else {
-    return [
-      ...updatedOriginalList,
-      ...filteredNewList,
-    ]
-  }
+  return [
+    ...updatedOriginalList,
+    ...filteredNewList,
+  ]
 };
 
 export const refreshItemInList = (list, newObject) => {
