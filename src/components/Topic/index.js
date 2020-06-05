@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: "bold",
     paddingLeft: theme.spacing(1),
-    width: "55%",
+    width: "65%",
   }
 }));
 
