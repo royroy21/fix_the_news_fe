@@ -15,7 +15,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ListPaginationWithMoreButton = ({ItemComponent, pageSize=5, request, requestParamName, requestParamValue, store}) => {
+const ListPaginationWithMoreButton = (props) => {
+  const {
+    ItemComponent,
+    pageSize=5,
+    request,
+    requestParamName,
+    requestParamValue,
+    store,
+  } = props;
+
   const classes = useStyles();
 
   useEffect(
@@ -23,12 +32,17 @@ const ListPaginationWithMoreButton = ({ItemComponent, pageSize=5, request, reque
       [requestParamName]: requestParamValue,
       size: pageSize,
     })},
-    [pageSize, request, requestParamName, requestParamValue],
+    [
+      pageSize,
+      request,
+      requestParamName,
+      requestParamValue,
+    ],
   );
 
   const getNextURL = () => {
     if (!store.loading) {
-      const {next: nextURL} = (store.objects || {});
+      const {next: nextURL} = store.objects || {};
       return nextURL;
     }
   };
