@@ -17,6 +17,7 @@ class Root extends Component {
   };
 
   componentDidMount() {
+    document.title = 'fixthenews';
     const authTokenFromRedux = this.props.store.token.object;
     const authTokenFromLocalStorage =
       localStorage.getItem(localStorageAuthTokenKey);
