@@ -35,6 +35,7 @@ export const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "row",
     marginLeft: theme.spacing(1),
+    height: 50,
   },
   loginButtons: {
     display: "flex",
@@ -77,7 +78,7 @@ const MenuItems = ({clearUser, user}) => {
         <Button
           onClick={logout}
           icon={<ExitToAppIcon />}
-          style={{marginLeft: 5}}
+          style={{marginBottom: 12, marginLeft: 5}}
         />
       </div>
     )}
