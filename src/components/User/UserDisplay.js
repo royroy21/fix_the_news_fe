@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     width: 36,
   },
   username: {
-    color: theme.palette.secondary.light,
+    color: theme.palette.primary.dark,
     marginRight: theme.spacing(1),
   },
 }));
