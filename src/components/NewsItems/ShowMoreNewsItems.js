@@ -15,8 +15,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ShowMoreNewsItems = ({topic, category, showTopNewsItems, setShowTopNewsItems}) => {
+  const numberOfShowingNewsItems = 3;
+
   const classes = useStyles();
-  if (topic.news_items_count[category.type] <= 3) {
+  if (topic.news_items_count[category.type] <= numberOfShowingNewsItems) {
     return null;
   }
   return (
@@ -29,7 +31,7 @@ const ShowMoreNewsItems = ({topic, category, showTopNewsItems, setShowTopNewsIte
             [category.type]: true,
           })}
         >
-          {`show ${topic.news_items_count[category.type]} more`}
+          {`show ${topic.news_items_count[category.type] - numberOfShowingNewsItems} more`}
         </span>
       ) : (
         <span
