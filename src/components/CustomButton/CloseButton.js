@@ -5,11 +5,19 @@ import IconButton from "@material-ui/core/IconButton";
 const CloseButton = ({onClick, style={}}) => {
   return (
     <IconButton
-      color={'secondary'}
+      color={"secondary"}
       onClick={onClick}
-      style={style}
+      style={{
+        padding: 0,
+        ...style,
+      }}
     >
-      <CloseIcon />
+      <CloseIcon
+        fontSize={"large"}
+        style={{
+          padding: 0,
+        }}
+      />
     </IconButton>
   )
 };

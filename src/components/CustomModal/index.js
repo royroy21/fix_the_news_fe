@@ -12,14 +12,13 @@ const styles = (theme) => ({
     textAlign: "center",
   },
   headerContainer: {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
+    display: "inline-grid",
+    gridTemplateColumns: "80% 20%",
     width: "100%",
   },
   headerTitle: {
-    color: "grey",
-    flexGrow: 1,
+    color: theme.palette.secondary.light,
+    paddingTop: 10,
   },
   modal: {
     margin: theme.spacing(2),
@@ -74,7 +73,7 @@ class CustomModal extends Component {
           <div className={classes.headerContainer}>
             <div
               className={classes.headerTitle}
-              style={isMobile ? {width: "40%"} : undefined}
+              style={isMobile ? {width: "70%"} : undefined}
             >
               {this.props.header}
             </div>
