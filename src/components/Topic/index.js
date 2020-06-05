@@ -68,15 +68,17 @@ const Topic = ({item, store}) => {
           </div>
           {!store.user.object ? (
             <ButtonLink
-              icon={<AddIcon />}
+              icon={<AddIcon fontSize={'large'} />}
               label={!isMobile ? "Add Article" : null}
               to={userNotLoggedInRoute}
+              size={'large'}
             />
           ) : (
             <ButtonLink
-              icon={<AddIcon />}
+              icon={<AddIcon fontSize={'large'} />}
               label={!isMobile ? "Add Article" : null}
               to={addNewsItemRoute}
+              size={'large'}
               state={{
                 categories: item.serialized_categories,
                 topicId: item.id,

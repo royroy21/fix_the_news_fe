@@ -2,7 +2,16 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 
-const CustomButton = ({icon=undefined, inverted=false, label='', onClick=undefined, style={}}) => {
+const CustomButton = (props) => {
+  const {
+    icon=undefined,
+    inverted=false,
+    label='',
+    onClick=undefined,
+    size='small',
+    style={},
+  } = props;
+  const iconButtonStyle = size === 'small' ? {padding: 6} : {padding: 0};
   return (
     icon && !label ? (
       <IconButton
@@ -10,7 +19,7 @@ const CustomButton = ({icon=undefined, inverted=false, label='', onClick=undefin
         onClick={onClick}
         style={{
           ...style,
-          padding: 6,
+          ...iconButtonStyle,
         }}
       >
         {icon}

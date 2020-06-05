@@ -10,7 +10,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const ButtonLink = ({icon=null, inverted=false, label=null, style={}, state={}, to}) => {
+const ButtonLink = (props) => {
+  const {
+    icon=null,
+    inverted=false,
+    label=null,
+    size='small',
+    style={},
+    state={},
+    to,
+  } = props;
   const classes = useStyles();
   return (
     <Link
@@ -24,6 +33,7 @@ const ButtonLink = ({icon=null, inverted=false, label=null, style={}, state={}, 
         icon={icon}
         inverted={inverted}
         label={label}
+        size={size}
         style={style}
       />
     </Link>
