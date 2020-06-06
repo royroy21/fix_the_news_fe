@@ -57,12 +57,10 @@ const ListPaginationWithMoreButton = (props) => {
 
   return (
     <Fragment>
-      {store.items.map(item => (
-      <ItemComponent
+      {store.items.map(item => (<ItemComponent
         key={`item-component-${item.id}`}
         item={item}
-      />
-      ))}
+      />))}
       {store.loading && <LoadingSpinner />}
       {getNextURL() ? (
         <div className={classes.more} onClick={getNextItems}>{"more"}</div>
