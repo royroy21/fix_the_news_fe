@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 
 import appDimensionsReducer from './appDimensions'
 import categoryNewsItemsReducer from './categoryNewsItems'
+import likeReducer from './like'
 import newsItemReducer from './newsItem'
 import registerReducer from './register'
 import commentReducer from './comment'
@@ -14,6 +15,7 @@ import userReducer from './user';
 export default combineReducers({
   appDimensions: appDimensionsReducer,
   categoryNewsItems: categoryNewsItemsReducer,
+  like: likeReducer,
   newsItem: newsItemReducer,
   register: registerReducer,
   comment: commentReducer,
