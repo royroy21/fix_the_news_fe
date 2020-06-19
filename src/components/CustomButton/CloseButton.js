@@ -13,7 +13,7 @@ const CloseButton = ({onClick, style={}}) => {
       }}
     >
       <CloseIcon
-        fontSize={"large"}
+        fontSize={"medium"}
         style={{
           padding: 0,
         }}

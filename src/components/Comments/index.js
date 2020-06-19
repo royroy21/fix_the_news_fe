@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto',
   },
   container: {
-    padding: theme.spacing(1),
+    padding: "10px 15px 10px 15px",
   },
 }));
 
@@ -27,7 +27,7 @@ const Comments = ({actions, store, topicId, user}) => {
   const { isMobile } = store.appDimensions;
   addBaseCommentStyle.gridTemplateColumns = isMobile
     ? '100%'
-    : '10% 90%';
+    : '5% 95%';
   return (
     <div className={classes.container}>
       <div style={addBaseCommentStyle}>
@@ -37,15 +37,17 @@ const Comments = ({actions, store, topicId, user}) => {
             src={userAvatar ? userAvatar : null}
           />
         ) : null}
-        <TopicCommentForm
-          actions={actions}
-          topicId={topicId}
-          storeObject={store.comment}
-          successMessage={"Comment successfully added"}
-          user={user}
-          withButton={false}
-          withLoadingModal={false}
-        />
+        <div style={{marginLeft: 8}}>
+          <TopicCommentForm
+            actions={actions}
+            topicId={topicId}
+            storeObject={store.comment}
+            successMessage={"Comment successfully added"}
+            user={user}
+            withButton={false}
+            withLoadingModal={false}
+          />
+        </div>
       </div>
       <ListPaginationWithMoreButton
         ItemComponent={Comment}

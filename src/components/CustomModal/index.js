@@ -12,13 +12,13 @@ const styles = (theme) => ({
     textAlign: "center",
   },
   headerContainer: {
-    display: "inline-grid",
-    gridTemplateColumns: "80% 20%",
     width: "100%",
   },
   headerTitle: {
-    color: theme.palette.secondary.light,
+    color: theme.palette.primary.contrastText,
+    fontWeight: 600,
     paddingTop: 10,
+    textAlign: "center",
   },
   modal: {
     margin: theme.spacing(2),
@@ -71,13 +71,12 @@ class CustomModal extends Component {
       >
         <div style={contentStyle} ref={this.contentRef}>
           <div className={classes.headerContainer}>
-            <div
-              className={classes.headerTitle}
-              style={isMobile ? {width: "70%"} : undefined}
-            >
+            <div style={{float: "right"}}>
+              <CloseButton onClick={this.closeModal} />
+            </div>
+            <div className={classes.headerTitle}>
               {this.props.header}
             </div>
-            <CloseButton onClick={this.closeModal} />
           </div>
           <this.props.contentComponent
             {...this.props.contentProps}

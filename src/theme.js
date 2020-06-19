@@ -14,9 +14,10 @@ export const themeObject = {
   palette: {
     primary: {
       light: "#ffffff",
-      main: "#c8cdd1",
+      main: "#CAD3DA",
       dark: "#929DA5",
       contrastText: "#191919",
+      commentsGrey: "#E8ECEF",
     },
     secondary: {
       light: "#FF4500",
