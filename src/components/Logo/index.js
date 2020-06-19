@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   textContainer: {
     fontSize: 24,
     fontWeight: "bold",
-    marginLeft: theme.spacing(0.5),
+    marginLeft: 5,
     marginTop: 2,
   },
   text: {

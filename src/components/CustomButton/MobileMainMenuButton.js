@@ -7,6 +7,7 @@ export const useStyles = makeStyles(theme => ({
   button: {
     backgroundColor: theme.palette.primary.light,
     border: "none",
+    paddingTop: 5,
   },
   link: {
     color: theme.palette.secondary.dark,
@@ -15,7 +16,7 @@ export const useStyles = makeStyles(theme => ({
   menu: {
     fontSize: 35,
     '&:hover': {
-      color: theme.palette.secondary.light,
+      color: theme.palette.secondary.main,
     },
   },
 }));

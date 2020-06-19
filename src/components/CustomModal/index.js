@@ -71,9 +71,7 @@ class CustomModal extends Component {
       >
         <div style={contentStyle} ref={this.contentRef}>
           <div className={classes.headerContainer}>
-            <div style={{float: "right"}}>
-              <CloseButton onClick={this.closeModal} />
-            </div>
+            <CloseButton onClick={this.closeModal} />
             <div className={classes.headerTitle}>
               {this.props.header}
             </div>

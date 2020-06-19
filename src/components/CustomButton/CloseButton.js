@@ -9,6 +9,7 @@ const CloseButton = ({onClick, style={}}) => {
       onClick={onClick}
       style={{
         padding: 0,
+        marginLeft: "92%",
         ...style,
       }}
     >

@@ -10,9 +10,6 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     margin: 'auto',
   },
-  container: {
-    padding: "10px 15px 10px 15px",
-  },
 }));
 
 const Comments = ({actions, store, topicId, user}) => {
@@ -28,8 +25,11 @@ const Comments = ({actions, store, topicId, user}) => {
   addBaseCommentStyle.gridTemplateColumns = isMobile
     ? '100%'
     : '5% 95%';
+  const containerStyle = isMobile
+    ? {padding: "10px 8px 10px 0"}
+    : {padding: "10px 15px 10px 15px"};
   return (
-    <div className={classes.container}>
+    <div style={containerStyle}>
       <div style={addBaseCommentStyle}>
         {!isMobile ? (
           <Avatar
