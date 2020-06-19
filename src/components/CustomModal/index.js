@@ -21,7 +21,7 @@ const styles = (theme) => ({
     textAlign: "center",
   },
   modal: {
-    margin: theme.spacing(2),
+    padding: theme.spacing(2),
     overflow: "auto",
   },
 });
