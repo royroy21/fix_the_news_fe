@@ -3,13 +3,15 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   moreNewsItems: {
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.dark,
     position: "absolute",
-    bottom: 0,
+    bottom: 8,
+    fontSize: 14,
     fontWeight: "bold",
     cursor: "pointer",
+    paddingLeft: 10,
     "&:hover": {
-      color: theme.palette.secondary.light,
+      color: theme.palette.secondary.main,
     },
   },
 }));
@@ -31,7 +33,7 @@ const ShowMoreNewsItems = ({topic, category, showTopNewsItems, setShowTopNewsIte
             [category.type]: true,
           })}
         >
-          {`show ${topic.news_items_count[category.type] - numberOfShowingNewsItems} more`}
+          {"More"}
         </span>
       ) : (
         <span
@@ -41,7 +43,7 @@ const ShowMoreNewsItems = ({topic, category, showTopNewsItems, setShowTopNewsIte
             [category.type]: false,
           })}
         >
-          {`show less`}
+          {`Show Less`}
         </span>
       )}
     </Fragment>

@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
   title: {
-    fontWeight: "bold",
+    fontWeight: 600,
     paddingLeft: theme.spacing(1),
     width: "65%",
   }

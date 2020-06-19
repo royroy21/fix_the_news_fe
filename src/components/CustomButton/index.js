@@ -28,6 +28,7 @@ const CustomButton = (props) => {
       <Button
         color={'secondary'}
         children={label || ""}
+        disableElevation
         onClick={onClick}
         startIcon={icon}
         style={{
@@ -35,6 +36,7 @@ const CustomButton = (props) => {
           borderRadius: 25,
           height: 36,
           maxWidth: 250,
+          textTransform: "none",
         }}
         variant={inverted ? 'outlined' : 'contained'}
       />

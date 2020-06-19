@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {makeStyles} from "@material-ui/core/styles";
@@ -11,17 +10,19 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.light,
     border: `1px solid ${theme.palette.primary.main}`,
     borderRadius: 4,
-    marginTop: 5,
+    marginTop: 10,
+    marginBottom: 30,
+    padding: 10,
   },
   content: {
-    color: 'grey',
+    color: theme.palette.secondary.main,
     display: 'flex',
     flexDirection: 'row',
     cursor: 'pointer',
     margin: '5px auto 5px auto',
-    width: 135,
+    width: 100,
     '&:hover': {
-      color: theme.palette.secondary.light,
+      color: theme.palette.secondary.main,
     },
   },
   messageIcon: {
@@ -32,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     fontWeight: 'bold',
+    fontSize: 14,
     marginTop: 5,
   },
 }));
@@ -48,10 +50,6 @@ const CommentsButton = ({actions, commentsCount, store, topicId}) => {
         className={classes.content}
         onClick={() => setExpanded(!isExpanded)}
       >
-        <ChatBubbleOutlineIcon
-          className={classes.messageIcon}
-          fontSize={'small'}
-        />
         <span className={classes.text}>
           {'Comments'}
         </span>

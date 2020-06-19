@@ -8,9 +8,12 @@ import NewsItemWrapper from "./wrapper";
 
 const styles = (theme) => ({
   chip: {
+    color: theme.palette.primary.contrastText,
+    backgroundColor: theme.palette.primary.commentsGrey,
     cursor: "pointer",
+    padding: "10px 5px 10px 5px",
     "&:hover": {
-      color: "blue"
+      color: theme.palette.secondary.main
     },
   },
   chipContainer: {
@@ -24,7 +27,7 @@ const styles = (theme) => ({
   link: {
     color: "black",
     "&:hover": {
-      color: "blue"
+      color: theme.palette.secondary.main,
     },
   },
   mainContainer: {
@@ -36,8 +39,13 @@ const styles = (theme) => ({
     position: "relative",
   },
   title: {
-    height: 65,
+    color: theme.palette.primary.contrastText,
+    fontWeight: 500,
+    lineHeight: "18px",
     overflow: "hidden",
+    "&:hover": {
+      color: theme.palette.secondary.main,
+    },
   },
   thumbsUpCount: {
     float: "right",
@@ -46,7 +54,7 @@ const styles = (theme) => ({
     marginTop: 5,
   },
   thumbsUpIcon: {
-    color: "grey",
+    color: theme.palette.primary.dark,
     marginLeft: theme.spacing(1),
   },
 });
@@ -93,7 +101,7 @@ class NewsItem extends Component {
       : {
         minWidth: 150,
         maxWidth: 430,
-        marginBottom: 5,
+        marginBottom: 10,
       };
     return (
       <div

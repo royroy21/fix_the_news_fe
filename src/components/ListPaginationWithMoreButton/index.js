@@ -5,12 +5,13 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   more: {
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.dark,
     cursor: 'pointer',
     textAlign: 'center',
+    fontSize: 14,
     fontWeight: 'bold',
     '&:hover': {
-      color: theme.palette.secondary.light,
+      color: theme.palette.secondary.main,
     },
   },
 }));
@@ -63,7 +64,7 @@ const ListPaginationWithMoreButton = (props) => {
       />))}
       {store.loading && <LoadingSpinner />}
       {getNextURL() ? (
-        <div className={classes.more} onClick={getNextItems}>{"more"}</div>
+        <div className={classes.more} onClick={getNextItems}>{"More"}</div>
       ) : null}
     </Fragment>
   )

@@ -4,18 +4,19 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   container: {
+    paddingTop: 1,
     display: "flex",
     flexDirection: "row",
   },
   image: {
-    height: 40,
-    width: 40,
+    height: 32,
+    width: 32,
   },
   textContainer: {
-    fontSize: 30,
+    fontSize: 24,
     fontWeight: "bold",
     marginLeft: theme.spacing(0.5),
-    marginTop: 4,
+    marginTop: 2,
   },
   text: {
     color: theme.palette.secondary.light,

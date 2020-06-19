@@ -29,10 +29,10 @@ const useStyles = makeStyles(theme => ({
   },
   contactUsAboutHelp: {
     fontSize: 14,
-    marginLeft: 27,
+    marginLeft: 35,
     marginTop: 5,
-    color: "#545C77",
-    fontWeight: "bold",
+    color: theme.palette.primary.dark,
+    fontWeight: 400,
   },
   logoutButton: {
     marginLeft: theme.spacing(2),

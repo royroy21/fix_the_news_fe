@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
   link: {
     color: theme.palette.secondary.main,
     fontSize: 14,
-    fontWeight: 600,
+    fontWeight: "semi-bold",
     textDecoration: "none",
     '&:hover': {
       color: theme.palette.secondary.light,

@@ -23,8 +23,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
   },
   newsItemsContent: {
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(1),
+    padding: "0 10px 0 12px",
   },
 }));
 

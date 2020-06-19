@@ -22,14 +22,17 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   textContainer: {
-    backgroundColor: '#E8ECEF',
+    color: theme.palette.primary.contrastText,
+    backgroundColor: theme.palette.primary.commentsGrey,
     borderRadius: '4px 25px 25px 25px',
     padding: theme.spacing(1),
-    margin: `${theme.spacing(1)}px ${theme.spacing(1)}px ${theme.spacing(1)}px 0`,
+    margin: `5px 0 5px ${theme.spacing(1)}px`,
+    fontSize: 14,
   },
   name: {
     color: theme.palette.primary.dark,
-    padding: 2,
+    fontSize: 14,
+    padding: 5,
   },
   replyContainer: {
     color: theme.palette.primary.dark,
@@ -37,6 +40,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     width: 100,
     cursor: 'pointer',
+    marginTop: 3,
+    marginBottom: 10,
     '&:hover': {
       color: theme.palette.secondary.light,
     }
@@ -65,20 +70,21 @@ const Comment = ({actions, item, store}) => {
     marginRight: 'auto',
   };
   const { isMobile } = store.appDimensions;
-  const largeColumnWidth = isMobile ? 95 : 90;
-  const smallColumnWidth = isMobile ? 5 : 10;
+  const largeColumnWidth = isMobile ? 95 : 95;
+  const smallColumnWidth = isMobile ? 5 : 5;
   if (isMobile) {
     commentStyle.gridTemplateColumns = `${largeColumnWidth}%`;
   } else {
     commentStyle.gridTemplateColumns = `${smallColumnWidth}% ${largeColumnWidth}%`;
   }
+  const marginLeft = isMobile ? `${smallColumnWidth}%`: "7%";
   return (
     <Fragment>
       <div style={commentStyle}>
         {!isMobile ? (
           <Avatar className={classes.avatar} src={avatar} />
         ) : null}
-        <div className={classes.textContainer}>
+        <div style={isMobile ? {width: "98%"} : undefined} className={classes.textContainer}>
           <span className={classes.name}>{`${first_name} ${last_name} - ${getHowLongAgo(item.date_created)}`}</span>
           <div className={classes.text}>{item.text}</div>
         </div>
@@ -89,7 +95,7 @@ const Comment = ({actions, item, store}) => {
             className={classes.hide}
             onClick={() => setShowAddComment(false)}
             style={{
-              marginLeft: `${smallColumnWidth}%`,
+              marginLeft,
             }}
           >
             <ExpandLessIcon />
@@ -97,7 +103,7 @@ const Comment = ({actions, item, store}) => {
           <div style={{
             ...commentStyle,
             width: `${largeColumnWidth}%`,
-            marginLeft: `${smallColumnWidth}%`,
+            marginLeft,
           }}>
             {!isMobile ? (
               <Avatar
@@ -105,7 +111,7 @@ const Comment = ({actions, item, store}) => {
                 src={userAvatar ? userAvatar : null}
               />
             ) : null}
-            <div style={{width: '98%'}}>
+            <div style={{marginLeft: 8, width: '98%'}}>
               <CommentCommentForm
                 actions={actions}
                 commentId={item.id}
@@ -123,7 +129,7 @@ const Comment = ({actions, item, store}) => {
         <div
           className={classes.replyContainer}
           onClick={() => setShowAddComment(true)}
-          style={{marginLeft: `${smallColumnWidth}%`}}
+          style={{marginLeft}}
         >
           <img src={reply} alt="??" />
           <span className={classes.sectionText}>{'reply'}</span>
@@ -135,12 +141,12 @@ const Comment = ({actions, item, store}) => {
             className={classes.hide}
             onClick={() => setShowComments(false)}
             style={{
-              marginLeft: `${smallColumnWidth}%`,
+              marginLeft,
             }}
           >
             <ExpandLessIcon />
           </span>
-          <div style={{marginLeft: `${smallColumnWidth}%`}}>
+          <div style={{marginLeft}}>
             <NestedComments
               actions={actions}
               item={item}
@@ -152,7 +158,7 @@ const Comment = ({actions, item, store}) => {
         <div
           className={classes.replyContainer}
           onClick={() => setShowComments(true)}
-          style={{marginLeft: `${smallColumnWidth}%`}}
+          style={{marginLeft}}
         >
           {item.comments_count ? (
           <div className={classes.repliesContainer}>

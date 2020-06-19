@@ -61,7 +61,7 @@ class Root extends Component {
     const isSmallScreen = this.getIsSmallScreen();
 
     const rootStyle = {
-      backgroundColor: "#F8F9F9",
+      backgroundColor: "#F8FAF9",
       height: `${this.state.screenHeight}px`,
     };
 
