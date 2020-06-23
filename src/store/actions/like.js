@@ -1,6 +1,7 @@
 import DispatchAPI from "../../api";
 import {likesURL} from "../../settings";
 import {refreshTopic} from "./topics";
+import {refreshCategoryNewsItem} from "./categoryNewsItems";
 
 export const POST_LIKE_BEGIN   = 'POST_LIKE_BEGIN';
 export const POST_LIKE_SUCCESS = 'POST_LIKE_SUCCESS';
@@ -35,7 +36,7 @@ export const postLikeTopicTopNewsItem = (data, topicId) => new DispatchAPI().cre
   [() => refreshTopic(topicId)],
 );
 
-export const postLikeNewsItem = (data, newsItemId) => new DispatchAPI().create(
+export const postLikeNewsItem = (data, newsItemId, topicId) => new DispatchAPI().create(
   likesURL,
   postLikeBegin,
   postLikeSuccess,
@@ -43,6 +44,8 @@ export const postLikeNewsItem = (data, newsItemId) => new DispatchAPI().create(
   data,
   null,
   [
+    () => refreshCategoryNewsItem(newsItemId),
+    () => refreshTopic(topicId),
   ],
 );
 
@@ -69,7 +72,7 @@ export const deleteLikeTopicTopNewsItem = (id, topicId) => new DispatchAPI().del
   [() => refreshTopic(topicId)],
 );
 
-export const deleteLikeNewsItem = (id, newsItemId) => new DispatchAPI().delete(
+export const deleteLikeNewsItem = (id, newsItemId, topicId) => new DispatchAPI().delete(
   likesURL,
   deleteLikeBegin,
   deleteLikeSuccess,
@@ -77,6 +80,8 @@ export const deleteLikeNewsItem = (id, newsItemId) => new DispatchAPI().delete(
   id,
   null,
   [
+    () => refreshCategoryNewsItem(newsItemId),
+    () => refreshTopic(topicId)
   ],
 );
 
