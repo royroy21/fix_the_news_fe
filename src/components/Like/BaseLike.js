@@ -80,7 +80,9 @@ class BaseLike extends React.Component {
             onClick={this.handlePost}
           />
         )}
-        <div className={classes.count}>{likesCount}</div>
+        {likesCount ? (
+          <div className={classes.count}>{likesCount || null}</div>
+        ) : null}
       </Fragment>
     );
   }
