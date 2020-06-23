@@ -48,7 +48,7 @@ export const refreshTopicError = error => ({
   payload: { error },
 });
 
-export const refreshTopic = (id) => new DispatchAPI().get(
+export const refreshTopic = id => new DispatchAPI().get(
   topicsURL,
   refreshTopicBegin,
   refreshTopicSuccess,
