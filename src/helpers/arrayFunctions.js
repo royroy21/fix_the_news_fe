@@ -37,3 +37,24 @@ export const refreshItemInList = (list, newObject) => {
   }
   return newList;
 };
+
+export const refreshItemNestList = (object, newItem) => {
+  /*
+  * Intended to update an item within an array
+  * named items that is part of an object.
+  *
+  * example:
+  * const object = {
+	*   categoryId: {objects: [], items: []}
+  * }
+  * */
+  const newObject = {};
+  for (const key of Object.keys(object)) {
+    const newItems = refreshItemInList(object[key].items, newItem);
+    newObject[key] = {
+      ...object[key],
+      items: newItems,
+    }
+  }
+  return newObject;
+};
