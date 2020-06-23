@@ -1,9 +1,13 @@
 import {
   GET_CATEGORY_NEWS_ITEMS_BEGIN,
   GET_CATEGORY_NEWS_ITEMS_SUCCESS,
-  GET_CATEGORY_NEWS_ITEMS_ERROR, CLEAR_CATEGORY_NEWS_ITEMS,
+  GET_CATEGORY_NEWS_ITEMS_ERROR,
+  REFRESH_CATEGORY_NEWS_ITEM_BEGIN,
+  REFRESH_CATEGORY_NEWS_ITEM_SUCCESS,
+  REFRESH_CATEGORY_NEWS_ITEM_ERROR,
+  CLEAR_CATEGORY_NEWS_ITEMS,
 } from './../actions/categoryNewsItems';
-import {combineLists} from "../../helpers/arrayFunctions";
+import {combineLists, refreshItemInNestedObject} from "../../helpers/arrayFunctions";
 
 export const initialCategoryNewsItemState = {
   objects: null,
@@ -39,6 +43,12 @@ const categoryNewsItemsReducer = (state = {}, action) => {
           ),
         },
       };
+    case REFRESH_CATEGORY_NEWS_ITEM_BEGIN:
+      return state;
+    case REFRESH_CATEGORY_NEWS_ITEM_SUCCESS:
+      return refreshItemInNestedObject(state, action.payload.data);
+    case REFRESH_CATEGORY_NEWS_ITEM_ERROR:
+      return state;
     case CLEAR_CATEGORY_NEWS_ITEMS:
       return {
         ...state,

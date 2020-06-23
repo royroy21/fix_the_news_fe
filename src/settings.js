@@ -17,5 +17,6 @@ export const userURL = `${baseURL}/authentication/users/`;
 
 // Backend API
 export const commentsURL = `${baseURL}/comments/`;
+export const likesURL = `${baseURL}/likes/`;
 export const newsItemsURL = `${baseURL}/news-items/`;
 export const topicsURL = `${baseURL}/topics/`;
