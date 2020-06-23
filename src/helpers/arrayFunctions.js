@@ -38,7 +38,7 @@ export const refreshItemInList = (list, newObject) => {
   return newList;
 };
 
-export const refreshItemNestList = (object, newItem) => {
+export const refreshItemInNestedObject = (object, newItem) => {
   /*
   * Intended to update an item within an array
   * named items that is part of an object.
