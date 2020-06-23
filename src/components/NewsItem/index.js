@@ -2,9 +2,10 @@ import React, {Component} from "react";
 import Typography from "@material-ui/core/Typography";
 import Link from '@material-ui/core/Link';
 import Chip from "@material-ui/core/Chip";
-import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import {withStyles} from "@material-ui/core";
 import NewsItemWrapper from "./wrapper";
+import PropTypes from "prop-types";
+import LikeTopicTopNewsItem from "../Like/LikeTopicTopNewsItem";
 
 const styles = (theme) => ({
   chip: {
@@ -87,7 +88,7 @@ class NewsItem extends Component {
   }
 
   render() {
-    const { classes, item, store} = this.props;
+    const { classes, fromTopicTopNewsItems, item, store} = this.props;
     const {isMobile, width: screenWidth} = store.appDimensions;
     if (isMobile === null) {
       return null;
@@ -139,12 +140,14 @@ class NewsItem extends Component {
               label={item.news_source}
             />
           </Link>
-          <div>
-            <ThumbUpAltOutlinedIcon
-              className={classes.thumbsUpIcon}
+          {fromTopicTopNewsItems ? (
+            <LikeTopicTopNewsItem
+              id={`top-news-item-like-${item.id}`}
+              likedObject={item}
+              likesCount={item.likes_count}
+              topicId={item.topic}
             />
-            <div className={classes.thumbsUpCount}>{"99"}</div>
-          </div>
+          ) : null}
         </div>
       </div>
     )
@@ -152,3 +155,11 @@ class NewsItem extends Component {
 }
 
 export default withStyles(styles)(NewsItemWrapper(NewsItem));
+
+NewsItem.defaultProps = {
+  fromTopicTopNewsItems: false,
+};
+
+NewsItem.propTypes = {
+  fromTopicTopNewsItems: PropTypes.bool.isRequired,
+};
