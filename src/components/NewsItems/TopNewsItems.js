@@ -7,6 +7,7 @@ const TopNewsItems = ({topic, category}) => {
       <NewsItem
         key={`news-item-${item.id}`}
         item={item}
+        fromTopicTopNewsItems={true}
       />
       ))
   )
