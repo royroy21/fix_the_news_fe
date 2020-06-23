@@ -6,6 +6,7 @@ import {withStyles} from "@material-ui/core";
 import NewsItemWrapper from "./wrapper";
 import PropTypes from "prop-types";
 import LikeTopicTopNewsItem from "../Like/LikeTopicTopNewsItem";
+import LikeNewsItem from "../Like/LikeNewsItem";
 
 const styles = (theme) => ({
   chip: {
@@ -142,12 +143,17 @@ class NewsItem extends Component {
           </Link>
           {fromTopicTopNewsItems ? (
             <LikeTopicTopNewsItem
-              id={`top-news-item-like-${item.id}`}
               likedObject={item}
               likesCount={item.likes_count}
               topicId={item.topic}
             />
-          ) : null}
+          ) : (
+            <LikeNewsItem
+              likedObject={item}
+              likesCount={item.likes_count}
+              topicId={item.topic}
+            />
+          )}
         </div>
       </div>
     )
