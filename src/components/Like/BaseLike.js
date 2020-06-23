@@ -89,7 +89,6 @@ class BaseLike extends React.Component {
 export default BaseLike;
 
 BaseLike.propTypes = {
-  id: PropTypes.string.isRequired,
   likedObject: PropTypes.object.isRequired,
   likesCount: PropTypes.number.isRequired,
 };
