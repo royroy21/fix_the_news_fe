@@ -73,7 +73,7 @@ class BaseLike extends React.Component {
             />
           </Link>
           {likesCount ? (
-            <div className={classes.count}>{likesCount || null}</div>
+            <div className={classes.count}>{likesCount}</div>
           ) : null}
         </Fragment>
       )
@@ -101,7 +101,7 @@ class BaseLike extends React.Component {
           />
         )}
         {likesCount ? (
-          <div className={classes.count}>{likesCount || null}</div>
+          <div className={classes.count}>{likesCount}</div>
         ) : null}
       </Fragment>
     );
