@@ -46,7 +46,6 @@ class MobileMainMenu extends Component {
             style={{float: "right"}}
           />
           <MenuItems
-            clearUser={this.props.actions.clearUser}
             user={this.props.store.user.object}
           />
         </div>

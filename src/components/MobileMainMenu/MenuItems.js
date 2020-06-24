@@ -1,16 +1,14 @@
 import React from "react";
 import {
-  localStorageAuthTokenKey,
   loginRoute,
   registrationRoute
 } from "../../settings";
-import Button from "../CustomButton";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import {makeStyles} from "@material-ui/core/styles";
 import UserDisplay from "../User/UserDisplay";
 import {Link} from "react-router-dom";
 import LoginButton from "../CustomButton/LoginButton";
 import ButtonLink from "../CustomButton/ButtonLink";
+import Logout from "../Logout";
 
 export const useStyles = makeStyles(theme => ({
   buttonDivider: {
@@ -30,12 +28,13 @@ export const useStyles = makeStyles(theme => ({
   },
   loginButtonAndDividerContainer: {
     marginTop: 12,
+    width: 80,
   },
   loggedInButtons: {
     display: "flex",
     flexDirection: "row",
     marginLeft: theme.spacing(1),
-    height: 50,
+    height: 40,
   },
   loginButtons: {
     display: "flex",
@@ -52,11 +51,7 @@ export const useStyles = makeStyles(theme => ({
   },
 }));
 
-const MenuItems = ({clearUser, user}) => {
-  const logout = () => {
-    clearUser();
-    localStorage.removeItem(localStorageAuthTokenKey);
-  };
+const MenuItems = ({user}) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
@@ -70,17 +65,13 @@ const MenuItems = ({clearUser, user}) => {
           to={registrationRoute}
           label={"Sign Up"}
           inverted={true}
+          style={{width: 100}}
         />
       </div>
     ) : (
       <div className={classes.loggedInButtons}>
         <UserDisplay userObject={user} />
-        <Button
-          onClick={logout}
-          icon={<ExitToAppIcon fontSize={"large"}/>}
-          size={"large"}
-          style={{marginBottom: 12, marginLeft: 5}}
-        />
+        <Logout />
       </div>
     )}
       <div className={classes.subLinks}>

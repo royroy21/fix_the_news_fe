@@ -4,7 +4,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import HeaderWrapper from "./wrapper";
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {
   loginRoute,
   registrationRoute
@@ -12,8 +11,8 @@ import {
 import UserDisplay from "../User/UserDisplay";
 import LoginButton from "../CustomButton/LoginButton";
 import ButtonLink from "../CustomButton/ButtonLink";
-import Button from "../CustomButton";
 import Logo from "../Logo";
+import Logout from "../Logout";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -45,11 +44,6 @@ const useStyles = makeStyles(theme => ({
 const Header = (props) => {
   const classes = useStyles();
   const { object:user } = props.store.user;
-
-  const logout = () => {
-    props.actions.clearUser();
-    localStorage.clear();
-  };
 
   const toolbarStyle = {
     margin: "auto",
@@ -97,11 +91,7 @@ const Header = (props) => {
           ) : (
             <Fragment>
               <UserDisplay userObject={user} />
-              <Button
-                onClick={logout}
-                icon={<ExitToAppIcon fontSize={"large"}/>}
-                style={{marginLeft: 5}}
-              />
+              <Logout />
             </Fragment>
           )}
         </Toolbar>
