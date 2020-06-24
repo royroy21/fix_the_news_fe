@@ -28,7 +28,7 @@ export const useStyles = makeStyles(theme => ({
   },
   loginButtonAndDividerContainer: {
     marginTop: 12,
-    width: 80,
+    width: 65,
   },
   loggedInButtons: {
     display: "flex",
