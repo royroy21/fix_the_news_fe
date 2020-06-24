@@ -4,6 +4,8 @@ import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
 import Error from "../Form/Error";
 import PropTypes from "prop-types";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import {Link} from "react-router-dom";
+import {userNotLoggedInRoute} from "../../settings";
 
 export const likeStyles = (theme) => ({
   count: {
@@ -16,7 +18,7 @@ export const likeStyles = (theme) => ({
     color: theme.palette.secondary.main,
     marginLeft: theme.spacing(1),
     "&:hover": {
-      color: theme.palette.secondary.light,
+      color: theme.palette.secondary.main,
       cursor: "pointer",
     },
   },
@@ -27,7 +29,7 @@ export const likeStyles = (theme) => ({
     color: "grey",
     marginLeft: theme.spacing(1),
     "&:hover": {
-      color: theme.palette.secondary.light,
+      color: theme.palette.secondary.main,
       cursor: "pointer",
     },
   },
@@ -58,6 +60,24 @@ class BaseLike extends React.Component {
       likedObject = {},
       likesCount,
     } = this.props;
+
+    if (!this.props.store.user.object) {
+      return (
+        <Fragment>
+          <Link
+            className={classes.link}
+            to={{pathname: userNotLoggedInRoute}}
+          >
+            <ThumbUpAltOutlinedIcon
+              className={classes.notLiked}
+            />
+          </Link>
+          {likesCount ? (
+            <div className={classes.count}>{likesCount || null}</div>
+          ) : null}
+        </Fragment>
+      )
+    }
 
     if (this.state.loading) {
       return (

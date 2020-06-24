@@ -6,6 +6,14 @@ import {
   deleteLikeTopicTopNewsItem,
 } from "../../store/actions/like";
 
+const mapStateToProps = (state) => {
+  return {
+    store: {
+      user: state.user,
+    },
+  }
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
@@ -26,7 +34,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const LikeWrapper = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 );
 
