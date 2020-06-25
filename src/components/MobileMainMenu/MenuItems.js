@@ -18,7 +18,7 @@ export const useStyles = makeStyles(theme => ({
   },
   container: {
     display: "flex",
-    height: "100%",
+    height: "90%",
     paddingLeft: theme.spacing(1),
     position: "relative",
   },
