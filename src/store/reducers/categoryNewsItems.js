@@ -50,10 +50,7 @@ const categoryNewsItemsReducer = (state = {}, action) => {
     case REFRESH_CATEGORY_NEWS_ITEM_ERROR:
       return state;
     case CLEAR_CATEGORY_NEWS_ITEMS:
-      return {
-        ...state,
-        [action.params.category]: initialCategoryNewsItemState,
-      };
+      return {};
     case GET_CATEGORY_NEWS_ITEMS_ERROR:
       return {
         ...state,

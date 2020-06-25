@@ -1,7 +1,8 @@
 import {getUser} from "./user";
 import DispatchAPI from "../../api";
 import {tokenLoginURL} from "../../settings";
-import {getTopics} from "./topics";
+import {clearTopics, getTopics} from "./topics";
+import {clearCategoryNewsItems} from "./categoryNewsItems";
 
 export const POST_TOKEN_BEGIN   = 'POST_TOKEN_BEGIN';
 export const POST_TOKEN_SUCCESS = 'POST_TOKEN_SUCCESS';
@@ -35,6 +36,8 @@ export const postToken = (data) => new DispatchAPI().create(
   data,
   null,
   [
+    clearTopics,
+    clearCategoryNewsItems,
     getUser,
     getTopics,
   ]

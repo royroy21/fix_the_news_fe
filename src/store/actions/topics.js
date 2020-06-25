@@ -55,3 +55,7 @@ export const refreshTopic = id => new DispatchAPI().get(
   refreshTopicError,
   id,
 );
+
+export const clearTopics = () => ({
+  type: CLEAR_TOPICS,
+});
