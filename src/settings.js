@@ -20,3 +20,5 @@ export const commentsURL = `${baseURL}/comments/`;
 export const likesURL = `${baseURL}/likes/`;
 export const newsItemsURL = `${baseURL}/news-items/`;
 export const topicsURL = `${baseURL}/topics/`;
+
+export const TOPIC_PAGE_SIZE_FOR_MOBILE = 3;
