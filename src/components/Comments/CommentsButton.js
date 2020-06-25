@@ -41,6 +41,16 @@ const useStyles = makeStyles((theme) => ({
 const CommentsButton = ({actions, commentsCount, store, topicId}) => {
   const [isExpanded, setExpanded] = useState(false);
   const classes = useStyles();
+
+  const openComments = () => {
+    setExpanded(true)
+  };
+
+  const closeComments = () => {
+    setExpanded(false);
+    actions.clearTopicComments({topic: topicId});
+  };
+
   return (
     <div
       className={classes.container}
@@ -48,7 +58,7 @@ const CommentsButton = ({actions, commentsCount, store, topicId}) => {
     >
       <div
         className={classes.content}
-        onClick={() => setExpanded(!isExpanded)}
+        onClick={isExpanded ? closeComments : openComments}
       >
         <span className={classes.text}>
           {'Comments'}

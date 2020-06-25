@@ -1,9 +1,12 @@
 import { connect } from 'react-redux'
-import {getTopicComments} from "../../store/actions/topicComments";
+import {
+  clearTopicComments,
+  getTopicComments,
+} from "../../store/actions/topicComments";
 import {
   clearComment,
   postCommentComment,
-  postTopicComment
+  postTopicComment,
 } from "../../store/actions/comment";
 
 const mapStateToProps = (state) => {
@@ -20,6 +23,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
+      clearComment: () => {
+        dispatch(clearComment());
+      },
+      clearTopicComments: params => {
+        dispatch(clearTopicComments(params))
+      },
       getTopicComments: params => {
         dispatch(getTopicComments(params))
       },
@@ -28,9 +37,6 @@ const mapDispatchToProps = (dispatch) => {
       },
       postTopicComment: data => {
         dispatch(postTopicComment(data))
-      },
-      clearComment: () => {
-        dispatch(clearComment());
       },
     }
   }
