@@ -18,8 +18,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
-      postToken: (data) => {
-        dispatch(postToken(data))
+      postToken: (data, isMobile) => {
+        dispatch(postToken(data, isMobile))
       },
       clearToken: () => {
         dispatch({type: CLEAR_TOKEN});
@@ -27,8 +27,8 @@ const mapDispatchToProps = (dispatch) => {
       clearUser: () => {
         dispatch({type: CLEAR_USER});
       },
-      postRegister: (data) => {
-        dispatch(postRegister(data))
+      postRegister: (data, isMobile) => {
+        dispatch(postRegister(data, isMobile))
       },
       clearRegister: () => {
         dispatch({type: CLEAR_REGISTER});
