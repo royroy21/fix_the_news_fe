@@ -1,6 +1,6 @@
 import {getUser} from "./user";
 import DispatchAPI from "../../api";
-import {tokenLoginURL} from "../../settings";
+import {tokenLoginURL, TOPIC_PAGE_SIZE_FOR_MOBILE} from "../../settings";
 import {clearTopics, getTopics} from "./topics";
 import {clearCategoryNewsItems} from "./categoryNewsItems";
 
@@ -28,7 +28,7 @@ export const clearToken = () => ({
   type: CLEAR_TOKEN,
 });
 
-export const postToken = (data) => new DispatchAPI().create(
+export const postToken = (data, isMobile=false) => new DispatchAPI().create(
   tokenLoginURL,
   postTokenBegin,
   postTokenSuccess,
@@ -39,6 +39,6 @@ export const postToken = (data) => new DispatchAPI().create(
     clearTopics,
     clearCategoryNewsItems,
     getUser,
-    getTopics,
+    () => getTopics(isMobile ? {size: TOPIC_PAGE_SIZE_FOR_MOBILE} : {}),
   ]
 );

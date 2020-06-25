@@ -25,12 +25,12 @@ export const clearRegister = () => ({
   type: CLEAR_REGISTER,
 });
 
-export const postRegister = (data) => new DispatchAPI().create(
+export const postRegister = (data, isMobile=false) => new DispatchAPI().create(
   userURL,
   postRegisterBegin,
   postRegisterSuccess,
   postRegisterError,
   data,
   null,
-  [() => postToken(data)]
+  [() => postToken(data, isMobile)]
 );
