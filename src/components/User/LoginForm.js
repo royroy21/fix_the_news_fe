@@ -4,6 +4,7 @@ import Field from "../Form/Field";
 import {TextField} from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
+import PropTypes from "prop-types";
 
 class LoginForm extends Form {
 
@@ -22,7 +23,7 @@ class LoginForm extends Form {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.actions.postToken(this.formData);
+    this.props.actions.postToken(this.formData, this.props.isMobile);
   };
 
   toggleShowPassword = () => {
@@ -80,4 +81,8 @@ class LoginForm extends Form {
 
 }
 
-export default LoginForm
+export default LoginForm;
+
+LoginForm.PropTypes = {
+  isMobile: PropTypes.bool.isRequired,
+};

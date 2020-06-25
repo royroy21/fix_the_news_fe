@@ -3,19 +3,20 @@ import CustomModal from "../CustomModal";
 import UserWrapper from "./wrapper";
 import LoginForm from "./LoginForm";
 
-const LoginModal = (props) => {
+const LoginModal = ({actions, store}) => {
   return (
     <CustomModal
       contentComponent={LoginForm}
       contentProps={{
         actions: {
-          postToken: props.actions.postToken,
-          clearToken: props.actions.clearToken,
-          clearUser: props.actions.clearUser,
+          postToken: actions.postToken,
+          clearToken: actions.clearToken,
+          clearUser: actions.clearUser,
         },
         buttonLabel: "Login",
-        storeObject: props.store.token,
+        storeObject: store.token,
         successMessage: "Login successful",
+        isMobile: store.appDimensions.isMobile,
       }}
       header={"Login to your account"}
     />
