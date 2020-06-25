@@ -39,7 +39,7 @@ class RegistrationForm extends Form {
   handleSubmit = (event) => {
     event.preventDefault();
     this.formData.append("re_password", this.state.formData.password);
-    this.props.actions.postRegister(this.formData);
+    this.props.actions.postRegister(this.formData, this.props.isMobile);
   };
 
   toggleShowPassword = () => {
