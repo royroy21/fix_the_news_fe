@@ -44,6 +44,7 @@ const Routes = () => {
       />
       <Route
         component={ShareTopicModal}
+        exact
         path={shareTopicRoute}
       />
       <Route
