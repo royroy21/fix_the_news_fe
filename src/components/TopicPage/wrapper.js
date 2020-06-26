@@ -5,7 +5,6 @@ import {prependTopic} from "../../store/actions/topics";
 const mapStateToProps = (state) => {
   return {
     store: {
-      appDimensions: state.appDimensions,
       topic: state.topic,
     },
   }
