@@ -9,6 +9,7 @@ import commentReducer from './comment'
 import commentCommentsReducer from './commentComments'
 import topicCommentsReducer from './topicComments'
 import tokenReducer from './token'
+import topicReducer from './topic'
 import topicsReducer from './topics'
 import userReducer from './user';
 
@@ -22,6 +23,7 @@ export default combineReducers({
   commentComments: commentCommentsReducer,
   topicComments: topicCommentsReducer,
   token: tokenReducer,
+  topic: topicReducer,
   topics: topicsReducer,
   user: userReducer,
 })
