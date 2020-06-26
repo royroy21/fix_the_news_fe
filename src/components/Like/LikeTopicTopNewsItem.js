@@ -7,20 +7,20 @@ class LikeTopicTopNewsItem extends BaseLike {
 
   handlePost = event => {
     event.preventDefault();
-    const {likedObject, topicId} = this.props;
+    const {likedObject, topicSlug} = this.props;
     this.props.actions.postLikeTopicTopNewsItem(
       {"news_item": likedObject.id},
-      topicId,
+      topicSlug,
     );
     this.setLoadingTimer()
   };
 
   handleDelete = event => {
     event.preventDefault();
-    const {likedObject, topicId} = this.props;
+    const {likedObject, topicSlug} = this.props;
     this.props.actions.deleteLikeTopicTopNewsItem(
       likedObject.like,
-      topicId,
+      topicSlug,
     );
     this.setLoadingTimer()
   };
@@ -30,5 +30,5 @@ class LikeTopicTopNewsItem extends BaseLike {
 export default withStyles(likeStyles)(LikeWrapper(LikeTopicTopNewsItem));
 
 LikeTopicTopNewsItem.propTypes = {
-  topicId: PropTypes.number.isRequired,
+  topicSlug: PropTypes.number.isRequired,
 };

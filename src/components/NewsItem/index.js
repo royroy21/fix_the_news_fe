@@ -145,13 +145,13 @@ class NewsItem extends Component {
             <LikeTopicTopNewsItem
               likedObject={item}
               likesCount={item.likes_count}
-              topicId={item.topic}
+              topicSlug={item.topic_slug}
             />
           ) : (
             <LikeNewsItem
               likedObject={item}
               likesCount={item.likes_count}
-              topicId={item.topic}
+              topicSlug={item.topic_slug}
             />
           )}
         </div>

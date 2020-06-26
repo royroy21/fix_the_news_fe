@@ -17,17 +17,17 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
-      postLikeNewsItem: (data, newsItemId, topicId) => {
-        dispatch(postLikeNewsItem(data, newsItemId, topicId))
+      postLikeNewsItem: (data, newsItemId, topicSlug) => {
+        dispatch(postLikeNewsItem(data, newsItemId, topicSlug))
       },
-      postLikeTopicTopNewsItem: (data, topicId) => {
-        dispatch(postLikeTopicTopNewsItem(data, topicId))
+      postLikeTopicTopNewsItem: (data, topicSlug) => {
+        dispatch(postLikeTopicTopNewsItem(data, topicSlug))
       },
-      deleteLikeNewsItem: (id, newsItemId, topicId) => {
-        dispatch(deleteLikeNewsItem(id, newsItemId, topicId))
+      deleteLikeNewsItem: (id, newsItemId, topicSlug) => {
+        dispatch(deleteLikeNewsItem(id, newsItemId, topicSlug))
       },
-      deleteLikeTopicTopNewsItem: (id, topicId) => {
-        dispatch(deleteLikeTopicTopNewsItem(id, topicId));
+      deleteLikeTopicTopNewsItem: (id, topicSlug) => {
+        dispatch(deleteLikeTopicTopNewsItem(id, topicSlug));
       },
     }
   }

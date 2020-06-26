@@ -26,17 +26,17 @@ export const postLikeError = error => ({
   payload: { error }
 });
 
-export const postLikeTopicTopNewsItem = (data, topicId) => new DispatchAPI().create(
+export const postLikeTopicTopNewsItem = (data, topicSlug) => new DispatchAPI().create(
   likesURL,
   postLikeBegin,
   postLikeSuccess,
   postLikeError,
   data,
   null,
-  [() => refreshTopic(topicId)],
+  [() => refreshTopic(topicSlug)],
 );
 
-export const postLikeNewsItem = (data, newsItemId, topicId) => new DispatchAPI().create(
+export const postLikeNewsItem = (data, newsItemId, topicSlug) => new DispatchAPI().create(
   likesURL,
   postLikeBegin,
   postLikeSuccess,
@@ -45,7 +45,7 @@ export const postLikeNewsItem = (data, newsItemId, topicId) => new DispatchAPI()
   null,
   [
     () => refreshCategoryNewsItem(newsItemId),
-    () => refreshTopic(topicId),
+    () => refreshTopic(topicSlug),
   ],
 );
 
@@ -62,17 +62,17 @@ export const deleteLikeError = error => ({
   payload: { error }
 });
 
-export const deleteLikeTopicTopNewsItem = (id, topicId) => new DispatchAPI().delete(
+export const deleteLikeTopicTopNewsItem = (id, topicSlug) => new DispatchAPI().delete(
   likesURL,
   deleteLikeBegin,
   deleteLikeSuccess,
   deleteLikeError,
   id,
   null,
-  [() => refreshTopic(topicId)],
+  [() => refreshTopic(topicSlug)],
 );
 
-export const deleteLikeNewsItem = (id, newsItemId, topicId) => new DispatchAPI().delete(
+export const deleteLikeNewsItem = (id, newsItemId, topicSlug) => new DispatchAPI().delete(
   likesURL,
   deleteLikeBegin,
   deleteLikeSuccess,
@@ -81,7 +81,7 @@ export const deleteLikeNewsItem = (id, newsItemId, topicId) => new DispatchAPI()
   null,
   [
     () => refreshCategoryNewsItem(newsItemId),
-    () => refreshTopic(topicId)
+    () => refreshTopic(topicSlug)
   ],
 );
 
