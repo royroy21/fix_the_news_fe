@@ -17,6 +17,7 @@ const CopyToClipBoard = ({text}) => {
         icon={<FileCopyIcon />}
         label={copied ? "Copied to clipboard" : "Copy to clipboard"}
         onClick={handleClick}
+        style={{width: 200}}
       />
     </CopyToClipboard>
   )
