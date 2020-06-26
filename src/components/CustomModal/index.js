@@ -21,14 +21,15 @@ const styles = (theme) => ({
     textAlign: "center",
   },
   modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     padding: theme.spacing(2),
     overflow: "auto",
   },
 });
 
 class CustomModal extends Component {
-
-  contentRef = React.createRef();
 
   state = {
     open: false,
@@ -46,19 +47,20 @@ class CustomModal extends Component {
   };
 
   render() {
-    const {height, isMobile} = this.props.store.appDimensions;
-    const contentMarginTop = this.contentRef.current
-      ? (height - this.contentRef.current.clientHeight) / 2
-      : 0;
+    const {
+      height,
+      isMobile,
+    } = this.props.store.appDimensions;
 
     const contentStyle = {
-      margin: `${contentMarginTop}px auto auto auto`,
       padding: "25px",
       backgroundColor: "white",
     };
     if (!isMobile) {
       contentStyle.maxHeight = height - 200;
-      contentStyle.width = 700;
+    }
+    if (!this.props.noWidth) {
+      contentStyle.width = isMobile ? "90%" : 700;
     }
 
     const { classes } = this.props;
@@ -69,7 +71,7 @@ class CustomModal extends Component {
         onClose={this.closeModal}
         onBackdropClick={this.closeModal}
       >
-        <div style={contentStyle} ref={this.contentRef}>
+        <div style={contentStyle}>
           <div className={classes.headerContainer}>
             <CloseButton onClick={this.closeModal} />
             <div className={classes.headerTitle}>
@@ -96,6 +98,7 @@ export default withRouter(withStyles(styles)(CustomModalWrapper(CustomModal)));
 CustomModal.defaultProps = {
   header: "",
   footerComponent: null,
+  noWidth: false,
 };
 
 CustomModal.propTypes = {
@@ -109,4 +112,5 @@ CustomModal.propTypes = {
     PropTypes.func,
   ]),
   header: PropTypes.string.isRequired,
+  noWidth: PropTypes.bool.isRequired,
 };
