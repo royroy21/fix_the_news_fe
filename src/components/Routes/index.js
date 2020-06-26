@@ -6,12 +6,16 @@ import {
   loginRoute,
   mobileMainMenuRoute,
   registrationRoute,
+  shareTopicRoute,
+  topicRoute,
   userNotLoggedInRoute
 } from "../../settings";
 import RegistrationModal from "../User/RegistrationModal";
 import UserNotLoggedInModal from "../User/UserNotLoggedInModal";
 import NewsItemModal from "../NewsItem/NewsItemModal";
 import MobileMainMenu from "../MobileMainMenu";
+import TopicPage from "../TopicPage";
+import ShareTopicModal from "../ShareTopic/ShareTopicModal";
 
 
 const Routes = () => {
@@ -37,6 +41,15 @@ const Routes = () => {
         component={RegistrationModal}
         exact
         path={registrationRoute}
+      />
+      <Route
+        component={ShareTopicModal}
+        exact
+        path={shareTopicRoute}
+      />
+      <Route
+        component={TopicPage}
+        path={topicRoute}
       />
       <Route
         component={UserNotLoggedInModal}

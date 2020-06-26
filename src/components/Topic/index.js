@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import NewsItemsContainer from "../NewsItems/NewsItemsContainer";
 import ButtonLink from "../CustomButton/ButtonLink";
 import {
-  addNewsItemRoute,
+  addNewsItemRoute, shareTopicRoute,
   userNotLoggedInRoute
 } from "../../settings";
 import TopicWrapper from "./wrapper";
@@ -63,7 +63,8 @@ const Topic = ({item, store}) => {
             <ButtonLink
               icon={<ShareIcon />}
               inverted={true}
-              to={""} // TODO - to share topic ??
+              state={item.slug}
+              to={shareTopicRoute}
             />
           </div>
           {!store.user.object ? (
