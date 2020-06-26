@@ -8,6 +8,7 @@ export const REFRESH_TOPIC_BEGIN   = 'REFRESH_TOPIC_BEGIN';
 export const REFRESH_TOPIC_SUCCESS = 'REFRESH_TOPIC_SUCCESS';
 export const REFRESH_TOPIC_ERROR = 'REFRESH_TOPIC_ERROR';
 export const CLEAR_TOPICS = 'CLEAR_TOPICS';
+export const PREPEND_TOPIC = 'PREPEND_TOPIC';
 
 export const getTopicsBegin = data => ({
   type: GET_TOPICS_BEGIN,
@@ -58,4 +59,9 @@ export const refreshTopic = id => new DispatchAPI().get(
 
 export const clearTopics = () => ({
   type: CLEAR_TOPICS,
+});
+
+export const prependTopic = topic => ({
+  type: PREPEND_TOPIC,
+  topic: topic,
 });

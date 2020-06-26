@@ -2,12 +2,11 @@ import {
   GET_TOPICS_BEGIN,
   GET_TOPICS_SUCCESS,
   GET_TOPICS_ERROR,
-
   REFRESH_TOPIC_BEGIN,
   REFRESH_TOPIC_SUCCESS,
   REFRESH_TOPIC_ERROR,
-
   CLEAR_TOPICS,
+  PREPEND_TOPIC,
 } from './../actions/topics';
 import {combineLists, refreshItemInList} from "../../helpers/arrayFunctions";
 
@@ -64,6 +63,18 @@ const topicsReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload.error,
       };
+    case PREPEND_TOPIC:
+      if (action.topic) {
+        return {
+          ...state,
+          items: [
+            action.topic,
+            ...state.items,
+          ],
+        };
+      } else {
+        return state;
+      }
     case CLEAR_TOPICS:
       return {
         objects: null,
