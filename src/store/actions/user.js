@@ -31,7 +31,7 @@ export const getUser = () => new DispatchAPI().get(
   getUserError,
 );
 
-export const patchUser = (data) => new DispatchAPI().patch(
+export const patchUser = data => new DispatchAPI().patch(
   userDetailsURL,
   getUserBegin,
   getUserSuccess,
