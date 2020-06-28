@@ -23,7 +23,7 @@ const LogoutButton = ({actions, history, store}) => {
       onClick={logout}
       label={"Logout"}
       icon={<MeetingRoomIcon fontSize={"large"}/>}
-      style={{marginLeft: 5}}
+      style={{marginLeft: 5, width: 100}}
     />
   )
 };
