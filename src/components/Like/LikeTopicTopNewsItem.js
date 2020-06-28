@@ -30,5 +30,5 @@ class LikeTopicTopNewsItem extends BaseLike {
 export default withStyles(likeStyles)(LikeWrapper(LikeTopicTopNewsItem));
 
 LikeTopicTopNewsItem.propTypes = {
-  topicSlug: PropTypes.number.isRequired,
+  topicSlug: PropTypes.string.isRequired,
 };
