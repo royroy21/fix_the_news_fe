@@ -9,8 +9,8 @@ const mapStateToProps = (state) => {
 };
 
 
-const MobileMainMenuWrapper = connect(
+const MainMenuWrapper = connect(
   mapStateToProps,
 );
 
-export default MobileMainMenuWrapper;
+export default MainMenuWrapper;
