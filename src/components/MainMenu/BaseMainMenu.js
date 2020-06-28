@@ -16,7 +16,7 @@ const BaseMainMenu = ({history, store, classes}) => {
 
   const closeModal = () => {
     setOpen(false);
-    history.push("/");
+    history.goBack();
   };
 
   return (

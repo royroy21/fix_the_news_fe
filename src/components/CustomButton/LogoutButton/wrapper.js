@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import {clearUser} from "../../store/actions/user";
-import {getTopics} from "../../store/actions/topics";
-import {clearToken} from "../../store/actions/token";
+import {clearToken} from "../../../store/actions/token";
+import {clearUser} from "../../../store/actions/user";
+import {getTopics} from "../../../store/actions/topics";
 
 const mapStateToProps = (state) => {
   return {

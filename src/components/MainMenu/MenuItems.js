@@ -8,7 +8,7 @@ import UserDisplay from "../User/UserDisplay";
 import {Link} from "react-router-dom";
 import LoginButton from "../CustomButton/LoginButton";
 import ButtonLink from "../CustomButton/ButtonLink";
-import Logout from "../Logout";
+import LogoutButton from "../CustomButton/LogoutButton";
 
 export const useStyles = makeStyles(theme => ({
   buttonDivider: {
@@ -71,7 +71,7 @@ const MenuItems = ({user}) => {
     ) : (
       <div className={classes.loggedInButtons}>
         <UserDisplay userObject={user} />
-        <Logout />
+        <LogoutButton />
       </div>
     )}
       <div className={classes.subLinks}>

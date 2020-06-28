@@ -1,10 +1,11 @@
 import React from "react";
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import LogoutWrapper from "./wrapper";
-import Button from "../CustomButton";
-import {TOPIC_PAGE_SIZE_FOR_MOBILE} from "../../settings";
+import {TOPIC_PAGE_SIZE_FOR_MOBILE} from "../../../settings";
+import CustomButton from "../index";
+import { withRouter } from "react-router-dom";
 
-const Logout = ({actions, store}) => {
+const LogoutButton = ({actions, history, store}) => {
 
   const logout = () => {
     actions.clearUser();
@@ -14,14 +15,17 @@ const Logout = ({actions, store}) => {
       ? {size: TOPIC_PAGE_SIZE_FOR_MOBILE}
       : {};
     actions.getTopics(params);
+    history.goBack();
   };
 
   return (
-    <Button
+    <CustomButton
       onClick={logout}
+      label={"Logout"}
       icon={<MeetingRoomIcon fontSize={"large"}/>}
+      style={{marginLeft: 5}}
     />
   )
 };
 
-export default LogoutWrapper(Logout);
+export default withRouter(LogoutWrapper(LogoutButton));
