@@ -14,6 +14,7 @@ export const useStyles = makeStyles(theme => ({
     height: "90%",
     paddingLeft: theme.spacing(1),
     position: "relative",
+    width: "80%",
   },
   link: {
     color: theme.palette.primary.dark,
