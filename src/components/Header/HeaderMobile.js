@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import MobileMainMenuButton from "../CustomButton/MobileMainMenuButton";
+import MainMenuButton from "../CustomButton/MainMenuButton";
 import {mobileMainMenuRoute} from "../../settings";
 import Logo from "../Logo";
 
@@ -34,7 +34,7 @@ const HeaderMobile = () => {
       >
         <Toolbar className={classes.toolbar}>
           <Logo style={{flexGrow: 1}}/>
-          <MobileMainMenuButton to={mobileMainMenuRoute} />
+          <MainMenuButton to={mobileMainMenuRoute} />
         </Toolbar>
       </AppBar>
     </div>

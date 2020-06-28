@@ -21,7 +21,7 @@ export const useStyles = makeStyles(theme => ({
   },
 }));
 
-const MobileMainMenuButton = ({to}) => {
+const MainMenuButton = ({to}) => {
   const classes = useStyles();
   return (
     <button className={classes.button}>
@@ -35,4 +35,4 @@ const MobileMainMenuButton = ({to}) => {
   )
 };
 
-export default MobileMainMenuButton;
+export default MainMenuButton;
