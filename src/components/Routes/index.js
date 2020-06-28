@@ -2,7 +2,9 @@ import React, {Fragment} from "react";
 import {Route} from "react-router-dom";
 import LoginModal from "../User/LoginModal";
 import {
-  addNewsItemRoute, desktopMainMenuRoute,
+  addNewsItemRoute,
+  desktopMainMenuRoute,
+  editUserRoute,
   loginRoute,
   mobileMainMenuRoute,
   registrationRoute,
@@ -17,6 +19,7 @@ import TopicPage from "../TopicPage";
 import ShareTopicModal from "../ShareTopic/ShareTopicModal";
 import MobileMainMenu from "../MainMenu/MobileMainMenu";
 import DesktopMainMenu from "../MainMenu/DesktopMainMenu";
+import EditUserModal from "../User/EditUserModal";
 
 
 const Routes = () => {
@@ -56,6 +59,11 @@ const Routes = () => {
       <Route
         component={TopicPage}
         path={topicRoute}
+      />
+      <Route
+        component={EditUserModal}
+        exact
+        path={editUserRoute}
       />
       <Route
         component={UserNotLoggedInModal}
