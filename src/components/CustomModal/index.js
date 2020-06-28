@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import {withRouter} from "react-router-dom";
 import {withStyles} from "@material-ui/core";
 import CloseButton from "../CustomButton/CloseButton";
+import { withLastLocation } from 'react-router-last-location';
 
 const styles = (theme) => ({
   footer: {
@@ -35,6 +36,11 @@ class CustomModal extends Component {
     open: false,
   };
 
+  DO_NOT_GO_BACK_TO = [
+    "/desktop-main-menu/",
+    "/mobile-main-menu/",
+  ];
+
   componentDidMount() {
     if (!this.state.open) {
       this.setState({open: true});
@@ -43,7 +49,16 @@ class CustomModal extends Component {
 
   closeModal = () => {
     this.setState({open: false});
-    this.props.history.goBack();
+
+    const lastLocation = this.props.lastLocation;
+    if (lastLocation && lastLocation.pathname) {
+      const pathname = lastLocation.pathname;
+      const goToPath = this.DO_NOT_GO_BACK_TO.includes(pathname)
+        ? "/"
+        : pathname;
+      this.props.history.push(goToPath);
+    }
+    this.props.history.push("/");
   };
 
   render() {
@@ -93,7 +108,7 @@ class CustomModal extends Component {
   }
 }
 
-export default withRouter(withStyles(styles)(CustomModalWrapper(CustomModal)));
+export default withRouter(withStyles(styles)(CustomModalWrapper(withLastLocation(CustomModal))));
 
 CustomModal.defaultProps = {
   header: "",
