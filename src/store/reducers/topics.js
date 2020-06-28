@@ -65,6 +65,10 @@ const topicsReducer = (state = initialState, action) => {
       };
     case PREPEND_TOPIC:
       if (action.topic) {
+        if (state.items.length > 0 && state.items[0].id === action.topic.id) {
+          // topic is already at the top
+          return state;
+        }
         return {
           ...state,
           items: [
