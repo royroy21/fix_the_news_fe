@@ -15,7 +15,7 @@ const LogoutButton = ({actions, history, store}) => {
       ? {size: TOPIC_PAGE_SIZE_FOR_MOBILE}
       : {};
     actions.getTopics(params);
-    history.goBack();
+    history.push("/");
   };
 
   return (
