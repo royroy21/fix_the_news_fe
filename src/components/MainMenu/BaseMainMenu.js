@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "@material-ui/core/Modal";
 import MenuItems from "./MenuItems";
 import CloseButton from "../CustomButton/CloseButton";
+import { useLastLocation } from 'react-router-last-location';
 
 const BaseMainMenu = ({history, store, classes}) => {
   const [open, setOpen] = useState(false);
@@ -14,9 +15,11 @@ const BaseMainMenu = ({history, store, classes}) => {
   };
   useEffect(openMenu);
 
+  const lastLocation = useLastLocation();
   const closeModal = () => {
     setOpen(false);
-    history.goBack();
+    const goToPath = lastLocation ? lastLocation.pathname : "/";
+    history.push(goToPath);
   };
 
   return (
