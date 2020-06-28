@@ -4,6 +4,7 @@ export const localStorageAuthTokenKey = "fixTheNewsAuthToken";
 export const addNewsItemRoute = "/add-news-item/";
 export const loginRoute = "/login/";
 export const mobileMainMenuRoute = "/mobile-main-menu/";
+export const desktopMainMenuRoute = "/desktop-main-menu/";
 export const registrationRoute = "/sign-up/";
 export const shareTopicRoute = "/share-topic/";
 export const topicRoute = "/topic/:slug";

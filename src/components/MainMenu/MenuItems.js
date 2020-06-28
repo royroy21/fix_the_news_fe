@@ -8,7 +8,11 @@ import UserDisplay from "../User/UserDisplay";
 import {Link} from "react-router-dom";
 import LoginButton from "../CustomButton/LoginButton";
 import ButtonLink from "../CustomButton/ButtonLink";
-import Logout from "../Logout";
+import LogoutButton from "../CustomButton/LogoutButton";
+import MenuItem from "./MenuItem";
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import MapIcon from '@material-ui/icons/Map';
+import AddBoxIcon from '@material-ui/icons/AddBox';
 
 export const useStyles = makeStyles(theme => ({
   buttonDivider: {
@@ -17,7 +21,6 @@ export const useStyles = makeStyles(theme => ({
     marginRight: 10,
   },
   container: {
-    display: "flex",
     height: "90%",
     paddingLeft: theme.spacing(1),
     position: "relative",
@@ -35,11 +38,18 @@ export const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     marginLeft: theme.spacing(1),
     height: 40,
+    width: "90%",
   },
   loginButtons: {
     display: "flex",
     flexDirection: "row",
     marginLeft: theme.spacing(1),
+  },
+  menuItems: {
+    display: "flex",
+    flexDirection: "column",
+    paddingLeft: theme.spacing(1),
+    paddingTop: theme.spacing(1),
   },
   subLinks: {
     bottom: 0,
@@ -71,9 +81,14 @@ const MenuItems = ({user}) => {
     ) : (
       <div className={classes.loggedInButtons}>
         <UserDisplay userObject={user} />
-        <Logout />
+        <LogoutButton />
       </div>
     )}
+      <div className={classes.menuItems}>
+        <MenuItem icon={<AccountBoxIcon color={"secondary"} />} label={"Account"} to={""} />
+        <MenuItem icon={<AddBoxIcon color={"secondary"} />} label={"Add Topic"} to={""} />
+        <MenuItem icon={<MapIcon color={"secondary"} />} label={"Road map"} to={""} />
+      </div>
       <div className={classes.subLinks}>
         <Link className={classes.link} to={""}>{"Contact Us"}</Link>
         <Link className={classes.link} to={""}>{"About"}</Link>

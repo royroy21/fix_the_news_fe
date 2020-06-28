@@ -2,7 +2,7 @@ import React, {Fragment} from "react";
 import {Route} from "react-router-dom";
 import LoginModal from "../User/LoginModal";
 import {
-  addNewsItemRoute,
+  addNewsItemRoute, desktopMainMenuRoute,
   loginRoute,
   mobileMainMenuRoute,
   registrationRoute,
@@ -13,9 +13,10 @@ import {
 import RegistrationModal from "../User/RegistrationModal";
 import UserNotLoggedInModal from "../User/UserNotLoggedInModal";
 import NewsItemModal from "../NewsItem/NewsItemModal";
-import MobileMainMenu from "../MobileMainMenu";
 import TopicPage from "../TopicPage";
 import ShareTopicModal from "../ShareTopic/ShareTopicModal";
+import MobileMainMenu from "../MainMenu/MobileMainMenu";
+import DesktopMainMenu from "../MainMenu/DesktopMainMenu";
 
 
 const Routes = () => {
@@ -26,6 +27,11 @@ const Routes = () => {
         component={LoginModal}
         exact
         path={loginRoute}
+      />
+      <Route
+        component={DesktopMainMenu}
+        exact
+        path={desktopMainMenuRoute}
       />
       <Route
         component={MobileMainMenu}

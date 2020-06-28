@@ -5,14 +5,14 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import HeaderWrapper from "./wrapper";
 import {
+  desktopMainMenuRoute,
   loginRoute,
   registrationRoute
 } from "../../settings";
-import UserDisplay from "../User/UserDisplay";
 import LoginButton from "../CustomButton/LoginButton";
 import ButtonLink from "../CustomButton/ButtonLink";
 import Logo from "../Logo";
-import Logout from "../Logout";
+import MainMenuButton from "../CustomButton/MainMenuButton";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -89,10 +89,9 @@ const Header = (props) => {
               />
             </Fragment>
           ) : (
-            <Fragment>
-              <UserDisplay userObject={user} />
-              <Logout />
-            </Fragment>
+            <MainMenuButton
+              to={desktopMainMenuRoute}
+            />
           )}
         </Toolbar>
       </AppBar>
