@@ -8,6 +8,7 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import MapIcon from '@material-ui/icons/Map';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import LoginRegistration from "../CustomButton/LoginRegistration";
+import {editUserRoute} from "../../settings";
 
 export const useStyles = makeStyles(theme => ({
   container: {
@@ -31,7 +32,7 @@ export const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     paddingLeft: theme.spacing(1),
-    paddingTop: theme.spacing(1),
+    paddingTop: theme.spacing(3),
   },
   subLinks: {
     bottom: 0,
@@ -56,9 +57,18 @@ const MenuItems = ({user}) => {
       </div>
     )}
       <div className={classes.menuItems}>
-        <MenuItem icon={<AccountBoxIcon color={"secondary"} />} label={"Account"} to={""} />
-        <MenuItem icon={<AddBoxIcon color={"secondary"} />} label={"Add Topic"} to={""} />
-        <MenuItem icon={<MapIcon color={"secondary"} />} label={"Road map"} to={""} />
+        {user && <MenuItem
+          icon={<AccountBoxIcon color={"secondary"} />}
+          label={"Account"} to={editUserRoute}
+        />}
+        {user && <MenuItem
+          icon={<AddBoxIcon color={"secondary"} />}
+          label={"Add Topic"} to={""}
+        />}
+        <MenuItem
+          icon={<MapIcon color={"secondary"} />}
+          label={"Road map"} to={""}
+        />
       </div>
       <div className={classes.subLinks}>
         <Link className={classes.link} to={""}>{"Contact Us"}</Link>
