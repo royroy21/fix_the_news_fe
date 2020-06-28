@@ -1,25 +1,15 @@
 import React from "react";
-import {
-  loginRoute,
-  registrationRoute
-} from "../../settings";
 import {makeStyles} from "@material-ui/core/styles";
 import UserDisplay from "../User/UserDisplay";
 import {Link} from "react-router-dom";
-import LoginButton from "../CustomButton/LoginButton";
-import ButtonLink from "../CustomButton/ButtonLink";
 import LogoutButton from "../CustomButton/LogoutButton";
 import MenuItem from "./MenuItem";
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import MapIcon from '@material-ui/icons/Map';
 import AddBoxIcon from '@material-ui/icons/AddBox';
+import LoginRegistration from "../CustomButton/LoginRegistration";
 
 export const useStyles = makeStyles(theme => ({
-  buttonDivider: {
-    color: theme.palette.primary.main,
-    marginLeft: 10,
-    marginRight: 10,
-  },
   container: {
     height: "90%",
     paddingLeft: theme.spacing(1),
@@ -29,21 +19,12 @@ export const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.dark,
     textDecoration: "none",
   },
-  loginButtonAndDividerContainer: {
-    marginTop: 12,
-    width: 65,
-  },
   loggedInButtons: {
     display: "flex",
     flexDirection: "row",
     marginLeft: theme.spacing(1),
     height: 40,
     width: "90%",
-  },
-  loginButtons: {
-    display: "flex",
-    flexDirection: "row",
-    marginLeft: theme.spacing(1),
   },
   menuItems: {
     display: "flex",
@@ -66,18 +47,7 @@ const MenuItems = ({user}) => {
   return (
     <div className={classes.container}>
     {!!!user ? (
-      <div className={classes.loginButtons}>
-        <div className={classes.loginButtonAndDividerContainer}>
-          <LoginButton to={loginRoute}/>
-          <span className={classes.buttonDivider}>{"/"}</span>
-        </div>
-        <ButtonLink
-          to={registrationRoute}
-          label={"Sign Up"}
-          inverted={true}
-          style={{width: 100}}
-        />
-      </div>
+      <LoginRegistration />
     ) : (
       <div className={classes.loggedInButtons}>
         <UserDisplay userObject={user} />

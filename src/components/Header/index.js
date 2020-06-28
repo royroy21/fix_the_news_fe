@@ -1,18 +1,13 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import HeaderWrapper from "./wrapper";
-import {
-  desktopMainMenuRoute,
-  loginRoute,
-  registrationRoute
-} from "../../settings";
-import LoginButton from "../CustomButton/LoginButton";
-import ButtonLink from "../CustomButton/ButtonLink";
+import { desktopMainMenuRoute } from "../../settings";
 import Logo from "../Logo";
 import MainMenuButton from "../CustomButton/MainMenuButton";
+import LoginRegistration from "../CustomButton/LoginRegistration";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -79,15 +74,7 @@ const Header = (props) => {
             {"Help"}
           </Typography>
           {!!!user ? (
-            <Fragment>
-              <LoginButton to={loginRoute}/>
-              <span className={classes.buttonDivider}>{"/"}</span>
-              <ButtonLink
-                to={registrationRoute}
-                label={"Sign Up"}
-                inverted={true}
-              />
-            </Fragment>
+            <LoginRegistration />
           ) : (
             <MainMenuButton
               to={desktopMainMenuRoute}
