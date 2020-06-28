@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
   content: {
     backgroundColor: theme.palette.primary.light,
     float: "right",
-    height: 150,
+    height: 250,
     padding: theme.spacing(1),
     width: "100%",
   }
