@@ -1,21 +1,11 @@
 import Form from "../Form";
 import React, {Fragment} from "react";
 import Field from "../Form/Field";
-import {TextField, withStyles} from "@material-ui/core";
+import {TextField} from "@material-ui/core";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import PropTypes from "prop-types";
 import Button from "../CustomButton";
-
-const styles = theme => ({
-  uploadAvatarContainer: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
-  uploadAvatarText: {
-    margin: `${theme.spacing(4)}px 0 0 ${theme.spacing(2)}px`,
-  },
-});
 
 class RegistrationForm extends Form {
 
@@ -59,8 +49,26 @@ class RegistrationForm extends Form {
   };
 
   getFields() {
-    const { classes } = this.props;
+    const { isMobile } = this.props;
     const { avatar } = this.state.formData;
+
+    const uploadAvatarContainer = isMobile
+      ? {
+          display: "flex",
+          flexDirection: "column",
+          margin: "0 auto 0 auto",
+          width: isMobile ? 150 : undefined
+        }
+      : {
+          margin: "0 auto 0 auto",};
+
+    const avatarButtonStyle = {
+        marginTop: 20,
+        marginRight: !isMobile ? 5 : undefined,
+        padding: 5,
+        width: !isMobile ? 150 : undefined,
+    };
+
     return (
       <Fragment>
         <input
@@ -70,24 +78,20 @@ class RegistrationForm extends Form {
           type={"file"}
           onChange={(event) => this.handleChangeFile(event, "avatar")}
         />
-        <div className={classes.uploadAvatarContainer}>
+        <div style={uploadAvatarContainer}>
           <Button
             label={avatar ? "Change Avatar" : "Add Avatar"}
             onClick={() => this.imageInput.click()}
-            style={{marginTop: 20}}
+            style={avatarButtonStyle}
           />
           {avatar ? (
             <Button
               label={"Remove Avatar"}
               onClick={this.removeAvatar}
-              style={!this.props.isMobile ? {marginTop: 20, marginLeft: 10} : {marginTop: 20}}
+              style={avatarButtonStyle}
             />
           ) : null}
-          {avatar ? (
-            <p className={classes.uploadAvatarText}>
-              {avatar.name}
-            </p>
-          ) : null}
+          {avatar && <p>{avatar.name}</p>}
         </div>
         <Field
           Field={TextField}
@@ -96,7 +100,7 @@ class RegistrationForm extends Form {
           id={"first_name"}
           label={"First name"}
           name={"first_name"}
-          value={this.state.formData.username}
+          value={this.state.formData.first_name}
           onChange={this.handleChange}
           margin={"normal"}
         />
@@ -106,7 +110,7 @@ class RegistrationForm extends Form {
           id={"last_name"}
           label={"Last name"}
           name={"last_name"}
-          value={this.state.formData.username}
+          value={this.state.formData.last_name}
           onChange={this.handleChange}
           margin={"normal"}
         />
@@ -156,7 +160,7 @@ class RegistrationForm extends Form {
 
 }
 
-export default withStyles(styles)(RegistrationForm);
+export default RegistrationForm;
 
 RegistrationForm.PropTypes = {
   isMobile: PropTypes.bool.isRequired,
