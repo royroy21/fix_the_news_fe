@@ -5,6 +5,7 @@ import configureStore from "./store/configureStore";
 import {BrowserRouter as Router} from 'react-router-dom'
 import Root from "./components/Root";
 import theme from "./theme"
+import { LastLocationProvider } from "react-router-last-location";
 
 const store = configureStore();
 
@@ -13,7 +14,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <Router>
-          <Root />
+          <LastLocationProvider>
+            <Root />
+          </LastLocationProvider>
         </Router>
       </Provider>
     </ThemeProvider>
