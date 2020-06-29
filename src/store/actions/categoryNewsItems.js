@@ -8,6 +8,7 @@ export const REFRESH_CATEGORY_NEWS_ITEM_BEGIN   = 'REFRESH_CATEGORY_NEWS_ITEM_BE
 export const REFRESH_CATEGORY_NEWS_ITEM_SUCCESS = 'REFRESH_CATEGORY_NEWS_ITEM_SUCCESS';
 export const REFRESH_CATEGORY_NEWS_ITEM_ERROR = 'REFRESH_CATEGORY_NEWS_ITEM_ERROR';
 export const CLEAR_CATEGORY_NEWS_ITEMS = 'CLEAR_CATEGORY_NEWS_ITEMS';
+export const CLEAR_CATEGORY_NEWS_ITEM = 'CLEAR_CATEGORY_NEWS_ITEM';
 
 export const getCategoryNewsItemsBegin = (data, params) => ({
   type: GET_CATEGORY_NEWS_ITEMS_BEGIN,
@@ -27,9 +28,13 @@ export const getCategoryNewsItemsError = (error, params) => ({
   payload: { error },
 });
 
-export const clearCategoryNewsItems = (params) => ({
+export const clearCategoryNewsItems = () => ({
   type: CLEAR_CATEGORY_NEWS_ITEMS,
-  params,
+});
+
+export const clearCategoryNewsItem = category => ({
+  type: CLEAR_CATEGORY_NEWS_ITEM,
+  category,
 });
 
 export const getCategoryNewsItems = (params={}) => new DispatchAPI().get(
