@@ -7,7 +7,6 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import PropTypes from "prop-types";
-import RegistrationForm from "../User/RegistrationForm";
 
 class NewsItemForm extends Form {
 
