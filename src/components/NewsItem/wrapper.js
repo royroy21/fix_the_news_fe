@@ -13,8 +13,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
-      postNewsItem: data => {
-        dispatch(postNewsItem(data))
+      postNewsItem: (data, isMobile) => {
+        dispatch(postNewsItem(data, isMobile))
       },
       clearNewsItem: () => {
         dispatch({type: CLEAR_NEWS_ITEM});
