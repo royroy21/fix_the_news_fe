@@ -12,7 +12,7 @@ import {editUserRoute} from "../../settings";
 
 export const useStyles = makeStyles(theme => ({
   container: {
-    height: "90%",
+    height: "100%",
     paddingLeft: theme.spacing(1),
     position: "relative",
     width: "80%",
