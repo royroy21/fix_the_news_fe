@@ -5,6 +5,7 @@ import {TextField} from "@material-ui/core";
 import PropTypes from "prop-types";
 import Button from "../CustomButton";
 import ImageIcon from '@material-ui/icons/Image';
+import {withRouter} from "react-router-dom";
 
 class EditUserForm extends Form {
 
@@ -20,6 +21,11 @@ class EditUserForm extends Form {
   };
 
   componentDidMount() {
+    if (!this.props.storeObject.object) {
+      this.props.history.push("/");
+      return;
+    }
+
     this.setState({formData: {
       avatar: this.props.storeObject.object.avatar,
       first_name: this.props.storeObject.object.first_name,
@@ -149,7 +155,7 @@ class EditUserForm extends Form {
 
 }
 
-export default EditUserForm;
+export default withRouter(EditUserForm);
 
 EditUserForm.PropTypes = {
   isMobile: PropTypes.bool.isRequired,
