@@ -1,8 +1,8 @@
 import DispatchAPI from "../../api";
-import {newsItemsURL} from "../../settings";
+import {newsItemsURL, TOPIC_PAGE_SIZE_FOR_MOBILE} from "../../settings";
 import {
-  clearCategoryNewsItems,
-  getCategoryNewsItems
+  clearCategoryNewsItem,
+  getCategoryNewsItems,
 } from "./categoryNewsItems";
 import {getTopics} from "./topics";
 
@@ -30,7 +30,7 @@ export const clearNewsItem = () => ({
   type: CLEAR_NEWS_ITEM,
 });
 
-export const postNewsItem = (data) => new DispatchAPI().create(
+export const postNewsItem = (data, isMobile) => new DispatchAPI().create(
   newsItemsURL,
   postNewsItemBegin,
   postNewsItemSuccess,
@@ -38,10 +38,8 @@ export const postNewsItem = (data) => new DispatchAPI().create(
   data,
   null,
   [
-    () => getTopics(),
-    () => clearCategoryNewsItems({
-      category: data.get("category"),
-    }),
+    () => getTopics(isMobile ? {size: TOPIC_PAGE_SIZE_FOR_MOBILE} : {}),
+    () => clearCategoryNewsItem(data.get("category")),
     () => getCategoryNewsItems({
       topic: data.get("topic"),
       category: data.get("category"),
