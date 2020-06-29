@@ -8,19 +8,22 @@ const useStyles = makeStyles(theme => ({
   content: {
     backgroundColor: theme.palette.primary.light,
     float: "right",
-    height: "100%",
+    height: 250,
+    marginTop: 20,
     padding: theme.spacing(1),
     width: "20%",
   }
 }));
 
 const DesktopMainMenu = ({history, store}) => {
+  const isSmallScreen = store.appDimensions.isSmallScreen;
   const classes = useStyles();
   return (
     <BaseMainMenu
       history={history}
       store={store}
       classes={classes}
+      style={!isSmallScreen ? {marginRight: "15%"} : {marginRight: 20}}
     />
   )
 };
