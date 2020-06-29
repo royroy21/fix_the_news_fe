@@ -4,6 +4,7 @@ import Field from "../Form/Field";
 import {TextField} from "@material-ui/core";
 import PropTypes from "prop-types";
 import Button from "../CustomButton";
+import ImageIcon from '@material-ui/icons/Image';
 
 class EditUserForm extends Form {
 
@@ -99,10 +100,17 @@ class EditUserForm extends Form {
               style={avatarButtonStyle}
             />
           ) : null}
-          {avatar && (
-            <p>{this.getAvatarDisplayText(avatar)}</p>
-          )}
         </div>
+        {avatar && (
+          <div style={{
+            display: "flex",
+            flexDirection: "row",
+            height: 50,
+          }}>
+            <ImageIcon color={"secondary"} style={{marginTop: 10}}/>
+            <p>{this.getAvatarDisplayText(avatar)}</p>
+          </div>
+        )}
         <Field
           Field={TextField}
           error={this.props.storeObject.error}

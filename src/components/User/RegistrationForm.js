@@ -6,6 +6,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import PropTypes from "prop-types";
 import Button from "../CustomButton";
+import ImageIcon from '@material-ui/icons/Image';
 
 class RegistrationForm extends Form {
 
@@ -91,8 +92,17 @@ class RegistrationForm extends Form {
               style={avatarButtonStyle}
             />
           ) : null}
-          {avatar && <p>{avatar.name}</p>}
         </div>
+        {avatar && (
+          <div style={{
+            display: "flex",
+            flexDirection: "row",
+            height: 50,
+          }}>
+            <ImageIcon color={"secondary"} style={{marginTop: 10}}/>
+            <p>{avatar.name}</p>
+          </div>
+        )}
         <Field
           Field={TextField}
           error={this.props.storeObject.error}
