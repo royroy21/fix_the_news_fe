@@ -4,7 +4,7 @@ import MenuItems from "./MenuItems";
 import CloseButton from "../CustomButton/CloseButton";
 import { useLastLocation } from 'react-router-last-location';
 
-const BaseMainMenu = ({history, store, classes}) => {
+const BaseMainMenu = ({history, store, classes, style}) => {
   const [open, setOpen] = useState(false);
 
   const openMenu = () => {
@@ -27,6 +27,7 @@ const BaseMainMenu = ({history, store, classes}) => {
       open={open}
       onClose={closeModal}
       onBackdropClick={closeModal}
+      style={style}
     >
       <div className={classes.content}>
         <CloseButton
