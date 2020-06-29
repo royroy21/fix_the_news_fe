@@ -5,7 +5,7 @@ import {
   REFRESH_CATEGORY_NEWS_ITEM_BEGIN,
   REFRESH_CATEGORY_NEWS_ITEM_SUCCESS,
   REFRESH_CATEGORY_NEWS_ITEM_ERROR,
-  CLEAR_CATEGORY_NEWS_ITEMS,
+  CLEAR_CATEGORY_NEWS_ITEMS, CLEAR_CATEGORY_NEWS_ITEM,
 } from './../actions/categoryNewsItems';
 import {combineLists, refreshItemInNestedObject} from "../../helpers/arrayFunctions";
 
@@ -49,6 +49,11 @@ const categoryNewsItemsReducer = (state = {}, action) => {
       return refreshItemInNestedObject(state, action.payload.data);
     case REFRESH_CATEGORY_NEWS_ITEM_ERROR:
       return state;
+    case CLEAR_CATEGORY_NEWS_ITEM:
+      return {
+        ...state,
+        [action.category]: initialCategoryNewsItemState,
+      };
     case CLEAR_CATEGORY_NEWS_ITEMS:
       return {};
     case GET_CATEGORY_NEWS_ITEMS_ERROR:
