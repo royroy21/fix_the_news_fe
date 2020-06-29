@@ -6,6 +6,8 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import PropTypes from "prop-types";
+import RegistrationForm from "../User/RegistrationForm";
 
 class NewsItemForm extends Form {
 
@@ -40,7 +42,7 @@ class NewsItemForm extends Form {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.actions.postNewsItem(this.formData);
+    this.props.actions.postNewsItem(this.formData, this.props.isMobile);
   };
 
   getFields() {
@@ -94,3 +96,7 @@ class NewsItemForm extends Form {
 }
 
 export default NewsItemForm
+
+NewsItemForm.PropTypes = {
+  isMobile: PropTypes.bool.isRequired,
+};
