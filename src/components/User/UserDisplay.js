@@ -14,21 +14,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const UserDisplay = ({userObject, withName=false}) => {
-
   const {
     avatar,
+    avatar_thumbnail_small,
     first_name: firstName,
     last_name: lastName,
   } = userObject;
-
+  const visible_avatar = avatar_thumbnail_small || avatar;
   const classes = useStyles();
-
   return (
     <Fragment>
       {withName ? (
         <p className={classes.username}>{`${firstName} ${lastName}`}</p>
       ) : null}
-      <Avatar className={classes.avatar} src={avatar ? avatar : null} />
+      <Avatar
+        className={classes.avatar}
+        src={visible_avatar ? visible_avatar : null}
+      />
     </Fragment>
   )
 
