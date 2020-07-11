@@ -38,4 +38,8 @@ export const patchUser = data => new DispatchAPI().patch(
   getUserError,
   null,
   data,
+  null,
+  [
+    getUser,
+  ]
 );
