@@ -60,9 +60,21 @@ const useStyles = makeStyles((theme) => ({
 const Comment = ({actions, item, store}) => {
   const [showComments, setShowComments] = useState(false);
   const [showAddComment, setShowAddComment] = useState(false);
+
   const classes = useStyles();
-  const {avatar, first_name, last_name} = item.serialized_user;
+  const {
+    avatar,
+    avatar_thumbnail_small,
+    first_name,
+    last_name,
+  } = item.serialized_user;
+  const visibleAvatar = avatar_thumbnail_small || avatar;
+
   const userAvatar = (store.user.object || {}).avatar;
+  const userAvatarThumbnailSmall =
+    (store.user.object || {}).avatar_thumbnail_small;
+  const visibleUserAvatar = userAvatarThumbnailSmall || userAvatar;
+
   const commentStyle = {
     display: 'inline-grid',
     width: '100%',
@@ -82,7 +94,7 @@ const Comment = ({actions, item, store}) => {
     <Fragment>
       <div style={commentStyle}>
         {!isMobile ? (
-          <Avatar className={classes.avatar} src={avatar} />
+          <Avatar className={classes.avatar} src={visibleAvatar} />
         ) : null}
         <div style={isMobile ? {width: "98%"} : undefined} className={classes.textContainer}>
           <span className={classes.name}>{`${first_name} ${last_name} - ${getHowLongAgo(item.date_created)}`}</span>
@@ -108,7 +120,7 @@ const Comment = ({actions, item, store}) => {
             {!isMobile ? (
               <Avatar
                 className={classes.avatar}
-                src={userAvatar ? userAvatar : null}
+                src={visibleUserAvatar ? visibleUserAvatar : null}
               />
             ) : null}
             <div style={{marginLeft: 8, width: '98%'}}>
