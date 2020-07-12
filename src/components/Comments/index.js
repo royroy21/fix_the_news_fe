@@ -14,7 +14,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Comments = ({actions, store, topicId, user}) => {
   const classes = useStyles();
+
   const userAvatar = (user.object || {}).avatar;
+  const userAvatarThumbnailSmall =
+    (store.user.object || {}).avatar_thumbnail_small;
+  const visibleUserAvatar = userAvatarThumbnailSmall || userAvatar;
+
   const addBaseCommentStyle = {
     display: 'inline-grid',
     width: '100%',
@@ -34,7 +39,7 @@ const Comments = ({actions, store, topicId, user}) => {
         {!isMobile ? (
           <Avatar
             className={classes.avatar}
-            src={userAvatar ? userAvatar : null}
+            src={visibleUserAvatar ? visibleUserAvatar : null}
           />
         ) : null}
         <div style={{marginLeft: 8}}>
