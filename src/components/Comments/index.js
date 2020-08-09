@@ -1,10 +1,10 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import TopicCommentForm from "../Comment/TopicCommentForm";
-import Avatar from "@material-ui/core/Avatar";
 import Comment from '../Comment';
 import {initialTopicCommentsState} from "../../store/reducers/topicComments";
 import ListPaginationWithMoreButton from "../ListPaginationWithMoreButton";
+import UserImage from "../User/UserImage";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -37,10 +37,12 @@ const Comments = ({actions, store, topicId, user}) => {
     <div style={containerStyle}>
       <div style={addBaseCommentStyle}>
         {!isMobile ? (
-          <Avatar
-            className={classes.avatar}
-            src={visibleUserAvatar ? visibleUserAvatar : null}
-          />
+          <div className={classes.avatar}>
+            <UserImage
+              fullSizeSrc={userAvatar}
+              thumbnailSrc={visibleUserAvatar ? visibleUserAvatar : null}
+            />
+          </div>
         ) : null}
         <div style={{marginLeft: 8}}>
           <TopicCommentForm

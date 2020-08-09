@@ -1,5 +1,4 @@
 import React, {Fragment, useState} from "react";
-import Avatar from "@material-ui/core/Avatar";
 import {makeStyles} from "@material-ui/core/styles";
 import CommentWrapper from "./wrapper";
 import CommentCommentForm from "./CommentCommentForm";
@@ -7,6 +6,7 @@ import reply from '../../images/reply.svg';
 import NestedComments from "../Comments/NestedComments";
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import { getHowLongAgo } from "../../helpers/dateFunctions";
+import UserImage from "../User/UserImage";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -94,7 +94,12 @@ const Comment = ({actions, item, store}) => {
     <Fragment>
       <div style={commentStyle}>
         {!isMobile ? (
-          <Avatar className={classes.avatar} src={visibleAvatar} />
+          <div className={classes.avatar}>
+            <UserImage
+              fullSizeSrc={avatar}
+              thumbnailSrc={visibleAvatar}
+            />
+          </div>
         ) : null}
         <div style={isMobile ? {width: "98%"} : undefined} className={classes.textContainer}>
           <span className={classes.name}>{`${first_name} ${last_name} - ${getHowLongAgo(item.date_created)}`}</span>
@@ -118,10 +123,12 @@ const Comment = ({actions, item, store}) => {
             marginLeft,
           }}>
             {!isMobile ? (
-              <Avatar
-                className={classes.avatar}
-                src={visibleUserAvatar ? visibleUserAvatar : null}
-              />
+              <div className={classes.avatar}>
+                <UserImage
+                  fullSizeSrc={userAvatar}
+                  thumbnailSrc={visibleUserAvatar ? visibleUserAvatar : null}
+                />
+              </div>
             ) : null}
             <div style={{marginLeft: 8, width: '98%'}}>
               <CommentCommentForm
