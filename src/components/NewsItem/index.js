@@ -7,6 +7,8 @@ import NewsItemWrapper from "./wrapper";
 import PropTypes from "prop-types";
 import LikeTopicTopNewsItem from "../Like/LikeTopicTopNewsItem";
 import LikeNewsItem from "../Like/LikeNewsItem";
+import axios from "axios";
+import {newsItemsURL} from "../../settings";
 
 const styles = (theme) => ({
   chip: {
@@ -88,6 +90,11 @@ class NewsItem extends Component {
     }
   }
 
+  addView = () => {
+    const {id} = this.props.item;
+    axios.post(`${newsItemsURL}${id}/add-view/`)
+  }
+
   render() {
     const { classes, fromTopicTopNewsItems, item, store} = this.props;
     const {isMobile, width: screenWidth} = store.appDimensions;
@@ -116,6 +123,7 @@ class NewsItem extends Component {
           rel={"noreferrer"}
           target={"_blank"}
           underline={"none"}
+          onClick={this.addView}
         >
           <Typography variant={"subtitle2"}>
             <div
