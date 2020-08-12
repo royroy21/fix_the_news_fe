@@ -27,6 +27,7 @@ const UserImage = ({fullSizeSrc, thumbnailSrc}) => {
     <Fragment>
       {open ? (
         <Dialog
+          fullWidth
           open={open}
           onClose={handleClose}
         >
