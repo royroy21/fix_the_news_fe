@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     height: "99%",
     backgroundColor: "black",
     margin: "auto",
+    padding: 3,
   },
 }));
 
@@ -26,21 +27,27 @@ const UserImage = ({fullSizeSrc, thumbnailSrc}) => {
   return (
     <Fragment>
       {open ? (
-        <Dialog
-          fullWidth
-          open={open}
-          onClose={handleClose}
-        >
-          <img
-            alt="??"
-            className={classes.fullImage}
-            src={fullSizeSrc}
-            onClick={handleClose}
+        <Fragment>
+          <Dialog
+            fullWidth
+            open={open}
+            onClose={handleClose}
+          >
+            <img
+              alt="??"
+              className={classes.fullImage}
+              src={fullSizeSrc}
+              onClick={handleClose}
+            />
+          </Dialog>
+          <Avatar
+            className={classes.avatar}
+            src={thumbnailSrc ? thumbnailSrc : null}
           />
-        </Dialog>
+        </Fragment>
       ) : (
         <Avatar
-          onClick={handleClickOpen}
+          onClick={thumbnailSrc ? handleClickOpen : undefined}
           className={classes.avatar}
           src={thumbnailSrc ? thumbnailSrc : null}
         />
