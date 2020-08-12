@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
     height: "99%",
     backgroundColor: "black",
     margin: "auto",
-    padding: 3,
   },
 }));
 
