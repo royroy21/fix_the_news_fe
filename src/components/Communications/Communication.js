@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
   textContainer: {
     display: 'grid',
-    gridTemplateColumns: '97% 3%',
+    gridTemplateColumns: '95% 5%',
     margin: theme.spacing(1),
     position: 'relative',
   },
