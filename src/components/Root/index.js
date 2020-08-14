@@ -79,7 +79,7 @@ class Root extends Component {
       margin: "0 auto 0 auto",
     };
 
-    const topicsStyle = isSmallScreen || isMobile ? {} : {
+    const extraInnerContainerStyle = isSmallScreen || isMobile ? {} : {
       paddingLeft: '15%',
       paddingRight: '15%',
     };
@@ -89,9 +89,12 @@ class Root extends Component {
         <Routes />
         {isMobile ? <HeaderMobile /> : <Header isSmallScreen={isSmallScreen}/>}
         <div style={outerContainerStyle}>
-          <div style={innerContainerStyle}>
+          <div style={{
+            ...innerContainerStyle,
+            ...extraInnerContainerStyle,
+          }}>
             <Communications />
-            <Topics id={"topics"} style={topicsStyle} />
+            <Topics id={"topics"} />
           </div>
         </div>
       </div>
