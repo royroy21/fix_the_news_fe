@@ -33,7 +33,7 @@ const UserLoggedInCommunications = ({actions, store, user}) => {
         text={welcomeCommunicationText}
       />
     ) : null}
-    {dailyCommunicationText && !hasViewedDailyCommunication ? (
+    {dailyCommunicationText && !hasViewedDailyCommunication && hasViewedWelcomeCommunication ? (
       <Communication
         closeAction={() => actions.patchUser({
           has_viewed_daily_communication: true,
