@@ -5,6 +5,7 @@ import {localStorageAuthTokenKey} from "../../settings";
 import Routes from "../Routes";
 import Topics from "../Topics";
 import HeaderMobile from "../Header/HeaderMobile";
+import Communications from "../Communications";
 
 class Root extends Component {
 
@@ -89,6 +90,7 @@ class Root extends Component {
         {isMobile ? <HeaderMobile /> : <Header isSmallScreen={isSmallScreen}/>}
         <div style={outerContainerStyle}>
           <div style={innerContainerStyle}>
+            <Communications />
             <Topics id={"topics"} style={topicsStyle} />
           </div>
         </div>
