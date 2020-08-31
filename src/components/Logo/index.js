@@ -1,12 +1,15 @@
 import fixTheNewsLogo07 from '../../images/fixTheNewsLogo07.svg';
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
+import {withRouter} from "react-router-dom";
+import LogoWrapper from "./wrapper";
 
 const useStyles = makeStyles(theme => ({
   container: {
     paddingTop: 1,
     display: "flex",
     flexDirection: "row",
+    cursor: "pointer",
   },
   image: {
     height: 32,
@@ -17,16 +20,26 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     marginLeft: 5,
     marginTop: 2,
+    userSelect: "none",
   },
   text: {
     color: theme.palette.secondary.light,
   },
 }));
 
-const Logo = ({style={}}) => {
+const Logo = ({actions, style={}, history}) => {
   const classes = useStyles();
+  const goToHomePage = () => {
+    actions.clearTopics();
+    actions.getTopics();
+    history.push("/")
+  };
   return (
-    <div className={classes.container} style={style}>
+    <div
+      className={classes.container}
+      onClick={goToHomePage}
+      style={style}
+    >
       <img className={classes.image} src={fixTheNewsLogo07} alt="??" />
       <div className={classes.textContainer}>
         <span className={classes.text}>{"fix"}</span>
@@ -36,4 +49,4 @@ const Logo = ({style={}}) => {
   )
 };
 
-export default Logo;
+export default withRouter(LogoWrapper(Logo));
