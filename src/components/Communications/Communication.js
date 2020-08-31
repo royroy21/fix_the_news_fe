@@ -11,6 +11,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     margin: theme.spacing(1),
   },
+  title: {
+    textAlign: 'center',
+    margin: theme.spacing(1),
+  },
   textContainer: {
     display: 'grid',
     gridTemplateColumns: '95% 5%',
@@ -19,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Communication = ({text, closeAction}) => {
+const Communication = ({text, title, closeAction}) => {
   const [isClosed, setIsClosed] = useState(false)
   const closeCommunication = closeAction
     ? () => {setIsClosed(true); closeAction()}
@@ -32,6 +36,7 @@ const Communication = ({text, closeAction}) => {
     <Paper
       children={
         <div className={classes.textContainer}>
+          <h3 className={classes.title}>{title}</h3><br />
           <p className={classes.text}>{text}</p>
           <CloseButton
             onClick={closeCommunication}
