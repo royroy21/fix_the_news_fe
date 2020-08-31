@@ -1,25 +1,34 @@
 import React from "react";
 import CommunicationsWrapper from "./wrapper";
-import UserNotLoggedInCommunications from "./UserNotLoggedInCommunications";
 import UserLoggedInCommunications from "./UserLoggedInCommunications";
+import useCookies from "react-cookie/cjs/useCookies";
+import {hasViewedWelcomeCommunicationCookieKey} from "../../settings";
+import WelcomeCommunication from "./WelcomeCommunication";
 
 const Communications = ({actions, store}) => {
-  const {object: user} = store.user;
-  if (!user) {
+  const [cookies, setCookie] =
+    useCookies([hasViewedWelcomeCommunicationCookieKey]);
+
+  if (hasViewedWelcomeCommunicationCookieKey in cookies) {
+    const {object: user} = store.user;
+    if (!user) {
+      return null;
+    }
     return (
-      <UserNotLoggedInCommunications
+      <UserLoggedInCommunications
         actions={actions}
         store={store}
+        user={user}
       />
     )
   } else {
-      return (
-        <UserLoggedInCommunications
-          actions={actions}
-          store={store}
-          user={user}
-        />
-      )
+    return (
+      <WelcomeCommunication
+        actions={actions}
+        store={store}
+        closeAction={() => setCookie(hasViewedWelcomeCommunicationCookieKey, true)}
+      />
+    )
   }
 }
 
