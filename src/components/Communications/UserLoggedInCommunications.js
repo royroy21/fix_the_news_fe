@@ -4,41 +4,43 @@ import Communication from "./Communication";
 
 const UserLoggedInCommunications = ({actions, store, user}) => {
   const {
-    has_viewed_welcome_communication: hasViewedWelcomeCommunication,
+    has_viewed_registration_communication: hasViewedRegistrationCommunication,
     has_viewed_daily_communication: hasViewedDailyCommunication,
   } = user;
-  const {object: dailyCommunication} = store.dailyCommunication;
-  const dailyCommunicationText = dailyCommunication
-    ? dailyCommunication.text
-    : null;
+  const {
+    text: dailyCommunicationText,
+    title: dailyCommunicationTitle,
+  } = store.dailyCommunication || {};
   useEffect(
     () => actions.getDailyCommunication(),
     [actions, dailyCommunicationText],
     )
-  const {object: welcomeCommunication} = store.welcomeCommunication;
-  const welcomeCommunicationText = welcomeCommunication
-    ? welcomeCommunication.text
-    : null;
+  const {
+    text: registrationCommunicationText,
+    title: registrationCommunicationTitle,
+  } = store.registrationCommunication || {}
   useEffect(
-    () => actions.getWelcomeCommunication(),
-    [actions, welcomeCommunicationText],
+    () => actions.getRegistrationCommunication(),
+    [actions, registrationCommunicationText],
     )
   return (
     <Fragment>
-    {welcomeCommunicationText && !hasViewedWelcomeCommunication ? (
+    {registrationCommunicationText && !hasViewedRegistrationCommunication ? (
       <Communication
         closeAction={() => actions.patchUser({
-          has_viewed_welcome_communication: true,
+          has_viewed_registration_communication: true,
         })}
-        text={welcomeCommunicationText}
+        text={registrationCommunicationText}
+        title={registrationCommunicationTitle}
       />
     ) : null}
-    {dailyCommunicationText && !hasViewedDailyCommunication && hasViewedWelcomeCommunication ? (
+    {dailyCommunicationText && !hasViewedDailyCommunication && hasViewedRegistrationCommunication ? (
       <Communication
         closeAction={() => actions.patchUser({
           has_viewed_daily_communication: true,
         })}
         text={dailyCommunicationText}
+        title={dailyCommunicationTitle}
       />
     ) : null}
     </Fragment>
