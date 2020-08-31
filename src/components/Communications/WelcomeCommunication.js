@@ -6,7 +6,7 @@ const WelcomeCommunication = ({actions, store, closeAction}) => {
     id: welcomeCommunicationId,
     text: welcomeCommunicationText,
     title: welcomeCommunicationTitle,
-  } = store.welcomeCommunication || {};
+  } = store.welcomeCommunication.object || {};
   useEffect(
     () => actions.getWelcomeCommunication(),
     [actions, welcomeCommunicationId],

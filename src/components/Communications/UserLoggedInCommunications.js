@@ -10,7 +10,7 @@ const UserLoggedInCommunications = ({actions, store, user}) => {
   const {
     text: dailyCommunicationText,
     title: dailyCommunicationTitle,
-  } = store.dailyCommunication || {};
+  } = store.dailyCommunication.object || {};
   useEffect(
     () => actions.getDailyCommunication(),
     [actions, dailyCommunicationText],
@@ -18,7 +18,7 @@ const UserLoggedInCommunications = ({actions, store, user}) => {
   const {
     text: registrationCommunicationText,
     title: registrationCommunicationTitle,
-  } = store.registrationCommunication || {}
+  } = store.registrationCommunication.object || {}
   useEffect(
     () => actions.getRegistrationCommunication(),
     [actions, registrationCommunicationText],
