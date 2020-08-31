@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 
+import aboutCommunicationReducer from './aboutCommunication'
 import appDimensionsReducer from './appDimensions'
 import categoryNewsItemsReducer from './categoryNewsItems'
 import dailyCommunicationReducer from './dailyCommunication'
@@ -17,6 +18,7 @@ import userReducer from './user';
 import welcomeCommunicationReducer from './welcomeCommunication';
 
 export default combineReducers({
+  aboutCommunication: aboutCommunicationReducer,
   appDimensions: appDimensionsReducer,
   categoryNewsItems: categoryNewsItemsReducer,
   dailyCommunication: dailyCommunicationReducer,
