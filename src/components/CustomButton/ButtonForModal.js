@@ -35,6 +35,7 @@ const ButtonForModal = (props) => {
         <button
           className={classes.buttonAsLink}
           onClick={() => setOpen(true)}
+          style={style}
         >
           {label}
         </button>
