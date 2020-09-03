@@ -2,6 +2,7 @@ export const localStorageAuthTokenKey = "fixTheNewsAuthToken";
 
 // Internal routes
 export const aboutCommunicationRoute = "/about-us/";
+export const privacyRoute = "/privacy/";
 export const topicRoute = "/topic/:slug";
 
 const developmentBaseURL = "http://localhost:8000/api";
