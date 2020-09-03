@@ -1,14 +1,13 @@
 import React, {Fragment, useEffect} from "react";
 import AboutWrapper from "./wrapper";
 import {makeStyles} from "@material-ui/core/styles";
+import {cleanHTML} from "../../helpers/htmlFunctions";
 
 const useStyles = makeStyles((theme) => ({
   text: {
-    textAlign: 'center',
     margin: theme.spacing(1),
   },
   title: {
-    textAlign: 'center',
     margin: theme.spacing(1),
   },
 }));
@@ -27,8 +26,8 @@ const About = ({actions, store}) => {
   return (
     <Fragment>
       <br /><br />
-      <h3 className={classes.title}>{title}</h3><br />
-      <p className={classes.text}>{text}</p>
+      <h2 className={classes.title}>{title}</h2>
+      <p className={classes.text}>{cleanHTML(text)}</p>
     </Fragment>
   )
 }
