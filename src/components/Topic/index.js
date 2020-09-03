@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
   title: {
+    fontSize: 20,
     fontWeight: 600,
     paddingLeft: theme.spacing(1),
     width: "65%",
@@ -50,7 +51,7 @@ const Topic = ({item, store}) => {
       >
         <Typography
           className={classes.title}
-          variant={"h6"}
+          variant={"h2"}
         >
           {item.title}
         </Typography>
