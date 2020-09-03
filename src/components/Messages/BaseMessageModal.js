@@ -17,11 +17,6 @@ const BaseMessageModal = ({open, onClose, actions, store, header, type}) => {
         user: store.user,
       }}
       header={header}
-      footerComponent={
-        <div style={{color: 'grey'}}>
-          {'We\'ll get back to you via email'}
-        </div>
-      }
     />
   )
 }
