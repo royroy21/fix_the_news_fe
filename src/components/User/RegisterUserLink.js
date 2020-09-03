@@ -1,27 +1,15 @@
-import {registrationRoute} from "../../settings";
-import {Link} from "react-router-dom";
 import React from "react";
-import {makeStyles} from "@material-ui/core/styles";
-
-const useStyles = makeStyles(() => ({
-  link: {
-    textDecoration: "none",
-    color: "grey",
-    "&:hover": {
-      color: "blue",
-    }
-  },
-}));
+import ButtonForModal from "../CustomButton/ButtonForModal";
+import RegistrationModal from "./RegistrationModal";
 
 const RegisterUserLink = () => {
-  const classes = useStyles();
   return (
-    <Link
-      className={classes.link}
-      to={{pathname: registrationRoute}}
-    >
-      {"register new user"}
-    </Link>
+    <ButtonForModal
+      buttonAsLink={true}
+      label={"register new user"}
+      inverted={true}
+      Modal={RegistrationModal}
+    />
   )
 };
 

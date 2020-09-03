@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
 import Header from "../Header";
 import RootWrapper from "./wrapper";
-import {localStorageAuthTokenKey} from "../../settings";
-import Routes from "../Routes";
+import {
+  aboutCommunicationRoute,
+  localStorageAuthTokenKey
+} from "../../settings";
 import Topics from "../Topics";
 import HeaderMobile from "../Header/HeaderMobile";
 import Communications from "../Communications";
+import {Route} from "react-router-dom";
+import About from "../About";
 
 class Root extends Component {
 
@@ -86,7 +90,6 @@ class Root extends Component {
 
     return (
       <div style={rootStyle}>
-        <Routes />
         {isMobile ? <HeaderMobile /> : <Header isSmallScreen={isSmallScreen}/>}
         <div style={outerContainerStyle}>
           <div style={{
@@ -94,7 +97,20 @@ class Root extends Component {
             ...extraInnerContainerStyle,
           }}>
             <Communications />
-            <Topics id={"topics"} />
+            <Route
+              component={About}
+              exact
+              path={aboutCommunicationRoute}
+            />
+            <Route
+              component={Topics}
+              exact
+              path={'/'}
+            />
+            <Route
+              component={Topics}
+              path={'/topic/'}
+            />
           </div>
         </div>
       </div>

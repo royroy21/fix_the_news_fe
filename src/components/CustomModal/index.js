@@ -1,13 +1,10 @@
-import React, {Component} from "react";
+import React from "react";
 import Modal from "@material-ui/core/Modal";
 import CustomModalWrapper from "./wrapper";
-import PropTypes from "prop-types";
-import {withRouter} from "react-router-dom";
-import {withStyles} from "@material-ui/core";
 import CloseButton from "../CustomButton/CloseButton";
-import { withLastLocation } from 'react-router-last-location';
+import {makeStyles} from "@material-ui/core/styles";
 
-const styles = (theme) => ({
+export const useStyles = makeStyles(theme => ({
   footer: {
     marginTop: theme.spacing(3),
     textAlign: "center",
@@ -28,104 +25,64 @@ const styles = (theme) => ({
     padding: theme.spacing(2),
     overflow: "auto",
   },
-});
+}));
 
-class CustomModal extends Component {
+const CustomModal = (props) => {
 
-  state = {
-    open: false,
+  const {
+    ContentComponent,
+    contentProps,
+    footerComponent,
+    header,
+    noWidth,
+    open,
+    onClose,
+    store,
+  } = props;
+
+  const {
+    height,
+    isMobile,
+  } = store.appDimensions;
+
+  const contentStyle = {
+    padding: "25px",
+    backgroundColor: "white",
   };
-
-  DO_NOT_GO_BACK_TO = [
-    "/desktop-main-menu/",
-    "/mobile-main-menu/",
-  ];
-
-  componentDidMount() {
-    if (!this.state.open) {
-      this.setState({open: true});
-    }
+  if (!isMobile) {
+    contentStyle.maxHeight = height - 200;
+  }
+  if (!noWidth) {
+    contentStyle.width = isMobile ? "90%" : 700;
   }
 
-  closeModal = () => {
-    this.setState({open: false});
-
-    const lastLocation = this.props.lastLocation;
-    if (lastLocation && lastLocation.pathname) {
-      const pathname = lastLocation.pathname;
-      const goToPath = this.DO_NOT_GO_BACK_TO.includes(pathname)
-        ? "/"
-        : pathname;
-      this.props.history.push(goToPath);
-    }
-    this.props.history.push("/");
-  };
-
-  render() {
-    const {
-      height,
-      isMobile,
-    } = this.props.store.appDimensions;
-
-    const contentStyle = {
-      padding: "25px",
-      backgroundColor: "white",
-    };
-    if (!isMobile) {
-      contentStyle.maxHeight = height - 200;
-    }
-    if (!this.props.noWidth) {
-      contentStyle.width = isMobile ? "90%" : 700;
-    }
-
-    const { classes } = this.props;
-    return (
-      <Modal
-        className={classes.modal}
-        open={this.state.open}
-        onClose={this.closeModal}
-        onBackdropClick={this.closeModal}
-      >
-        <div style={contentStyle}>
-          <div className={classes.headerContainer}>
-            <CloseButton onClick={this.closeModal} />
-            <div className={classes.headerTitle}>
-              {this.props.header}
-            </div>
+  const classes = useStyles();
+  return (
+    <Modal
+      className={classes.modal}
+      open={open}
+      onClose={onClose}
+    >
+      <div style={contentStyle}>
+        <div className={classes.headerContainer}>
+          <CloseButton onClick={onClose} />
+          <div className={classes.headerTitle}>
+            {header}
           </div>
-          <this.props.contentComponent
-            {...this.props.contentProps}
-            postSuccess={this.closeModal}
-          />
-          {this.props.footerComponent ? (
-            <div className={classes.footer}>
-              {this.props.footerComponent}
-            </div>
-          ) : null}
         </div>
-      </Modal>
-    )
-  }
+        <ContentComponent
+          {...contentProps}
+          postSuccess={onClose}
+        />
+        {footerComponent ? (
+          <div className={classes.footer}>
+            {footerComponent}
+          </div>
+        ) : null}
+      </div>
+    </Modal>
+  )
+
 }
 
-export default withRouter(withStyles(styles)(CustomModalWrapper(withLastLocation(CustomModal))));
-
-CustomModal.defaultProps = {
-  header: "",
-  footerComponent: null,
-  noWidth: false,
-};
-
-CustomModal.propTypes = {
-  contentComponent: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.func,
-  ]),
-  contentProps: PropTypes.object.isRequired,
-  footerComponent: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.func,
-  ]),
-  header: PropTypes.string.isRequired,
-  noWidth: PropTypes.bool.isRequired,
-};
+export default CustomModalWrapper(CustomModal);

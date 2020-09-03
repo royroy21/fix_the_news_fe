@@ -3,20 +3,22 @@ import CustomModal from "../CustomModal";
 import NewsItemForm from "./NewsItemForm";
 import NewsItemWrapper from "./wrapper";
 
-const NewsItemModal = ({actions, location, store}) => {
+const NewsItemModal = ({actions, open, onClose, store, modelProps}) => {
   return (
     <CustomModal
-      contentComponent={NewsItemForm}
+      open={open}
+      onClose={onClose}
+      ContentComponent={NewsItemForm}
       contentProps={{
         actions: {
           postNewsItem: actions.postNewsItem,
           clearNewsItem: actions.clearNewsItem,
         },
         buttonLabel: "Add",
-        categories: location.state.categories,
+        categories: modelProps.categories,
         storeObject: store.newsItem,
         successMessage: "Article successfully added",
-        topicId: location.state.topicId,
+        topicId: modelProps.topicId,
         isMobile: store.appDimensions.isMobile,
       }}
       header={"Add Article"}

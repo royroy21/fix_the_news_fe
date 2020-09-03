@@ -2,16 +2,15 @@ import React from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import NewsItemsContainer from "../NewsItems/NewsItemsContainer";
-import ButtonLink from "../CustomButton/ButtonLink";
-import {
-  addNewsItemRoute, shareTopicRoute,
-  userNotLoggedInRoute
-} from "../../settings";
 import TopicWrapper from "./wrapper";
 import MobileNewsItemsContainer from "../NewsItems/MobileNewsItemsContainer";
 import CommentsButton from "../Comments/CommentsButton";
 import AddIcon from '@material-ui/icons/Add';
 import ShareIcon from '@material-ui/icons/Share';
+import ButtonForModal from "../CustomButton/ButtonForModal";
+import ShareTopicModal from "../ShareTopic/ShareTopicModal";
+import UserNotLoggedInModal from "../User/UserNotLoggedInModal";
+import NewsItemModal from "../NewsItem/NewsItemModal";
 
 const useStyles = makeStyles((theme) => ({
   buttonLinkContainer: {
@@ -59,28 +58,24 @@ const Topic = ({item, store}) => {
           className={classes.buttonLinkContainer}
           style={store.appDimensions.isMobile ? {marginRight: 10} : undefined}
         >
-          <div style={{marginRight: 5}}>
-            <ButtonLink
-              icon={<ShareIcon />}
-              inverted={true}
-              state={item.slug}
-              to={shareTopicRoute}
-            />
-          </div>
+          <ButtonForModal
+            icon={<ShareIcon />}
+            inverted={true}
+            Modal={ShareTopicModal}
+            modelProps={{slug: item.slug}}
+          />
           {!store.user.object ? (
-            <ButtonLink
+            <ButtonForModal
               icon={<AddIcon fontSize={'large'} />}
               label={!isMobile ? "Add Article" : null}
-              to={userNotLoggedInRoute}
-              size={'large'}
+              Modal={UserNotLoggedInModal}
             />
           ) : (
-            <ButtonLink
+            <ButtonForModal
               icon={<AddIcon fontSize={'large'} />}
               label={!isMobile ? "Add Article" : null}
-              to={addNewsItemRoute}
-              size={'large'}
-              state={{
+              Modal={NewsItemModal}
+              modelProps={{
                 categories: item.serialized_categories,
                 topicId: item.id,
               }}

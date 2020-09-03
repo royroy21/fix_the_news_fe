@@ -4,10 +4,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import HeaderWrapper from "./wrapper";
-import { desktopMainMenuRoute } from "../../settings";
+import {aboutCommunicationRoute} from "../../settings";
 import Logo from "../Logo";
-import MainMenuButton from "../CustomButton/MainMenuButton";
 import LoginRegistration from "../CustomButton/LoginRegistration";
+import {Link} from "react-router-dom";
+import MainMenu from "../MainMenu";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -27,6 +28,10 @@ const useStyles = makeStyles(theme => ({
     marginTop: 5,
     color: theme.palette.primary.dark,
     fontWeight: 400,
+  },
+  link: {
+    color: theme.palette.primary.dark,
+    textDecoration: 'none',
   },
   logoutButton: {
     marginLeft: theme.spacing(2),
@@ -65,7 +70,12 @@ const Header = (props) => {
             className={classes.contactUsAboutHelp}
             variant={"h6"}
           >
-            {"About"}
+            <Link
+              className={classes.link}
+              to={{pathname: aboutCommunicationRoute}}
+            >
+              {"About"}
+            </Link>
           </Typography>
           <Typography
             className={classes.contactUsAboutHelp}
@@ -76,9 +86,7 @@ const Header = (props) => {
           {!!!user ? (
             <LoginRegistration />
           ) : (
-            <MainMenuButton
-              to={desktopMainMenuRoute}
-            />
+            <MainMenu />
           )}
         </Toolbar>
       </AppBar>

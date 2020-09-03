@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import {Link} from "react-router-dom";
 import {userNotLoggedInRoute} from "../../settings";
+import UserNotLoggedInModal from "../User/UserNotLoggedInModal";
 
 export const likeStyles = (theme) => ({
   count: {
@@ -39,6 +40,7 @@ class BaseLike extends React.Component {
 
   state = {
     loading: false,
+    openUserNotLoggedIn: false,
   };
 
   handlePost = event => {
@@ -64,14 +66,14 @@ class BaseLike extends React.Component {
     if (!this.props.store.user.object) {
       return (
         <Fragment>
-          <Link
-            className={classes.link}
-            to={{pathname: userNotLoggedInRoute}}
-          >
-            <ThumbUpAltOutlinedIcon
-              className={classes.notLiked}
-            />
-          </Link>
+          <UserNotLoggedInModal
+            open={this.state.openUserNotLoggedIn}
+            onClose={() => this.setState({'openUserNotLoggedIn': false})}
+          />
+          <ThumbUpAltOutlinedIcon
+            onClick={() => this.setState({'openUserNotLoggedIn': true})}
+            className={classes.notLiked}
+          />
           {likesCount ? (
             <div className={classes.count}>{likesCount}</div>
           ) : null}

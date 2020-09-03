@@ -1,15 +1,8 @@
 export const localStorageAuthTokenKey = "fixTheNewsAuthToken";
 
 // Internal routes
-export const addNewsItemRoute = "/add-news-item/";
-export const editUserRoute = "/edit-user/";
-export const loginRoute = "/login/";
-export const mobileMainMenuRoute = "/mobile-main-menu/";
-export const desktopMainMenuRoute = "/desktop-main-menu/";
-export const registrationRoute = "/sign-up/";
-export const shareTopicRoute = "/share-topic/";
+export const aboutCommunicationRoute = "/about-us/";
 export const topicRoute = "/topic/:slug";
-export const userNotLoggedInRoute = "/restricted-action/";
 
 const developmentBaseURL = "http://localhost:8000/api";
 const baseURL = process.env.REACT_APP_BACKEND_API_URL || developmentBaseURL;
