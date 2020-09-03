@@ -8,6 +8,7 @@ import commentCommentsReducer from './commentComments'
 import dailyCommunicationReducer from './dailyCommunication'
 import likeReducer from './like'
 import newsItemReducer from './newsItem'
+import messageReducer from './message'
 import privacyCommunicationReducer from './privacyCommunication'
 import registerReducer from './register'
 import registrationCommunicationReducer from './registrationCommunication'
@@ -28,6 +29,7 @@ export default combineReducers({
   dailyCommunication: dailyCommunicationReducer,
   like: likeReducer,
   newsItem: newsItemReducer,
+  message: messageReducer,
   privacyCommunication: privacyCommunicationReducer,
   register: registerReducer,
   registrationCommunication: registrationCommunicationReducer,
