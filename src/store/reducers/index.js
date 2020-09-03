@@ -3,13 +3,15 @@ import { combineReducers } from 'redux'
 import aboutCommunicationReducer from './aboutCommunication'
 import appDimensionsReducer from './appDimensions'
 import categoryNewsItemsReducer from './categoryNewsItems'
+import commentReducer from './comment'
+import commentCommentsReducer from './commentComments'
 import dailyCommunicationReducer from './dailyCommunication'
 import likeReducer from './like'
 import newsItemReducer from './newsItem'
+import privacyCommunicationReducer from './privacyCommunication'
 import registerReducer from './register'
-import commentReducer from './comment'
-import commentCommentsReducer from './commentComments'
 import registrationCommunicationReducer from './registrationCommunication'
+import termsAndConditionsCommunicationReducer from './termsAndConditionsCommunications'
 import topicCommentsReducer from './topicComments'
 import tokenReducer from './token'
 import topicReducer from './topic'
@@ -21,13 +23,15 @@ export default combineReducers({
   aboutCommunication: aboutCommunicationReducer,
   appDimensions: appDimensionsReducer,
   categoryNewsItems: categoryNewsItemsReducer,
+  comment: commentReducer,
+  commentComments: commentCommentsReducer,
   dailyCommunication: dailyCommunicationReducer,
   like: likeReducer,
   newsItem: newsItemReducer,
+  privacyCommunication: privacyCommunicationReducer,
   register: registerReducer,
-  comment: commentReducer,
-  commentComments: commentCommentsReducer,
   registrationCommunication: registrationCommunicationReducer,
+  termsAndConditionsCommunication: termsAndConditionsCommunicationReducer,
   topicComments: topicCommentsReducer,
   token: tokenReducer,
   topic: topicReducer,
