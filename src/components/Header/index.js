@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import HeaderWrapper from "./wrapper";
-import {aboutCommunicationRoute} from "../../settings";
+import {aboutCommunicationRoute, privacyRoute} from "../../settings";
 import Logo from "../Logo";
 import LoginRegistration from "../CustomButton/LoginRegistration";
 import {Link} from "react-router-dom";
@@ -75,6 +75,17 @@ const Header = (props) => {
               to={{pathname: aboutCommunicationRoute}}
             >
               {"About"}
+            </Link>
+          </Typography>
+          <Typography
+            className={classes.contactUsAboutHelp}
+            variant={"h6"}
+          >
+            <Link
+              className={classes.link}
+              to={{pathname: privacyRoute}}
+            >
+              {"Privacy"}
             </Link>
           </Typography>
           <Typography

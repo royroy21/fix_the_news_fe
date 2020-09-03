@@ -10,7 +10,7 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 import LoginRegistration from "../CustomButton/LoginRegistration";
 import EditUserModal from "../User/EditUserModal";
 import MenuItemModal from "./MenuItemModal";
-import {aboutCommunicationRoute} from "../../settings";
+import {aboutCommunicationRoute, privacyRoute} from "../../settings";
 
 export const useStyles = makeStyles(theme => ({
   container: {
@@ -81,6 +81,13 @@ const MenuItems = ({user, closeParentModel}) => {
           onClick={closeParentModel}
         >
           {"About"}
+        </Link>
+        <Link
+          className={classes.link}
+          to={privacyRoute}
+          onClick={closeParentModel}
+        >
+          {"Privacy"}
         </Link>
         <Link className={classes.link} to={""}>{"Help"}</Link>
       </div>
