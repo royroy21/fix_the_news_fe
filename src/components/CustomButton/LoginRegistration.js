@@ -1,8 +1,8 @@
 import React from "react";
 import LoginButton from "./LoginButton";
-import {loginRoute, registrationRoute} from "../../settings";
-import ButtonLink from "./ButtonLink";
 import {makeStyles} from "@material-ui/core/styles";
+import ButtonForModal from "./ButtonForModal";
+import RegistrationModal from "../User/RegistrationModal";
 
 export const useStyles = makeStyles(theme => ({
   buttonDivider: {
@@ -20,13 +20,13 @@ const LoginRegistration = () => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <LoginButton to={loginRoute}/>
+      <LoginButton />
       <span className={classes.buttonDivider}>{"/"}</span>
-      <ButtonLink
-        to={registrationRoute}
+      <ButtonForModal
         label={"Sign Up"}
         inverted={true}
         style={{width: 100}}
+        Modal={RegistrationModal}
       />
     </div>
   )

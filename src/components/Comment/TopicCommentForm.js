@@ -6,6 +6,7 @@ import {withRouter} from "react-router-dom";
 import PropTypes from "prop-types";
 import {userNotLoggedInRoute} from "../../settings";
 import LoadingSpinner from "../Loading/LoadingSpinner";
+import UserNotLoggedInModal from "../User/UserNotLoggedInModal";
 
 class TopicCommentForm extends Form {
 
@@ -14,6 +15,7 @@ class TopicCommentForm extends Form {
       text: "",
       topic: "",
     },
+    openUserNotLoggedIn: false,
   };
 
   componentDidMount() {
@@ -34,7 +36,7 @@ class TopicCommentForm extends Form {
   handleSubmit = (event) => {
     event.preventDefault();
     if (!this.props.user.object) {
-      this.props.history.push(userNotLoggedInRoute);
+      this.setState({'openUserNotLoggedIn': true})
       return;
     }
     if (!this.state.formData.text) return;
@@ -47,6 +49,15 @@ class TopicCommentForm extends Form {
   };
 
   getFields() {
+    if (this.state.openUserNotLoggedIn) {
+      return (
+        <UserNotLoggedInModal
+          open={this.state.openUserNotLoggedIn}
+          onClose={() => this.setState({'openUserNotLoggedIn': false})}
+        />
+      )
+    }
+
     return (
       this.props.storeObject.loading ? (
         <LoadingSpinner />

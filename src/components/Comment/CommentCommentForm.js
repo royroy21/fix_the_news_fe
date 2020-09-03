@@ -4,8 +4,8 @@ import Field from "../Form/Field";
 import {TextField} from "@material-ui/core";
 import {withRouter} from "react-router-dom";
 import PropTypes from "prop-types";
-import {userNotLoggedInRoute} from "../../settings";
 import LoadingSpinner from "../Loading/LoadingSpinner";
+import UserNotLoggedInModal from "../User/UserNotLoggedInModal";
 
 class CommentCommentForm extends Form {
 
@@ -14,6 +14,7 @@ class CommentCommentForm extends Form {
       text: "",
       comment: "",
     },
+    openUserNotLoggedIn: false,
   };
 
   componentDidMount() {
@@ -48,7 +49,7 @@ class CommentCommentForm extends Form {
   handleSubmit = (event) => {
     event.preventDefault();
     if (!this.props.user.object) {
-      this.props.history.push(userNotLoggedInRoute);
+      this.setState({'openUserNotLoggedIn': true})
       return;
     }
     if (!this.state.formData.text) return;
@@ -61,6 +62,15 @@ class CommentCommentForm extends Form {
   };
 
   getFields() {
+    if (this.state.openUserNotLoggedIn) {
+      return (
+        <UserNotLoggedInModal
+          open={this.state.openUserNotLoggedIn}
+          onClose={() => this.setState({'openUserNotLoggedIn': false})}
+        />
+      )
+    }
+
     return (
       this.props.storeObject.loading ? (
         <LoadingSpinner />

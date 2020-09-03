@@ -3,10 +3,12 @@ import CustomModal from "../CustomModal";
 import UserWrapper from "./wrapper";
 import LoginForm from "./LoginForm";
 
-const LoginModal = ({actions, store}) => {
+const LoginModal = ({actions, store, open, onClose}) => {
   return (
     <CustomModal
-      contentComponent={LoginForm}
+      open={open}
+      onClose={onClose}
+      ContentComponent={LoginForm}
       contentProps={{
         actions: {
           postToken: actions.postToken,

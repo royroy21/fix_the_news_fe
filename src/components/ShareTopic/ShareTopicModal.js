@@ -2,12 +2,14 @@ import React from "react";
 import CustomModal from "../CustomModal";
 import ShareTopic from "./index";
 
-const ShareTopicModal = ({location}) => {
+const ShareTopicModal = ({open, onClose, modelProps}) => {
   return (
     <CustomModal
-      contentComponent={ShareTopic}
+      open={open}
+      onClose={onClose}
+      ContentComponent={ShareTopic}
       contentProps={{
-        slug: location.state,
+        slug: modelProps.slug,
       }}
       header={""}
       noWidth={true}

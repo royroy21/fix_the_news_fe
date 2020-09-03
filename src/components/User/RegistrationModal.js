@@ -6,7 +6,9 @@ import UserWrapper from "./wrapper";
 const RegistrationModal = (props) => {
   return (
     <CustomModal
-      contentComponent={RegistrationForm}
+      open={props.open}
+      onClose={props.onClose}
+      ContentComponent={RegistrationForm}
       contentProps={{
         actions:{
           clearRegister: props.actions.clearRegister,

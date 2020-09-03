@@ -7,7 +7,9 @@ import RegisterUserLink from "./RegisterUserLink";
 const UserNotLoggedInModal = (props) => {
   return (
     <CustomModal
-      contentComponent={LoginForm}
+      open={props.open}
+      onClose={props.onClose}
+      ContentComponent={LoginForm}
       contentProps={{
         actions: {
           postToken: props.actions.postToken,

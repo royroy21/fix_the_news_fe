@@ -3,10 +3,12 @@ import CustomModal from "../CustomModal";
 import UserWrapper from "./wrapper";
 import EditUserForm from "./EditUserForm";
 
-const EditUserModal = ({actions, store}) => {
+const EditUserModal = ({actions, open, onClose, store}) => {
   return (
     <CustomModal
-      contentComponent={EditUserForm}
+      open={open}
+      onClose={onClose}
+      ContentComponent={EditUserForm}
       contentProps={{
         actions: {
           clearUser: actions.clearUser,

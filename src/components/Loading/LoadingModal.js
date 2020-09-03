@@ -39,7 +39,10 @@ class LoadingModal extends Component {
         this.props.postSuccess()
       }
     };
-    setTimeout(closeModal, timeout)
+    closeModal();
+    // TODO - setting timeout here creates a memory leak :/
+    // find a better way ...
+    // setTimeout(closeModal, timeout)
   }
 
   render() {

@@ -1,27 +1,18 @@
-import {Link} from "react-router-dom";
-import React from "react";
-import {makeStyles} from "@material-ui/core/styles";
+import React, {Fragment} from "react";
+import ButtonForModal from "./ButtonForModal";
+import LoginModal from "../User/LoginModal";
 
-const useStyles = makeStyles(theme => ({
-  link: {
-    color: theme.palette.secondary.main,
-    fontSize: 14,
-    fontWeight: "semi-bold",
-    textDecoration: "none",
-    '&:hover': {
-      color: theme.palette.secondary.light,
-    },
-  },
-}));
-
-const LoginButton = ({to}) => {
-  const classes = useStyles();
+const LoginButton = () => {
   return (
-    <Link
-      className={classes.link}
-      to={to}
-    >{"Log In"}</Link>
-  )
+    <Fragment>
+      <ButtonForModal
+        label={'Log In'}
+        inverted={true}
+        style={{border: 'none', right: '-15px'}}
+        Modal={LoginModal}
+      />
+    </Fragment>
+    )
 };
 
 export default LoginButton;

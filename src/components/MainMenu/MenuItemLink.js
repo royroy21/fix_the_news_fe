@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     color: "black",
-    marginTop: 5,
+    marginTop: 4,
     textDecoration: "none",
     "&:hover": {
       color: theme.palette.secondary.main,
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const MenuItem = ({icon, label, to}) => {
+const MenuItemLink = ({icon, label, to}) => {
   const classes = useStyles();
 
   if (!to) {
@@ -32,4 +32,4 @@ const MenuItem = ({icon, label, to}) => {
   )
 };
 
-export default MenuItem;
+export default MenuItemLink;

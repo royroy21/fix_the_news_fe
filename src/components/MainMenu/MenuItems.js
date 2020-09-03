@@ -3,12 +3,14 @@ import {makeStyles} from "@material-ui/core/styles";
 import UserDisplay from "../User/UserDisplay";
 import {Link} from "react-router-dom";
 import LogoutButton from "../CustomButton/LogoutButton";
-import MenuItem from "./MenuItem";
+import MenuItemLink from "./MenuItemLink";
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import MapIcon from '@material-ui/icons/Map';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import LoginRegistration from "../CustomButton/LoginRegistration";
-import {editUserRoute} from "../../settings";
+import EditUserModal from "../User/EditUserModal";
+import MenuItemModal from "./MenuItemModal";
+import {aboutCommunicationRoute} from "../../settings";
 
 export const useStyles = makeStyles(theme => ({
   container: {
@@ -44,7 +46,7 @@ export const useStyles = makeStyles(theme => ({
   },
 }));
 
-const MenuItems = ({user}) => {
+const MenuItems = ({user, closeParentModel}) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
@@ -57,22 +59,29 @@ const MenuItems = ({user}) => {
       </div>
     )}
       <div className={classes.menuItems}>
-        {user && <MenuItem
+        {user && <MenuItemModal
           icon={<AccountBoxIcon color={"secondary"} />}
-          label={"Account"} to={editUserRoute}
+          label={"Account"}
+          Modal={EditUserModal}
         />}
-        {user && <MenuItem
+        {user && <MenuItemLink
           icon={<AddBoxIcon color={"secondary"} />}
           label={"Add Topic"} to={""}
         />}
-        <MenuItem
+        <MenuItemLink
           icon={<MapIcon color={"secondary"} />}
           label={"Road map"} to={""}
         />
       </div>
       <div className={classes.subLinks}>
         <Link className={classes.link} to={""}>{"Contact Us"}</Link>
-        <Link className={classes.link} to={""}>{"About"}</Link>
+        <Link
+          className={classes.link}
+          to={aboutCommunicationRoute}
+          onClick={closeParentModel}
+        >
+          {"About"}
+        </Link>
         <Link className={classes.link} to={""}>{"Help"}</Link>
       </div>
     </div>

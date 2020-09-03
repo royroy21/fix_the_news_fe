@@ -4,7 +4,7 @@ import TopicsWrapper from "./wrapper";
 import NeverEndingScrolling from "../NeverEndingScrolling";
 import {TOPIC_PAGE_SIZE_FOR_MOBILE} from "../../settings";
 
-const Topics = ({id, actions, store}) => {
+const Topics = ({id='topics', actions, store}) => {
   if (store.appDimensions.isMobile === null) {
     return null;
   }
