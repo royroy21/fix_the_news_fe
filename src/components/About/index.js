@@ -26,6 +26,7 @@ const About = ({actions, store}) => {
     )
   return (
     <Fragment>
+      <br /><br />
       <h3 className={classes.title}>{title}</h3><br />
       <p className={classes.text}>{text}</p>
     </Fragment>
