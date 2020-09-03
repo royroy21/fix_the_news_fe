@@ -27,6 +27,15 @@ class Form extends React.Component {
     this.formData.set(event.target.name, event.target.value);
   };
 
+  handleCheckBoxChange = (event) => {
+    const formData = {
+      ...this.state.formData,
+      [event.target.name]: event.target.checked,
+    };
+    this.setState({formData});
+    this.formData.set(event.target.name, event.target.checked);
+  };
+
   handleChangeFile = (event, fieldName) => {
     const formData = {
       ...this.state.formData,

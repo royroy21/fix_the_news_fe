@@ -5,6 +5,8 @@ import {TextField} from "@material-ui/core";
 import PropTypes from "prop-types";
 import Button from "../CustomButton";
 import ImageIcon from '@material-ui/icons/Image';
+import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 class EditUserForm extends Form {
 
@@ -16,6 +18,7 @@ class EditUserForm extends Form {
       first_name: "",
       last_name: "",
       email: "",
+      subscribe_to_emails: false,
     },
   };
 
@@ -25,6 +28,7 @@ class EditUserForm extends Form {
       first_name: this.props.storeObject.object.first_name,
       last_name: this.props.storeObject.object.last_name,
       email: this.props.storeObject.object.email,
+      subscribe_to_emails: this.props.storeObject.object.subscribe_to_emails,
     }})
   }
 
@@ -142,6 +146,19 @@ class EditUserForm extends Form {
           value={this.state.formData.email}
           onChange={this.handleChange}
           margin={"normal"}
+        />
+        <FormControlLabel
+          checked={this.state.formData.subscribe_to_emails}
+          control={
+            <Checkbox
+              color={"secondary"}
+              id={"subscribe_to_emails"}
+              name={"subscribe_to_emails"}
+              onChange={this.handleCheckBoxChange}
+            />
+          }
+          label={"Subscribe to emails"}
+          labelPlacement={"end"}
         />
       </Fragment>
     )
