@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
     position: "relative",
     width: "100%",
+    top: "-5px",
   },
   root: {
     marginTop: theme.spacing(2),
