@@ -66,7 +66,7 @@ class Form extends React.Component {
             <Button
               label={this.props.buttonLabel}
               onClick={this.handleSubmit}
-              style={{margin: "auto", display: "inline-block"}}
+              style={{margin: "auto", display: "inline-block", marginTop: 35}}
             />
           ) : null}
           {this.props.withLoadingModal ? (
