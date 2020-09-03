@@ -4,7 +4,6 @@ import Field from "../Form/Field";
 import {TextField} from "@material-ui/core";
 import {withRouter} from "react-router-dom";
 import PropTypes from "prop-types";
-import {userNotLoggedInRoute} from "../../settings";
 import LoadingSpinner from "../Loading/LoadingSpinner";
 import UserNotLoggedInModal from "../User/UserNotLoggedInModal";
 

@@ -4,8 +4,6 @@ import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
 import Error from "../Form/Error";
 import PropTypes from "prop-types";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import {Link} from "react-router-dom";
-import {userNotLoggedInRoute} from "../../settings";
 import UserNotLoggedInModal from "../User/UserNotLoggedInModal";
 
 export const likeStyles = (theme) => ({
