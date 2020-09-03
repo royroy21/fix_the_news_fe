@@ -11,6 +11,10 @@ import LoginRegistration from "../CustomButton/LoginRegistration";
 import EditUserModal from "../User/EditUserModal";
 import MenuItemModal from "./MenuItemModal";
 import {aboutCommunicationRoute, privacyRoute} from "../../settings";
+import ButtonForModal from "../CustomButton/ButtonForModal";
+import ContactUsModal from "../Messages/ContactUsModal";
+import theme from "../../theme";
+import HelpModal from "../Messages/HelpModal";
 
 export const useStyles = makeStyles(theme => ({
   container: {
@@ -48,6 +52,13 @@ export const useStyles = makeStyles(theme => ({
 
 const MenuItems = ({user, closeParentModel}) => {
   const classes = useStyles();
+  const subLinkButtonForModalStyle = {
+    fontSize: 16,
+    color: theme.palette.primary.dark,
+    fontWeight: 400,
+    padding: 0,
+    textAlign: 'left',
+  }
   return (
     <div className={classes.container}>
     {!!!user ? (
@@ -74,7 +85,12 @@ const MenuItems = ({user, closeParentModel}) => {
         />
       </div>
       <div className={classes.subLinks}>
-        <Link className={classes.link} to={""}>{"Contact Us"}</Link>
+        <ButtonForModal
+          buttonAsLink={true}
+          label={"Contact Us"}
+          Modal={ContactUsModal}
+          style={subLinkButtonForModalStyle}
+        />
         <Link
           className={classes.link}
           to={aboutCommunicationRoute}
@@ -89,7 +105,12 @@ const MenuItems = ({user, closeParentModel}) => {
         >
           {"Privacy"}
         </Link>
-        <Link className={classes.link} to={""}>{"Help"}</Link>
+        <ButtonForModal
+          buttonAsLink={true}
+          label={"Help"}
+          Modal={HelpModal}
+          style={subLinkButtonForModalStyle}
+        />
       </div>
     </div>
   )

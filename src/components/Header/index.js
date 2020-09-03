@@ -9,6 +9,10 @@ import Logo from "../Logo";
 import LoginRegistration from "../CustomButton/LoginRegistration";
 import {Link} from "react-router-dom";
 import MainMenu from "../MainMenu";
+import ButtonForModal from "../CustomButton/ButtonForModal";
+import ContactUsModal from "../Messages/ContactUsModal";
+import theme from "../../theme";
+import HelpModal from "../Messages/HelpModal";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -60,12 +64,18 @@ const Header = (props) => {
       >
         <Toolbar style={toolbarStyle}>
           <Logo />
-          <Typography
-            className={classes.contactUsAboutHelp}
-            variant={"h6"}
-          >
-            {"Contact Us"}
-          </Typography>
+          <ButtonForModal
+            buttonAsLink={true}
+            label={"Contact Us"}
+            Modal={ContactUsModal}
+            style={{
+              fontSize: 14,
+              marginLeft: 35,
+              marginTop: 5,
+              color: theme.palette.primary.dark,
+              fontWeight: 400,
+            }}
+          />
           <Typography
             className={classes.contactUsAboutHelp}
             variant={"h6"}
@@ -88,12 +98,19 @@ const Header = (props) => {
               {"Privacy"}
             </Link>
           </Typography>
-          <Typography
-            className={classes.contactUsAboutHelp}
-            variant={"h6"} style={{ flexGrow: 1}}
-          >
-            {"Help"}
-          </Typography>
+          <ButtonForModal
+            buttonAsLink={true}
+            label={"Help"}
+            Modal={HelpModal}
+            style={{
+              fontSize: 14,
+              marginLeft: 35,
+              marginTop: 5,
+              color: theme.palette.primary.dark,
+              fontWeight: 400,
+            }}
+          />
+          <div style={{flexGrow: 1}}>{''}</div>
           {!!!user ? (
             <LoginRegistration />
           ) : (
