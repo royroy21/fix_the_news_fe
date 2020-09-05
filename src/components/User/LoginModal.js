@@ -15,12 +15,12 @@ const LoginModal = ({actions, store, open, onClose}) => {
           clearToken: actions.clearToken,
           clearUser: actions.clearUser,
         },
-        buttonLabel: "Login",
+        buttonLabel: "Log In",
         storeObject: store.token,
         successMessage: "Login successful",
         isMobile: store.appDimensions.isMobile,
       }}
-      header={"Login to your account"}
+      header={"Log In"}
     />
   )
 };

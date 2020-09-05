@@ -10,7 +10,8 @@ const HelpModal = ({open, onClose, actions, store}) => {
       actions={actions}
       store={store}
       type={'help'}
-      header={'Need help?'}
+      header={'Help'}
+      subHeader={'Something not working? Let us know here and we\'ll fix it.'}
     />
   )
 }

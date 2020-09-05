@@ -14,12 +14,12 @@ const RegistrationModal = (props) => {
           clearRegister: props.actions.clearRegister,
           postRegister: props.actions.postRegister,
         },
-        buttonLabel: "Submit",
+        buttonLabel: "Sign Up",
         storeObject: props.store.register,
-        successMessage: "User registration successful",
+        successMessage: "Sign up successful",
         isMobile: props.store.appDimensions.isMobile,
       }}
-      header={"Register new account"}
+      header={"Sign Up"}
     />
   )
 };

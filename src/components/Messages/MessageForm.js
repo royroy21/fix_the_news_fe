@@ -53,7 +53,7 @@ class MessageForm extends Form {
           error={this.props.storeObject.error}
           required
           id={"email"}
-          label={"Email for us to contact you on"}
+          label={"Your email"}
           name={"email"}
           value={this.state.formData.email}
           onChange={this.handleChange}

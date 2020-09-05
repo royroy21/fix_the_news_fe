@@ -2,7 +2,16 @@ import React from "react";
 import MessageForm from "./MessageForm";
 import CustomModal from "../CustomModal";
 
-const BaseMessageModal = ({open, onClose, actions, store, header, type}) => {
+const BaseMessageModal = (props) => {
+  const {
+    open,
+    onClose,
+    actions,
+    store,
+    header,
+    subHeader,
+    type,
+  } = props;
   return (
     <CustomModal
       open={open}
@@ -17,6 +26,7 @@ const BaseMessageModal = ({open, onClose, actions, store, header, type}) => {
         user: store.user,
       }}
       header={header}
+      subHeader={subHeader}
     />
   )
 }

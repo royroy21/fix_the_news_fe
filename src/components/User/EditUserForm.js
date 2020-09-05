@@ -93,13 +93,13 @@ class EditUserForm extends Form {
         />
         <div style={uploadAvatarContainer}>
           <Button
-            label={avatar ? "Change Avatar" : "Add Avatar"}
+            label={avatar ? "Change Picture" : "Add Picture"}
             onClick={() => this.imageInput.click()}
             style={avatarButtonStyle}
           />
           {avatar ? (
             <Button
-              label={"Remove Avatar"}
+              label={"Remove Picture"}
               onClick={this.removeAvatar}
               style={avatarButtonStyle}
             />
@@ -157,7 +157,7 @@ class EditUserForm extends Form {
               onChange={this.handleCheckBoxChange}
             />
           }
-          label={"subscribe to emails"}
+          label={"Get a weekly email summary with the freshest news topics"}
           labelPlacement={"end"}
         />
       </Fragment>

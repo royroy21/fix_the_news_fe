@@ -20,14 +20,14 @@ class RegistrationForm extends Form {
       last_name: "",
       email: "",
       password: "",
-      subscribe_to_emails: true,
+      subscribe_to_emails: false,
     },
     showPassword: false,
   };
 
   componentDidMount() {
     this.props.actions.clearRegister();
-    this.formData.set('subscribe_to_emails', true);
+    this.formData.set('subscribe_to_emails', false);
   }
 
   handleSubmit = (event) => {
@@ -84,13 +84,13 @@ class RegistrationForm extends Form {
         />
         <div style={uploadAvatarContainer}>
           <Button
-            label={avatar ? "Change Avatar" : "Add Avatar"}
+            label={avatar ? "Change Picture" : "Add Picture"}
             onClick={() => this.imageInput.click()}
             style={avatarButtonStyle}
           />
           {avatar ? (
             <Button
-              label={"Remove Avatar"}
+              label={"Remove Picture"}
               onClick={this.removeAvatar}
               style={avatarButtonStyle}
             />
@@ -177,7 +177,7 @@ class RegistrationForm extends Form {
               onChange={this.handleCheckBoxChange}
             />
           }
-          label={"subscribe to emails"}
+          label={"Get a weekly email summary with the freshest news topics"}
           labelPlacement={"end"}
         />
       </Fragment>

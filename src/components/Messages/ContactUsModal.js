@@ -11,6 +11,7 @@ const ContactUsModal = ({open, onClose, actions, store}) => {
       store={store}
       type={'contact_us'}
       header={'Contact Us'}
+      subHeader={'Send us a message here and we\'ll get back to you by email.'}
     />
   )
 }
