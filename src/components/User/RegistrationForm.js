@@ -7,6 +7,7 @@ import Switch from "@material-ui/core/Switch";
 import PropTypes from "prop-types";
 import Button from "../CustomButton";
 import ImageIcon from '@material-ui/icons/Image';
+import Checkbox from "@material-ui/core/Checkbox";
 
 class RegistrationForm extends Form {
 
@@ -19,12 +20,14 @@ class RegistrationForm extends Form {
       last_name: "",
       email: "",
       password: "",
+      subscribe_to_emails: true,
     },
     showPassword: false,
   };
 
   componentDidMount() {
     this.props.actions.clearRegister();
+    this.formData.set('subscribe_to_emails', true);
   }
 
   handleSubmit = (event) => {
@@ -163,6 +166,19 @@ class RegistrationForm extends Form {
               ? "Password visible"
               : "Password hidden"
           }
+        />
+        <FormControlLabel
+          checked={this.state.formData.subscribe_to_emails}
+          control={
+            <Checkbox
+              color={"secondary"}
+              id={"subscribe_to_emails"}
+              name={"subscribe_to_emails"}
+              onChange={this.handleCheckBoxChange}
+            />
+          }
+          label={"subscribe to emails"}
+          labelPlacement={"end"}
         />
       </Fragment>
     )
