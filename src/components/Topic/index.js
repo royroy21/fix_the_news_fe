@@ -69,13 +69,13 @@ const Topic = ({item, store}) => {
           {!store.user.object ? (
             <ButtonForModal
               icon={<AddIcon fontSize={'large'} />}
-              label={!isMobile ? "Add Article" : null}
+              label={!isMobile ? "Add News" : null}
               Modal={UserNotLoggedInModal}
             />
           ) : (
             <ButtonForModal
               icon={<AddIcon fontSize={'large'} />}
-              label={!isMobile ? "Add Article" : null}
+              label={!isMobile ? "Add News" : null}
               Modal={NewsItemModal}
               modelProps={{
                 categories: item.serialized_categories,

@@ -14,14 +14,15 @@ const NewsItemModal = ({actions, open, onClose, store, modelProps}) => {
           postNewsItem: actions.postNewsItem,
           clearNewsItem: actions.clearNewsItem,
         },
-        buttonLabel: "Add",
+        buttonLabel: "Add News",
         categories: modelProps.categories,
         storeObject: store.newsItem,
-        successMessage: "Article successfully added",
+        successMessage: "News successfully added",
         topicId: modelProps.topicId,
         isMobile: store.appDimensions.isMobile,
       }}
-      header={"Add Article"}
+      header={"Add News"}
+      subHeader={"Have we missed something? Add a news story and show us a different view."}
     />
   )
 };
