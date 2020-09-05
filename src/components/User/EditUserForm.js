@@ -157,7 +157,7 @@ class EditUserForm extends Form {
               onChange={this.handleCheckBoxChange}
             />
           }
-          label={"Subscribe to emails"}
+          label={"subscribe to emails"}
           labelPlacement={"end"}
         />
       </Fragment>
