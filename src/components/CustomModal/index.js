@@ -34,6 +34,7 @@ const CustomModal = (props) => {
     contentProps,
     footerComponent,
     header,
+    subHeader,
     noWidth,
     open,
     onClose,
@@ -69,6 +70,7 @@ const CustomModal = (props) => {
           <div className={classes.headerTitle}>
             {header}
           </div>
+          {subHeader && <p style={{textAlign: "center"}}>{subHeader}</p>}
         </div>
         <ContentComponent
           {...contentProps}
