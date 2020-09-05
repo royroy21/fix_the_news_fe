@@ -54,7 +54,11 @@ const ShareTopic = ({slug}) => {
         />
       </div>
       <div className={classes.copyToClipBoard}>
-        <CopyToClipBoard text={url} />
+        <CopyToClipBoard
+          text={url}
+          labelWhenCopy={"Copy Link"}
+          labelWhenCopied={"Link Copied"}
+        />
       </div>
     </Fragment>
   )

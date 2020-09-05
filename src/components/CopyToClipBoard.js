@@ -15,7 +15,7 @@ const CopyToClipBoard = ({text, labelWhenCopy, labelWhenCopied}) => {
     <CopyToClipboard text={text}>
       <CustomButton
         icon={<FileCopyIcon />}
-        label={copied ? labelWhenCopy : labelWhenCopied}
+        label={copied ?  labelWhenCopied: labelWhenCopy}
         onClick={handleClick}
         style={{width: 200}}
       />
