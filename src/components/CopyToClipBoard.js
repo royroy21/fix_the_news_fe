@@ -3,7 +3,7 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import CustomButton from "./CustomButton";
 
-const CopyToClipBoard = ({text}) => {
+const CopyToClipBoard = ({text, labelWhenCopy, labelWhenCopied}) => {
   const [copied, setCopied] = useState(false);
 
   const handleClick = () => {
@@ -15,7 +15,7 @@ const CopyToClipBoard = ({text}) => {
     <CopyToClipboard text={text}>
       <CustomButton
         icon={<FileCopyIcon />}
-        label={copied ? "Copied to clipboard" : "Copy to clipboard"}
+        label={copied ? labelWhenCopy : labelWhenCopied}
         onClick={handleClick}
         style={{width: 200}}
       />
