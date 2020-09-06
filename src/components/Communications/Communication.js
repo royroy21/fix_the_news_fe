@@ -2,6 +2,7 @@ import Paper from "@material-ui/core/Paper";
 import React, {useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import CloseButton from "../CustomButton/CloseButton";
+import {cleanHTML} from "../../helpers/htmlFunctions";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -37,7 +38,7 @@ const Communication = ({text, title, closeAction}) => {
       children={
         <div className={classes.textContainer}>
           <h3 className={classes.title}>{title}</h3><br />
-          <p className={classes.text}>{text}</p>
+          <p className={classes.text}>{cleanHTML(text)}</p>
           <CloseButton
             onClick={closeCommunication}
             style={{
