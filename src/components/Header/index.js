@@ -73,7 +73,6 @@ const Header = (props) => {
               marginLeft: 35,
               marginTop: 5,
               color: theme.palette.primary.dark,
-              fontWeight: 400,
             }}
           />
           <Typography
@@ -107,7 +106,6 @@ const Header = (props) => {
               marginLeft: 35,
               marginTop: 5,
               color: theme.palette.primary.dark,
-              fontWeight: 400,
             }}
           />
           <div style={{flexGrow: 1}}>{''}</div>
