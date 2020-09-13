@@ -8,7 +8,7 @@ const LoginButton = () => {
       <ButtonForModal
         label={'Log In'}
         inverted={true}
-        style={{border: 'none', right: '-15px'}}
+        style={{border: 'none'}}
         Modal={LoginModal}
       />
     </Fragment>
