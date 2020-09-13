@@ -18,7 +18,6 @@ import HelpModal from "../Messages/HelpModal";
 
 export const useStyles = makeStyles(theme => ({
   container: {
-    height: "100%",
     paddingLeft: theme.spacing(1),
     position: "relative",
     width: "80%",
@@ -39,13 +38,14 @@ export const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     paddingLeft: theme.spacing(1),
     paddingTop: theme.spacing(3),
+    minHeight: 24,
   },
   subLinks: {
     bottom: 0,
     display: "flex",
     flexDirection: "column",
+    marginTop: theme.spacing(2),
     padding: theme.spacing(1),
-    position: "absolute",
     width: "100%",
   },
 }));

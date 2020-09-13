@@ -16,14 +16,14 @@ const useStyles = makeStyles(theme => ({
   desktopContent: {
     backgroundColor: theme.palette.primary.light,
     float: "right",
-    height: 250,
+    height: 220,
     marginTop: 10,
     padding: theme.spacing(1),
     width: "20%",
   },
   mobileContent: {
     backgroundColor: theme.palette.primary.light,
-    height: 250,
+    height: 230,
     width: "100%",
   },
 }));
@@ -35,6 +35,7 @@ const MainMenu = ({store}) => {
   return (
     <Fragment>
       <Modal
+        style={{height: 220}}
         open={open}
         onClose={() => setOpen(false)}
       >
@@ -44,7 +45,7 @@ const MainMenu = ({store}) => {
         >
           <CloseButton
             onClick={() => setOpen(false)}
-            style={{float: "right"}}
+            style={isMobile ? {marginTop: 10} : {}}
           />
           <MenuItems
             user={store.user.object}
