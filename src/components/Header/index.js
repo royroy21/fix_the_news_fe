@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.light,
     borderBottom: `1px solid ${theme.palette.primary.main}`,
     paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(2),
+    // paddingRight: theme.spacing(2),
   },
   buttonDivider: {
     color: theme.palette.primary.main,
@@ -73,7 +73,7 @@ const Header = (props) => {
               marginLeft: 35,
               marginTop: 5,
               color: theme.palette.primary.dark,
-              fontWeight: 400,
+              fontFamily: '"Raleway", "Helvetica", "Arial", sans-serif',
             }}
           />
           <Typography
@@ -107,7 +107,7 @@ const Header = (props) => {
               marginLeft: 35,
               marginTop: 5,
               color: theme.palette.primary.dark,
-              fontWeight: 400,
+              fontFamily: '"Raleway", "Helvetica", "Arial", sans-serif',
             }}
           />
           <div style={{flexGrow: 1}}>{''}</div>

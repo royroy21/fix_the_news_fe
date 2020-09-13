@@ -22,6 +22,7 @@ const Topics = ({id='topics', actions, store}) => {
       id={id}
       store={store.topics}
       ItemComponent={Topic}
+      style={!store.appDimensions.isMobile ? {marginTop: 10} : undefined}
     />
   )
 };

@@ -55,7 +55,7 @@ const MenuItems = ({user, closeParentModel}) => {
   const subLinkButtonForModalStyle = {
     fontSize: 16,
     color: theme.palette.primary.dark,
-    fontWeight: 400,
+    fontFamily: '"Raleway", "Helvetica", "Arial", sans-serif',
     padding: 0,
     textAlign: 'left',
   }
