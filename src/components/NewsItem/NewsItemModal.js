@@ -16,6 +16,7 @@ const NewsItemModal = ({actions, open, onClose, store, modelProps}) => {
         },
         buttonLabel: "Add Viewpoint",
         categories: modelProps.categories,
+        categoryId: modelProps.categoryId,
         storeObject: store.newsItem,
         successMessage: "Viewpoint successfully added",
         topicId: modelProps.topicId,

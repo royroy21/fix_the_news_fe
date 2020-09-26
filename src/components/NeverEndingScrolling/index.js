@@ -57,6 +57,7 @@ class NeverEndingScrolling extends Component {
           item={item}
         />
         ))}
+        {this.props.LastItemComponent}
         {this.props.store.loading && <Loading />}
       </div>
     );
@@ -68,6 +69,7 @@ export default NeverEndingScrolling;
 NeverEndingScrolling.defaultProps = {
   style: {},
   showLoadingAtFirstLoad: true,
+  LastItemComponent: null,
 };
 
 NeverEndingScrolling.propTypes = {
@@ -75,6 +77,7 @@ NeverEndingScrolling.propTypes = {
   getInitialRequest: PropTypes.func.isRequired,
   getNext: PropTypes.func.isRequired,
   store: PropTypes.object.isRequired,
+  LastItemComponent: PropTypes.object,
   ItemComponent: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.func,

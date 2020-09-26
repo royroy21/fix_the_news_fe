@@ -37,6 +37,9 @@ class NewsItemForm extends Form {
       }}));
     this.formData.set("category", defaultCategoryId);
     this.formData.set("topic", this.props.topicId);
+    if (this.props.categoryId) {
+      this.formData.set("category", this.props.categoryId);
+    }
   }
 
   handleSubmit = (event) => {
@@ -69,25 +72,27 @@ class NewsItemForm extends Form {
           onChange={this.handleChange}
           margin={"normal"}
         />
-        <FormControl style={{marginTop: 25, marginBottom: 50}}>
-          <InputLabel id={"news-item-category-label"}>{"category"}</InputLabel>
-          <Select
-            labelId={"news-item-category-label"}
-            id={"category"}
-            name={"category"}
-            value={this.state.formData.category}
-            onChange={this.handleChange}
-          >
-            {this.props.categories.map(category => (
-              <MenuItem
-                key={`news-item-category-${category.id}`}
-                value={category.id}
+        {!this.props.categoryId ? (
+          <FormControl style={{marginTop: 25, marginBottom: 50}}>
+            <InputLabel id={"news-item-category-label"}>{"category"}</InputLabel>
+              <Select
+                labelId={"news-item-category-label"}
+                id={"category"}
+                name={"category"}
+                value={this.state.formData.category}
+                onChange={this.handleChange}
               >
-                {category.title || category.type}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+                {this.props.categories.map(category => (
+                  <MenuItem
+                    key={`news-item-category-${category.id}`}
+                    value={category.id}
+                  >
+                    {category.title || category.type}
+                  </MenuItem>
+                ))}
+              </Select>
+          </FormControl>
+          ) : null}
       </Fragment>
     )
   }

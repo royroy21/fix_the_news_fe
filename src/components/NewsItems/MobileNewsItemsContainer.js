@@ -15,7 +15,7 @@ const MobileNewsItemsContainer = ({topic}) => {
               id={`news-items-for-topic-${topic.id}-category-${[category.type]}`}
               categoryId={category.id}
               horizontal={true}
-              topicId={topic.id}
+              topic={topic}
             />
           </div>
         ))

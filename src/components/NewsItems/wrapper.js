@@ -5,6 +5,7 @@ const mapStateToProps = (state) => {
   return {
     store: {
       categoryNewsItems: state.categoryNewsItems,
+      user: state.user,
     },
   }
 };

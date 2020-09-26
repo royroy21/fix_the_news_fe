@@ -66,7 +66,7 @@ const NewsItemsContainer = ({topic}) => {
                   id={`news-items-for-topic-${topic.id}-category-${[category.type]}`}
                   categoryId={category.id}
                   style={{maxHeight: 400, overflowX: "hidden"}}
-                  topicId={topic.id}
+                  topic={topic}
                 />
               ) : (
                 <TopNewsItems

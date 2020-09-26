@@ -3,15 +3,16 @@ import NewsItem from "../NewsItem";
 import CategoryNewsItemsWrapper from "./wrapper";
 import {initialCategoryNewsItemState} from "../../store/reducers/categoryNewsItems";
 import NeverEndingScrolling from "../NeverEndingScrolling";
+import AddNewsItemButton from "../NewsItem/AddNewsItemButton";
 
-const NewsItems = ({id, actions, categoryId, horizontal=false, store, topicId, style={}}) => {
+const NewsItems = ({id, actions, categoryId, horizontal=false, store, topic, style={}}) => {
   const newsItems =
     store.categoryNewsItems[categoryId]
     || initialCategoryNewsItemState;
 
   const getInitialRequest = () => {
     const params = {
-      topic: topicId,
+      topic: topic.id,
       category: categoryId,
     };
     if (horizontal) {
@@ -33,6 +34,13 @@ const NewsItems = ({id, actions, categoryId, horizontal=false, store, topicId, s
       getInitialRequest={getInitialRequest}
       getNext={actions.getCategoryNewsItems}
       id={id}
+      LastItemComponent={
+        <AddNewsItemButton
+          topic={topic}
+          user={store.user}
+          categoryId={categoryId}
+        />
+      }
       ItemComponent={NewsItem}
       store={newsItems}
       style={neverEndingScrollingStyle}
