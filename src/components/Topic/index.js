@@ -88,7 +88,7 @@ const Topic = ({item, store}) => {
       {isMobile ? (
         <MobileNewsItemsContainer topic={item} />
         ) : (
-        <NewsItemsContainer topic={item} />
+        <NewsItemsContainer topic={item} user={store.user}/>
       )}
       <CommentsButton
         commentsCount={item.comments_count}

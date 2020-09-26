@@ -5,17 +5,17 @@ import UserNotLoggedInModal from "../User/UserNotLoggedInModal";
 import NewsItemModal from "./NewsItemModal";
 
 
-const AddNewsItemButton = ({categoryId, topic, user}) => {
+const AddNewsItemButton = ({categoryId, topic, user, smallButton=false, style={}}) => {
   return (
     <Fragment>
       {!user.object ? (
         <ButtonForModal
-          icon={<AddIcon fontSize={'large'} />}
+          icon={<AddIcon style={style} fontSize={smallButton ? 'small' : 'large'} />}
           Modal={UserNotLoggedInModal}
         />
       ) : (
         <ButtonForModal
-          icon={<AddIcon fontSize={'large'} />}
+          icon={<AddIcon style={style} fontSize={smallButton ? 'small' : 'large'} />}
           Modal={NewsItemModal}
           modelProps={{
             categories: topic.serialized_categories,

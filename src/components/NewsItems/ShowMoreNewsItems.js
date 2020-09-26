@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import {makeStyles} from "@material-ui/core/styles";
+import AddNewsItemButton from "../NewsItem/AddNewsItemButton";
 
 const useStyles = makeStyles((theme) => ({
   moreNewsItems: {
@@ -16,12 +17,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ShowMoreNewsItems = ({topic, category, showTopNewsItems, setShowTopNewsItems}) => {
+const ShowMoreNewsItems = ({topic, category, showTopNewsItems, setShowTopNewsItems, user}) => {
   const numberOfShowingNewsItems = 3;
 
   const classes = useStyles();
   if (topic.news_items_count[category.type] <= numberOfShowingNewsItems) {
-    return null;
+    return (
+      <div style={{bottom: 0, position: "absolute"}}>
+        <AddNewsItemButton
+          categoryId={category.id}
+          topic={topic}
+          user={user}
+          smallButton={true}
+        />
+      </div>
+    )
   }
   return (
     <Fragment>

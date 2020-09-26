@@ -23,11 +23,13 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
   },
   newsItemsContent: {
+    height: "99%",
     padding: "0 10px 0 12px",
+    position: "relative",
   },
 }));
 
-const NewsItemsContainer = ({topic}) => {
+const NewsItemsContainer = ({topic, user}) => {
   const [showTopNewsItems, setShowTopNewsItems] = useState({
     for: false,
     neutral: false,
@@ -80,6 +82,7 @@ const NewsItemsContainer = ({topic}) => {
               category={category}
               showTopNewsItems={showTopNewsItems}
               setShowTopNewsItems={setShowTopNewsItems}
+              user={user}
             />
           </div>
         </div>
