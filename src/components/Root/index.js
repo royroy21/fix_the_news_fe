@@ -3,7 +3,7 @@ import Header from "../Header";
 import RootWrapper from "./wrapper";
 import {
   aboutCommunicationRoute,
-  localStorageAuthTokenKey, privacyRoute
+  localStorageAuthTokenKey, privacyRoute, topicRoute
 } from "../../settings";
 import Topics from "../Topics";
 import HeaderMobile from "../Header/HeaderMobile";
@@ -11,6 +11,7 @@ import Communications from "../Communications";
 import {Route} from "react-router-dom";
 import About from "../About";
 import Privacy from "../Privacy";
+import TopicPage from "../TopicPage";
 
 class Root extends Component {
 
@@ -114,8 +115,8 @@ class Root extends Component {
               path={'/'}
             />
             <Route
-              component={Topics}
-              path={'/topic/'}
+              component={TopicPage}
+              path={topicRoute}
             />
           </div>
         </div>
