@@ -14,15 +14,15 @@ const NewsItemModal = ({actions, open, onClose, store, modelProps}) => {
           postNewsItem: actions.postNewsItem,
           clearNewsItem: actions.clearNewsItem,
         },
-        buttonLabel: "Add News",
+        buttonLabel: "Add Viewpoint",
         categories: modelProps.categories,
         storeObject: store.newsItem,
-        successMessage: "News successfully added",
+        successMessage: "Viewpoint successfully added",
         topicId: modelProps.topicId,
         isMobile: store.appDimensions.isMobile,
       }}
-      header={"Add News"}
-      subHeader={"Have we missed something? Add a news story and show us a different view."}
+      header={"Add Viewpoint"}
+      subHeader={"Share an article, podcast, blog post, video or anything else that shows a different perspective."}
     />
   )
 };
