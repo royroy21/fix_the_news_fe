@@ -9,7 +9,6 @@ import AddIcon from '@material-ui/icons/Add';
 import ShareIcon from '@material-ui/icons/Share';
 import ButtonForModal from "../CustomButton/ButtonForModal";
 import ShareTopicModal from "../ShareTopic/ShareTopicModal";
-import UserNotLoggedInModal from "../User/UserNotLoggedInModal";
 import NewsItemModal from "../NewsItem/NewsItemModal";
 
 const useStyles = makeStyles((theme) => ({
@@ -66,23 +65,15 @@ const Topic = ({item, store}) => {
             Modal={ShareTopicModal}
             modelProps={{slug: item.slug}}
           />
-          {!store.user.object ? (
-            <ButtonForModal
-              icon={<AddIcon fontSize={'large'} />}
-              label={!isMobile ? "Add Viewpoint" : null}
-              Modal={UserNotLoggedInModal}
-            />
-          ) : (
-            <ButtonForModal
-              icon={<AddIcon fontSize={'large'} />}
-              label={!isMobile ? "Add Viewpoint" : null}
-              Modal={NewsItemModal}
-              modelProps={{
-                categories: item.serialized_categories,
-                topicId: item.id,
-              }}
-            />
-          )}
+          <ButtonForModal
+            icon={<AddIcon fontSize={'large'} />}
+            label={!isMobile ? "Add Viewpoint" : null}
+            Modal={NewsItemModal}
+            modelProps={{
+              categories: item.serialized_categories,
+              topicId: item.id,
+            }}
+          />
         </div>
       </div>
       {isMobile ? (
