@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ShowMoreNewsItems = ({topic, category, showTopNewsItems, setShowTopNewsItems, user}) => {
   const classes = useStyles();
+  const numberOfShowingNewsItems = 3;
   return (
     <Fragment>
       {!showTopNewsItems[category.type] ? (
@@ -37,15 +38,17 @@ const ShowMoreNewsItems = ({topic, category, showTopNewsItems, setShowTopNewsIte
             user={user}
             smallButton={true}
           />
-          <span
-            className={classes.moreNewsItems}
-            onClick={() => setShowTopNewsItems({
-              ...showTopNewsItems,
-              [category.type]: true,
-            })}
-          >
-            {"More"}
-          </span>
+          {topic.news_items_count[category.type] > numberOfShowingNewsItems ? (
+            <span
+              className={classes.moreNewsItems}
+              onClick={() => setShowTopNewsItems({
+                ...showTopNewsItems,
+                [category.type]: true,
+              })}
+            >
+              {"More"}
+            </span>
+          ) : null}
         </div>
       ) : (
         <div className={classes.container}>
