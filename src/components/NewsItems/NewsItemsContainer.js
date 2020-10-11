@@ -76,14 +76,14 @@ const NewsItemsContainer = ({topic, user}) => {
                   category={category}
                 />
               )}
+              <ShowMoreNewsItems
+                topic={topic}
+                category={category}
+                showTopNewsItems={showTopNewsItems}
+                setShowTopNewsItems={setShowTopNewsItems}
+                user={user}
+              />
             </div>
-            <ShowMoreNewsItems
-              topic={topic}
-              category={category}
-              showTopNewsItems={showTopNewsItems}
-              setShowTopNewsItems={setShowTopNewsItems}
-              user={user}
-            />
           </div>
         </div>
         ))
