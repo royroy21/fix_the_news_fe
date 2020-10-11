@@ -34,12 +34,13 @@ const NewsItems = ({id, actions, categoryId, horizontal=false, store, topic, sty
       getInitialRequest={getInitialRequest}
       getNext={actions.getCategoryNewsItems}
       id={id}
-      LastItemComponent={
-        <AddNewsItemButton
-          topic={topic}
-          user={store.user}
-          categoryId={categoryId}
-        />
+      LastItemComponent={horizontal ? (
+          <AddNewsItemButton
+            topic={topic}
+            user={store.user}
+            categoryId={categoryId}
+          />
+        ) : null
       }
       ItemComponent={NewsItem}
       store={newsItems}
