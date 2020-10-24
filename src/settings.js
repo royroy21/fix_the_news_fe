@@ -25,4 +25,8 @@ export const topicsURL = `${baseURL}/topics/`;
 export const hasViewedWelcomeCommunicationCookieKey =
   'has-viewed-welcome-communication';
 
-export const TOPIC_PAGE_SIZE_FOR_MOBILE = 3;
+// View settings
+export const TOPIC_PAGE_SIZE_FOR_MOBILE = 10;
+export const TOPIC_PAGE_SIZE_FOR_DESKTOP = 30;
+export const LIST_VIEW = true;
+export const FORCE_SCROLLING_NEWS_ITEMS_FOR_DESKTOP = true;
