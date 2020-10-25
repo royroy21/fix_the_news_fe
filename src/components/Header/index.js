@@ -73,7 +73,7 @@ const Header = (props) => {
               marginLeft: 35,
               marginTop: 5,
               color: theme.palette.primary.dark,
-              fontFamily: '"Raleway", "Helvetica", "Arial", sans-serif',
+              fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
             }}
           />
           <Typography
@@ -107,7 +107,7 @@ const Header = (props) => {
               marginLeft: 35,
               marginTop: 5,
               color: theme.palette.primary.dark,
-              fontFamily: '"Raleway", "Helvetica", "Arial", sans-serif',
+              fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
             }}
           />
           <div style={{flexGrow: 1}}>{''}</div>
