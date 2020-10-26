@@ -26,7 +26,7 @@ export const themeObject = {
     },
   },
   typography: {
-    fontFamily: '"Raleway", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
   },
 };
 const theme = createMuiTheme(themeObject);

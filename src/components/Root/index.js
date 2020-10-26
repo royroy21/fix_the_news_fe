@@ -3,7 +3,7 @@ import Header from "../Header";
 import RootWrapper from "./wrapper";
 import {
   aboutCommunicationRoute,
-  localStorageAuthTokenKey, privacyRoute, topicRoute
+  localStorageAuthTokenKey, privacyRoute, SHOW_ADD_TOPIC_BUTTON, topicRoute
 } from "../../settings";
 import Topics from "../Topics";
 import HeaderMobile from "../Header/HeaderMobile";
@@ -12,6 +12,9 @@ import {Route} from "react-router-dom";
 import About from "../About";
 import Privacy from "../Privacy";
 import TopicPage from "../TopicPage";
+import ButtonForModal from "../CustomButton/ButtonForModal";
+import AddIcon from "@material-ui/icons/Add";
+import TopicModal from "../Topic/TopicModal";
 
 class Root extends Component {
 
@@ -118,6 +121,16 @@ class Root extends Component {
               component={TopicPage}
               path={topicRoute}
             />
+            {SHOW_ADD_TOPIC_BUTTON && (
+              <ButtonForModal
+                icon={<AddIcon fontSize={'large'} />}
+                label={"Add News Topic"}
+                Modal={TopicModal}
+                style={{
+                  width: 180,
+                }}
+              />
+            )}
           </div>
         </div>
       </div>

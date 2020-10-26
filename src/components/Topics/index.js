@@ -1,30 +1,16 @@
-import Topic from "../Topic";
 import React from "react";
+import {LIST_VIEW} from "../../settings";
 import TopicsWrapper from "./wrapper";
-import NeverEndingScrolling from "../NeverEndingScrolling";
-import {TOPIC_PAGE_SIZE_FOR_MOBILE} from "../../settings";
+import TopicsView from "./TopicsView";
+import TopicsListView from "./TopicsListView";
+
 
 const Topics = ({id='topics', actions, store}) => {
-  if (store.appDimensions.isMobile === null) {
-    return null;
+  if (LIST_VIEW) {
+    return <TopicsListView id={id} actions={actions} store={store} />
+  } else {
+    return <TopicsView id={id} actions={actions} store={store} />
   }
-
-  const getInitialRequest = () => {
-    const params = store.appDimensions.isMobile
-      ? {size: TOPIC_PAGE_SIZE_FOR_MOBILE}
-      : {};
-    actions.getTopics(params);
-  };
-  return (
-    <NeverEndingScrolling
-      getInitialRequest={getInitialRequest}
-      getNext={actions.getTopics}
-      id={id}
-      store={store.topics}
-      ItemComponent={Topic}
-      style={!store.appDimensions.isMobile ? {marginTop: 10} : undefined}
-    />
-  )
 };
 
 export default TopicsWrapper(Topics);

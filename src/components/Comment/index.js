@@ -65,8 +65,7 @@ const Comment = ({actions, item, store}) => {
   const {
     avatar,
     avatar_thumbnail_small,
-    first_name,
-    last_name,
+    name,
   } = item.serialized_user;
   const visibleAvatar = avatar_thumbnail_small || avatar;
 
@@ -102,7 +101,7 @@ const Comment = ({actions, item, store}) => {
           </div>
         ) : null}
         <div style={isMobile ? {width: "98%"} : undefined} className={classes.textContainer}>
-          <span className={classes.name}>{`${first_name} ${last_name} - ${getHowLongAgo(item.date_created)}`}</span>
+          <span className={classes.name}>{`${name} - ${getHowLongAgo(item.date_created)}`}</span>
           <div className={classes.text}>{item.text}</div>
         </div>
       </div>

@@ -15,8 +15,7 @@ class EditUserForm extends Form {
   state = {
     formData: {
       avatar: "",
-      first_name: "",
-      last_name: "",
+      name: "",
       email: "",
       subscribe_to_emails: false,
     },
@@ -25,8 +24,7 @@ class EditUserForm extends Form {
   componentDidMount() {
     this.setState({formData: {
       avatar: this.props.storeObject.object.avatar,
-      first_name: this.props.storeObject.object.first_name,
-      last_name: this.props.storeObject.object.last_name,
+      name: this.props.storeObject.object.name,
       email: this.props.storeObject.object.email,
       subscribe_to_emails: this.props.storeObject.object.subscribe_to_emails,
     }})
@@ -119,20 +117,10 @@ class EditUserForm extends Form {
           Field={TextField}
           error={this.props.storeObject.error}
           required
-          id={"first_name"}
-          label={"First name"}
-          name={"first_name"}
-          value={this.state.formData.first_name}
-          onChange={this.handleChange}
-          margin={"normal"}
-        />
-        <Field
-          Field={TextField}
-          error={this.props.storeObject.error}
-          id={"last_name"}
-          label={"Last name"}
-          name={"last_name"}
-          value={this.state.formData.last_name}
+          id={"name"}
+          label={"Name"}
+          name={"name"}
+          value={this.state.formData.name}
           onChange={this.handleChange}
           margin={"normal"}
         />
