@@ -15,14 +15,14 @@ export const themeObject = {
     primary: {
       light: "#ffffff",
       main: "#CAD3DA",
-      dark: "#929DA5",
+      dark: "#7d8a93",
       contrastText: "#191919",
       commentsGrey: "#E8ECEF",
     },
     secondary: {
       light: "#FF4500",
       main: "#447BFE",
-      dark: "#929DA5",
+      dark: "#7d8a93",
     },
   },
   typography: {
