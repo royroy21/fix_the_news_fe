@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 const TopicListView = ({item, store}) => {
   const classes = useStyles();
-  const [showNewsItems, setShowNewsItems] = useState(false);
+  const [showNewsItems, setShowNewsItems] = useState(item.is_shared);
   return (
     <div className={classes.container}>
       <a className={classes.link} href={'#'} onClick={() => setShowNewsItems(!showNewsItems)}>
