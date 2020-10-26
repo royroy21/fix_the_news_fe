@@ -42,7 +42,7 @@ const TopicListView = ({item, store}) => {
       )}
       {!showNewsItems && (<span className={classes.data}>
         {item.score} points |
-        added {getHowLongAgo(item.date_created)} by {item.serialized_user.first_name} |
+        added {getHowLongAgo(item.date_created)} by {item.serialized_user.name} |
         viewpoints: {item.total_news_items_count}
       </span>)}
     </div>

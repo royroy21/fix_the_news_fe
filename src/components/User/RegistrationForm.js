@@ -16,8 +16,7 @@ class RegistrationForm extends Form {
   state = {
     formData: {
       avatar: "",
-      first_name: "",
-      last_name: "",
+      name: "",
       email: "",
       password: "",
       subscribe_to_emails: false,
@@ -110,20 +109,10 @@ class RegistrationForm extends Form {
           Field={TextField}
           error={this.props.storeObject.error}
           required
-          id={"first_name"}
-          label={"First name"}
-          name={"first_name"}
-          value={this.state.formData.first_name}
-          onChange={this.handleChange}
-          margin={"normal"}
-        />
-        <Field
-          Field={TextField}
-          error={this.props.storeObject.error}
-          id={"last_name"}
-          label={"Last name"}
-          name={"last_name"}
-          value={this.state.formData.last_name}
+          id={"name"}
+          label={"Name"}
+          name={"name"}
+          value={this.state.formData.name}
           onChange={this.handleChange}
           margin={"normal"}
         />

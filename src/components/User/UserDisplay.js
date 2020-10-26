@@ -13,15 +13,14 @@ const UserDisplay = ({userObject, withName=false}) => {
   const {
     avatar,
     avatar_thumbnail_small,
-    first_name: firstName,
-    last_name: lastName,
+    name,
   } = userObject;
   const visibleAvatar = avatar_thumbnail_small || avatar;
   const classes = useStyles();
   return (
     <Fragment>
       {withName ? (
-        <p className={classes.username}>{`${firstName} ${lastName}`}</p>
+        <p className={classes.username}>{name}</p>
       ) : null}
       <UserImage
         fullSizeSrc={avatar}
