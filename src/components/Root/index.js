@@ -3,7 +3,7 @@ import Header from "../Header";
 import RootWrapper from "./wrapper";
 import {
   aboutCommunicationRoute,
-  localStorageAuthTokenKey, privacyRoute, SHOW_ADD_TOPIC_BUTTON, topicRoute
+  localStorageAuthTokenKey, privacyRoute, topicRoute
 } from "../../settings";
 import Topics from "../Topics";
 import HeaderMobile from "../Header/HeaderMobile";
@@ -12,10 +12,6 @@ import {Route} from "react-router-dom";
 import About from "../About";
 import Privacy from "../Privacy";
 import TopicPage from "../TopicPage";
-import ButtonForModal from "../CustomButton/ButtonForModal";
-import AddIcon from "@material-ui/icons/Add";
-import TopicModal from "../Topic/TopicModal";
-
 class Root extends Component {
 
   MOBILE_WIDTH = 900;
@@ -86,22 +82,12 @@ class Root extends Component {
       flexDirection: "column",
       width: "100%",
       margin: "0 auto 0 auto",
-      position: "relative",
     };
 
     const extraInnerContainerStyle = isSmallScreen || isMobile ? {} : {
       paddingLeft: '15%',
       paddingRight: '15%',
     };
-
-    const addTopicStyle = isMobile ? {
-        width: "100%",
-        margin: "auto",
-      }
-    : {
-        width: 180,
-        margin: 2,
-      }
 
     return (
       <div style={rootStyle}>
@@ -131,18 +117,6 @@ class Root extends Component {
               component={TopicPage}
               path={topicRoute}
             />
-            {SHOW_ADD_TOPIC_BUTTON && (
-              <ButtonForModal
-                icon={<AddIcon fontSize={'large'} />}
-                label={"Add Topic"}
-                Modal={TopicModal}
-                style={{
-                  ...addTopicStyle,
-                  position: "relative",
-                  bottom: 0,
-                }}
-              />
-            )}
           </div>
         </div>
       </div>

@@ -7,7 +7,8 @@ import TopicsListView from "./TopicsListView";
 
 const Topics = ({id='topics', actions, store}) => {
   if (LIST_VIEW) {
-    return <TopicsListView id={id} actions={actions} store={store} />
+    const isMobile = store.appDimensions.isMobile;
+    return <TopicsListView id={id} actions={actions} store={store} isMobile={isMobile}/>
   } else {
     return <TopicsView id={id} actions={actions} store={store} />
   }
