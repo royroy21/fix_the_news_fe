@@ -124,10 +124,11 @@ class Root extends Component {
             {SHOW_ADD_TOPIC_BUTTON && (
               <ButtonForModal
                 icon={<AddIcon fontSize={'large'} />}
-                label={"Add News Topic"}
+                label={"Add Topic"}
                 Modal={TopicModal}
                 style={{
-                  width: 180,
+                  width: isMobile ? "100%" : 180,
+                  margin: isMobile ? "auto" : 2,
                 }}
               />
             )}

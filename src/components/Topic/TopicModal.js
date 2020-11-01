@@ -2,6 +2,7 @@ import React from "react";
 import CustomModal from "../CustomModal";
 import TopicWrapper from "./wrapper";
 import TopicForm from "./TopicForm";
+import MustBeLoggedIn from "../User/MustBeloggedIn";
 
 const TopicModal = ({actions, open, onClose, store}) => {
   return (
@@ -16,10 +17,11 @@ const TopicModal = ({actions, open, onClose, store}) => {
         },
         buttonLabel: "Add Topic",
         storeObject: store.topic,
-        successMessage: "Topic successfully added",
+        successMessage: "Topic successfully added for vetting",
       }}
       header={"Add Topic"}
-      subHeader={"If accepted your topic will appear on Fixthenews shortly."}
+      subHeader={"Our team will review your suggestion and add your topic soon."}
+      // footerComponent={<MustBeLoggedIn />}
     />
   )
 };

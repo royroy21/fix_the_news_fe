@@ -146,7 +146,7 @@ class NewsItem extends Component {
             <Chip
               className={classes.chip}
               size={"small"}
-              label={item.news_source}
+              label={`${item.score} points | ${item.news_source}`}
             />
           </Link>
           {fromTopicTopNewsItems ? (
