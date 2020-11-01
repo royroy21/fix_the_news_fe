@@ -86,12 +86,22 @@ class Root extends Component {
       flexDirection: "column",
       width: "100%",
       margin: "0 auto 0 auto",
+      position: "relative",
     };
 
     const extraInnerContainerStyle = isSmallScreen || isMobile ? {} : {
       paddingLeft: '15%',
       paddingRight: '15%',
     };
+
+    const addTopicStyle = isMobile ? {
+        width: "100%",
+        margin: "auto",
+      }
+    : {
+        width: 180,
+        margin: 2,
+      }
 
     return (
       <div style={rootStyle}>
@@ -127,8 +137,9 @@ class Root extends Component {
                 label={"Add Topic"}
                 Modal={TopicModal}
                 style={{
-                  width: isMobile ? "100%" : 180,
-                  margin: isMobile ? "auto" : 2,
+                  ...addTopicStyle,
+                  position: "relative",
+                  bottom: 0,
                 }}
               />
             )}
