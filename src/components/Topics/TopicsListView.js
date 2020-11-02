@@ -32,7 +32,10 @@ const TopicsListView = ({id='topics', actions, store, isMobile}) => {
           icon={<AddIcon fontSize={'large'} />}
           label={"Add Topic"}
           Modal={TopicModal}
-          style={addTopicStyle}
+          style={{
+            ...addTopicStyle,
+            minHeight: 35,
+          }}
         />
       )}
     </Fragment>
