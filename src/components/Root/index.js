@@ -3,7 +3,7 @@ import Header from "../Header";
 import RootWrapper from "./wrapper";
 import {
   aboutCommunicationRoute,
-  localStorageAuthTokenKey, privacyRoute, topicRoute
+  localStorageAuthTokenKey, privacyRoute, topicRoute, VIEW_COMMUNICATIONS
 } from "../../settings";
 import Topics from "../Topics";
 import HeaderMobile from "../Header/HeaderMobile";
@@ -97,7 +97,7 @@ class Root extends Component {
             ...innerContainerStyle,
             ...extraInnerContainerStyle,
           }}>
-            <Communications />
+            {VIEW_COMMUNICATIONS && <Communications />}
             <Route
               component={About}
               exact
