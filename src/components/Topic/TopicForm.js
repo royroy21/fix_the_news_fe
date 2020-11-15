@@ -27,7 +27,7 @@ class TopicForm extends Form {
         error={this.props.storeObject.error}
         required
         id={"title"}
-        label={"Title"}
+        label={"Question"}
         name={"title"}
         value={this.state.formData.title}
         onChange={this.handleChange}

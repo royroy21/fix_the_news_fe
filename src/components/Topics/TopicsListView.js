@@ -28,15 +28,18 @@ const TopicsListView = ({id='topics', actions, store, isMobile}) => {
         ItemComponent={TopicListView}
       />
       {SHOW_ADD_TOPIC_BUTTON && (
-        <ButtonForModal
-          icon={<AddIcon fontSize={'large'} />}
-          label={"Add Topic"}
-          Modal={TopicModal}
-          style={{
-            ...addTopicStyle,
-            minHeight: 35,
-          }}
-        />
+        <Fragment>
+          <div style={{"paddingTop": 10}}>{""}</div>
+          <ButtonForModal
+            icon={<AddIcon fontSize={'large'} />}
+            label={"Add Question"}
+            Modal={TopicModal}
+            style={{
+              ...addTopicStyle,
+              minHeight: 35,
+            }}
+          />
+        </Fragment>
       )}
     </Fragment>
   )

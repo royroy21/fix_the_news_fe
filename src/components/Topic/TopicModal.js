@@ -14,12 +14,12 @@ const TopicModal = ({actions, open, onClose, store}) => {
           postTopic: actions.postTopic,
           clearTopic: actions.clearTopic,
         },
-        buttonLabel: "Add Topic",
+        buttonLabel: "Add question",
         storeObject: store.topic,
-        successMessage: "Topic successfully added for vetting",
+        successMessage: "Question successfully added for vetting",
       }}
-      header={"Add Topic"}
-      subHeader={"Our team will review your suggestion and add your topic soon."}
+      header={"Need a different perspective? Add a question"}
+      subHeader={"*Our team will review your suggestion and add shorty."}
     />
   )
 };
