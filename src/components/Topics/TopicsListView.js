@@ -27,12 +27,12 @@ const TopicsListView = ({id='topics', actions, store, isMobile}) => {
         store={store.topics}
         ItemComponent={TopicListView}
       />
-      {SHOW_ADD_TOPIC_BUTTON && (
+      {SHOW_ADD_TOPIC_BUTTON && Boolean(store.topics.items.length) && (
         <Fragment>
           <div style={{"paddingTop": 10}}>{""}</div>
           <ButtonForModal
             icon={<AddIcon fontSize={'large'} />}
-            label={"Add Question"}
+            label={"Ask Question"}
             Modal={TopicModal}
             style={{
               ...addTopicStyle,
