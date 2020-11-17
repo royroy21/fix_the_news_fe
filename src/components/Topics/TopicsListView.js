@@ -32,7 +32,7 @@ const TopicsListView = ({id='topics', actions, store, isMobile}) => {
           <div style={{"paddingTop": 10}}>{""}</div>
           <ButtonForModal
             icon={<AddIcon fontSize={'large'} />}
-            label={"Ask Question"}
+            label={"Add Question"}
             Modal={TopicModal}
             style={{
               ...addTopicStyle,
