@@ -3,7 +3,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import NewsItems from "../NewsItems";
 import CategoryIndicator from "./CategoryIndicator";
-import {categoryColourMap} from "../../theme";
+import theme, {categoryColourMap} from "../../theme";
 import AddNewsItemButton from "../NewsItem/AddNewsItemButton";
 
 const useStyles = makeStyles((theme) => ({
@@ -73,8 +73,12 @@ const NewsItemsContainerWithScrollingNewsItems = ({topic, user}) => {
               topic={topic}
               user={user}
               smallButton={true}
+              label={"Add Viewpoint"}
+              buttonStyle={{
+                color: theme.palette.secondary.main,
+              }}
+              buttonAsLink={true}
             />
-            <span className={classes.addViewpointText}>{"Add Viewpoint"}</span>
           </div>
         </div>
         ))
