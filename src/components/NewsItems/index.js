@@ -39,6 +39,7 @@ const NewsItems = ({id, actions, categoryId, horizontal=false, store, topic, sty
             topic={topic}
             user={store.user}
             categoryId={categoryId}
+            style={{height: 120}}
           />
         ) : null
       }

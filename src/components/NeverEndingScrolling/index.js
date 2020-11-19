@@ -39,7 +39,11 @@ class NeverEndingScrolling extends Component {
     }
 
     if (!!!this.props.store.items.length) {
-      return null
+      if (this.props.LastItemComponent) {
+        return this.props.LastItemComponent
+      } else {
+        return null
+      }
     }
 
     return (

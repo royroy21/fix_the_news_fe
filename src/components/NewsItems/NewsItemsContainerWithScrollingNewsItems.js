@@ -26,6 +26,11 @@ const useStyles = makeStyles((theme) => ({
     padding: "0 10px 0 12px",
     position: "relative",
   },
+  addViewpointText: {
+    color: theme.palette.secondary.main,
+    fontSize: "0.8em",
+    paddingTop: 5,
+  }
 }));
 
 const NewsItemsContainerWithScrollingNewsItems = ({topic, user}) => {
@@ -69,6 +74,7 @@ const NewsItemsContainerWithScrollingNewsItems = ({topic, user}) => {
               user={user}
               smallButton={true}
             />
+            <span className={classes.addViewpointText}>{"Add Viewpoint"}</span>
           </div>
         </div>
         ))
