@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import Button from "../CustomButton";
 import ImageIcon from '@material-ui/icons/Image';
 import Checkbox from "@material-ui/core/Checkbox";
+import {WITH_AVATAR_UPLOAD} from "../../settings";
 
 class RegistrationForm extends Form {
 
@@ -74,36 +75,40 @@ class RegistrationForm extends Form {
 
     return (
       <Fragment>
-        <input
-          id={"avatar"}
-          ref={imageInput => this.imageInput = imageInput}
-          style={{display: "none"}}
-          type={"file"}
-          onChange={(event) => this.handleChangeFile(event, "avatar")}
-        />
-        <div style={uploadAvatarContainer}>
-          <Button
-            label={avatar ? "Change Picture" : "Add Picture"}
-            onClick={() => this.imageInput.click()}
-            style={avatarButtonStyle}
-          />
-          {avatar ? (
-            <Button
-              label={"Remove Picture"}
-              onClick={this.removeAvatar}
-              style={avatarButtonStyle}
+        {WITH_AVATAR_UPLOAD && (
+          <Fragment>
+            <input
+              id={"avatar"}
+              ref={imageInput => this.imageInput = imageInput}
+              style={{display: "none"}}
+              type={"file"}
+              onChange={(event) => this.handleChangeFile(event, "avatar")}
             />
-          ) : null}
-        </div>
-        {avatar && (
-          <div style={{
-            display: "flex",
-            flexDirection: "row",
-            height: 50,
-          }}>
-            <ImageIcon color={"secondary"} style={{marginTop: 10}}/>
-            <p>{avatar.name}</p>
-          </div>
+            <div style={uploadAvatarContainer}>
+              <Button
+                label={avatar ? "Change Picture" : "Add Picture"}
+                onClick={() => this.imageInput.click()}
+                style={avatarButtonStyle}
+              />
+              {avatar ? (
+                <Button
+                  label={"Remove Picture"}
+                  onClick={this.removeAvatar}
+                  style={avatarButtonStyle}
+                />
+              ) : null}
+            </div>
+            {avatar && (
+              <div style={{
+                display: "flex",
+                flexDirection: "row",
+                height: 50,
+              }}>
+                <ImageIcon color={"secondary"} style={{marginTop: 10}}/>
+                <p>{avatar.name}</p>
+              </div>
+            )}
+          </Fragment>
         )}
         <Field
           Field={TextField}
