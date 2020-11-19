@@ -18,8 +18,8 @@ const TopicModal = ({actions, open, onClose, store}) => {
         storeObject: store.topic,
         successMessage: "Question successfully added for vetting",
       }}
-      header={"Looking for a different perspective on the news? Add a question!"}
-      subHeader={"Our team will review your question and add it shortly."}
+      header={"Looking for a different perspective on the news?"}
+      subHeader={"Add a question. Our team will review it shortly."}
     />
   )
 };
