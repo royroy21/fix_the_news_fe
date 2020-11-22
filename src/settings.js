@@ -33,3 +33,4 @@ export const FORCE_SCROLLING_NEWS_ITEMS_FOR_DESKTOP = true;
 export const SHOW_ADD_TOPIC_BUTTON = true;
 export const VIEW_COMMUNICATIONS = false;
 export const WITH_AVATAR_UPLOAD = false;
+export const WITH_NEWS_ITEM_IMAGE = true;
