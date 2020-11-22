@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import LikeTopicTopNewsItem from "../Like/LikeTopicTopNewsItem";
 import LikeNewsItem from "../Like/LikeNewsItem";
 import axios from "axios";
-import {newsItemsURL} from "../../settings";
+import {newsItemsURL, WITH_NEWS_ITEM_IMAGE} from "../../settings";
 
 const styles = (theme) => ({
   chip: {
@@ -61,11 +61,17 @@ const styles = (theme) => ({
     color: theme.palette.primary.dark,
     marginLeft: theme.spacing(1),
   },
+  image: {
+    border: `1px solid ${theme.palette.primary.main}`,
+    borderRadius: 4,
+    float: "left",
+    height: 80,
+    maxWidth: 120,
+    marginRight: 5,
+  },
 });
 
 class NewsItem extends Component {
-  LINE_LIMIT = 50;
-
   contentRef = React.createRef();
 
   state = {
@@ -112,11 +118,29 @@ class NewsItem extends Component {
         maxWidth: 430,
         marginBottom: 10,
       };
+
+    const LINE_LIMIT = isMobile ? 200 : 400;
+    const LINE_LIMIT_WITH_IMAGE = isMobile ? 70 : 140;
+    const lineLimit = item.image ? LINE_LIMIT_WITH_IMAGE : LINE_LIMIT;
+
     return (
       <div
         className={classes.mainContainer}
         style={extraContainerStyle}
       >
+        {WITH_NEWS_ITEM_IMAGE && item.image && (
+          <Link
+            className={classes.link}
+            href={item.url}
+            target={"_blank"}
+            underline={"none"}
+          >
+            <img
+              className={classes.image}
+              src={item.image}
+            />
+          </Link>
+        )}
         <Link
           className={classes.link}
           href={item.url}
@@ -131,8 +155,8 @@ class NewsItem extends Component {
               ref={this.contentRef}
             >
               {this.state.overflowActive ?
-                item.title.slice(0, this.LINE_LIMIT) + "..."
-                : item.title}
+                item.title.slice(0, lineLimit) + "..."
+                : item.title} 
             </div>
           </Typography>
         </Link>
