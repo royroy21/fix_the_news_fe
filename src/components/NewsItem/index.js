@@ -154,7 +154,7 @@ class NewsItem extends Component {
               className={classes.title}
               ref={this.contentRef}
             >
-              {this.state.overflowActive ?
+              {item.title.length > lineLimit ?
                 item.title.slice(0, lineLimit) + "..."
                 : item.title} 
             </div>
