@@ -119,8 +119,8 @@ class NewsItem extends Component {
         marginBottom: 10,
       };
 
-    const LINE_LIMIT = isMobile ? 200 : 400;
-    const LINE_LIMIT_WITH_IMAGE = isMobile ? 70 : 140;
+    const LINE_LIMIT = isMobile ? 100 : 400;
+    const LINE_LIMIT_WITH_IMAGE = isMobile ? 44 : 140;
     const lineLimit = item.image ? LINE_LIMIT_WITH_IMAGE : LINE_LIMIT;
 
     return (
