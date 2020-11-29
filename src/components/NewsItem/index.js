@@ -46,7 +46,7 @@ const styles = (theme) => ({
     color: theme.palette.primary.contrastText,
     fontWeight: 500,
     lineHeight: "18px",
-    overflow: "scroll",
+    overflowY: "scroll",
     height: 75,
     "&:hover": {
       color: theme.palette.secondary.main,
