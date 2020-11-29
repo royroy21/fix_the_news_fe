@@ -46,7 +46,8 @@ const styles = (theme) => ({
     color: theme.palette.primary.contrastText,
     fontWeight: 500,
     lineHeight: "18px",
-    overflow: "hidden",
+    overflow: "scroll",
+    height: 75,
     "&:hover": {
       color: theme.palette.secondary.main,
     },
@@ -72,30 +73,6 @@ const styles = (theme) => ({
 });
 
 class NewsItem extends Component {
-  contentRef = React.createRef();
-
-  state = {
-    overflowActive: false,
-  };
-
-  isOverflowActive(e) {
-    return e.current.offsetHeight < e.current.scrollHeight;
-  }
-
-  componentDidMount() {
-    this.setState({
-      overflowActive: this.isOverflowActive(this.contentRef),
-    });
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.isOverflowActive(this.contentRef) !== prevState.overflowActive) {
-      this.setState({
-        overflowActive: this.isOverflowActive(this.contentRef),
-      });
-    }
-  }
-
   addView = () => {
     const {id} = this.props.item;
     axios.post(`${newsItemsURL}${id}/add-view/`)
@@ -150,13 +127,8 @@ class NewsItem extends Component {
           onClick={this.addView}
         >
           <Typography variant={"subtitle2"}>
-            <div
-              className={classes.title}
-              ref={this.contentRef}
-            >
-              {item.title.length > lineLimit ?
-                item.title.slice(0, lineLimit) + "..."
-                : item.title} 
+            <div className={classes.title}>
+              {item.title}
             </div>
           </Typography>
         </Link>
