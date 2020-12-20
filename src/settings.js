@@ -19,6 +19,7 @@ export const communicationsURL = `${baseURL}/communications/`;
 export const likesURL = `${baseURL}/likes/`;
 export const messagesURL = `${baseURL}/messages/`;
 export const newsItemsURL = `${baseURL}/news-items/`;
+export const subscriptionsURL = `${baseURL}/subscriptions/`;
 export const topicsURL = `${baseURL}/topics/`;
 
 // Cookies keys

@@ -13,6 +13,7 @@ import privacyCommunicationReducer from './privacyCommunication'
 import registerReducer from './register'
 import registrationCommunicationReducer from './registrationCommunication'
 import termsAndConditionsCommunicationReducer from './termsAndConditionsCommunications'
+import subscriptionReducer from './subscriptions';
 import topicCommentsReducer from './topicComments'
 import tokenReducer from './token'
 import topicReducer from './topic'
@@ -33,6 +34,7 @@ export default combineReducers({
   privacyCommunication: privacyCommunicationReducer,
   register: registerReducer,
   registrationCommunication: registrationCommunicationReducer,
+  subscription: subscriptionReducer,
   termsAndConditionsCommunication: termsAndConditionsCommunicationReducer,
   topicComments: topicCommentsReducer,
   token: tokenReducer,

@@ -6,6 +6,7 @@ const mapStateToProps = (state) => {
     store: {
       appDimensions: state.appDimensions,
       topics: state.topics,
+      user: state.user,
     },
   }
 };
